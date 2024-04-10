@@ -1,0 +1,358 @@
+@import "colors";
+@import './mixins/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'FactorA', sans-serif;
+  font-weight: normal;
+  color: $black;
+  //background-color: #f2f7ff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+input[type="number"] {
+  -moz-appearance:textfield !important;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.wfc{
+  width: fit-content !important;
+  max-width: 100% !important;
+}
+
+.nowrap {
+  white-space: nowrap !important;
+}
+
+.pointer-none {
+  pointer-events:  none;
+}
+
+.disabled-btn{
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+.disabled-block{
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.custom-row{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.custom-col{
+  padding: 0 16px;
+  width: 100%;
+  margin-bottom: 32px;
+
+  @include for-680{
+    margin-bottom: 25px;
+  }
+
+  &--9{
+    width: 8.33333%;
+  }
+
+  &--12-5{
+    width: 12.5%;
+  }
+
+  &--20{
+    width: 20%;
+  }
+
+  &--25{
+    width: 25%;
+  }
+
+
+  &--40{
+    width: 40%;
+  }
+
+  &--50{
+    width: 50%;
+  }
+
+  &--33{
+    width: 33.33333%;
+  }
+
+  &--16{
+    width: 16.66666%;
+  }
+
+  &--66{
+    width: 66.66666%;
+  }
+
+  &--75{
+    width: 75%;
+  }
+
+  &--83{
+    width: 83.3332%;
+  }
+
+  &--xl-25{
+    @include for-1600{
+      width: 25%;
+    }
+  }
+
+  &--xl-50{
+    @include for-1600{
+      width: 50%;
+    }
+  }
+
+  &--xl-66{
+    @include for-1600{
+      width: 66.66666%;
+    }
+  }
+
+  &--xl-75{
+    @include for-1600{
+      width: 75%;
+    }
+  }
+
+  &--xl-66{
+    @include for-1600{
+      width: 66.66666%;
+    }
+  }
+
+  &--xl-100{
+    @include for-1600{
+      width: 100%;
+    }
+  }
+
+  &--xl-33{
+    @include for-1600{
+      width: 33.33333%;
+    }
+  }
+
+  &--sxl-25{
+    @include for-1400{
+      width: 25%;
+    }
+  }
+
+  &--sxl-33{
+    @include for-1400{
+      width: 33.33333%;
+    }
+  }
+
+  &--sxl-50{
+    @include for-1400{
+      width: 50%;
+    }
+  }
+
+  &--sxl-66{
+    @include for-1400{
+      width: 66.66666%;
+    }
+  }
+
+  &--lg-25{
+    @include for-1200{
+      width: 25%;
+    }
+  }
+
+  &--lg-33{
+    @include for-1200{
+      width: 33.33333%;
+    }
+  }
+
+  &--lg-50{
+    @include for-1200{
+      width: 50%;
+    }
+  }
+
+  &--lg-75{
+    @include for-1200{
+      width: 75%;
+    }
+  }
+
+  &--lg-100{
+    @include for-1200{
+      width: 100%;
+    }
+  }
+
+  &--md-100{
+    @include for-992{
+      width: 100%;
+    }
+  }
+
+  &--md-83{
+    @include for-992{
+      width: 83.3332%;
+    }
+  }
+
+  &--md-75{
+    @include for-992{
+      width: 75%;
+    }
+  }
+
+  &--md-66{
+    @include for-992{
+      width: 66.66666%;
+    }
+  }
+
+  &--md-50{
+    @include for-992{
+      width: 50%;
+    }
+  }
+
+  &--md-33{
+    @include for-992{
+      width: 33.33333%;
+    }
+  }
+
+  &--md-25{
+    @include for-992{
+      width: 25%;
+    }
+  }
+
+  &--md-0{
+    @include for-992{
+      display: none;
+    }
+  }
+
+  &--sm-25{
+    @include for-768{
+      width: 25%;
+    }
+  }
+
+  &--sm-33{
+    @include for-768{
+      width: 33.33333%;
+    }
+  }
+
+  &--sm-50{
+    @include for-768{
+      width: 50%;
+    }
+  }
+
+  &--sm-66{
+    @include for-768{
+      width: 66.66666%;
+    }
+  }
+
+  &--sm-100{
+    @include for-768{
+      width: 100%;
+    }
+  }
+
+  &--sm-0{
+    @include for-768{
+      display: none;
+    }
+  }
+
+  &--xs-50{
+    @include for-680{
+      width: 50%;
+    }
+  }
+  &--xs-66 {
+    @include for-680{
+      width: 66.66666%;
+    }
+  }
+  &--xs-33 {
+    @include for-680{
+      width: 33.33333%;
+    }
+  }
+  &--xs-100{
+    @include for-680{
+      width: 100%;
+    }
+  }
+
+  &--es-50{
+    @include for-420{
+      width: 50%;
+    }
+  }
+
+  &--es-100{
+    @include for-420{
+      width: 100%;
+    }
+  }
+
+  &--wfc{
+    width: fit-content;
+    @include for-680{
+      &.custom-col--sm-50 {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.vs--searchable .vs__search {
+  height: 0;
+  margin-top: 0;
+}
+
+.vs--searchable.vs--open .vs__search,
+.vs--searchable.vs--loading .vs__search {
+  height: auto;
+  margin: 4px 0 0 0;
+}
+
+.delivery-service-icon {
+  max-height: 24px;
+  max-width: 60px;
+}

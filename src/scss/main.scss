@@ -1,0 +1,46 @@
+@import "./colors";
+@import "./fonts";
+@import "./ui-main-styles";
+@import './header/header';
+
+
+.booking {
+	
+	&__inner {
+		margin: 0 auto;
+		max-width: 1188px;
+		padding: 0 16px;
+	}
+	
+	&__top {
+	
+	}
+	
+	&__main {
+		margin-top: 24px;
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+	
+	&__left {
+		width: 100%;
+		max-width: 333px;
+	}
+	
+	&__content {
+		width: 100%;
+		max-width: 803px;
+	}
+	
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 48px;
+	}
+	
+	&__btn {
+	
+	}
+	
+}

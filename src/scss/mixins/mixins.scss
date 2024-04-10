@@ -1,0 +1,218 @@
+@mixin for-350 {
+  @media (max-width: 350px) { @content; }
+}
+@mixin from-350 {
+  @media (min-width: 351px) { @content; }
+}
+
+@mixin for-380 {
+  @media (max-width: 380px) { @content; }
+}
+@mixin from-380 {
+  @media (min-width: 381px) { @content; }
+}
+
+@mixin for-420 {
+  @media (max-width: 420px) { @content; }
+}
+@mixin from-420 {
+  @media (min-width: 421px) { @content; }
+}
+
+@mixin for-550 {
+  @media (max-width: 550px) { @content; }
+}
+@mixin from-550 {
+  @media (min-width: 551px) { @content; }
+}
+
+@mixin for-680 {
+  @media (max-width: 680px) { @content; }
+}
+
+@mixin from-680 {
+  @media (min-width: 681px) { @content; }
+}
+
+@mixin for-720 {
+  @media (max-width: 720px) { @content; }
+}
+
+@mixin from-720 {
+  @media (min-width: 721px) { @content; }
+}
+
+@mixin for-768 {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin from-768 {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin for-992 {
+  @media (max-width: 992px) { @content; }
+}
+@mixin from-992 {
+  @media (min-width: 993px) { @content; }
+}
+
+@mixin for-1120 {
+  @media (max-width: 1120px) { @content; }
+}
+@mixin from-1120 {
+  @media (min-width: 1121px) { @content; }
+}
+
+@mixin for-1200 {
+  @media (max-width: 1220px) { @content; }
+}
+@mixin from-1200 {
+  @media (min-width: 1221px) { @content; }
+}
+
+@mixin for-1300 {
+  @media (max-width: 1300px) { @content; }
+}
+@mixin from-1300 {
+  @media (min-width: 1301px) { @content; }
+}
+
+@mixin for-1400 {
+  @media (max-width: 1400px) { @content; }
+}
+@mixin from-1400 {
+  @media (min-width: 1401px) { @content; }
+}
+
+@mixin for-1550 {
+  @media (max-width: 1550px) { @content; }
+}
+@mixin from-1550 {
+  @media (min-width: 1551px) { @content; }
+}
+
+@mixin for-1600 {
+  @media (max-width: 1600px) { @content; }
+}
+@mixin from-1600 {
+  @media (min-width: 1601px) { @content; }
+}
+
+@mixin for-1800 {
+  @media (max-width: 1800px) { @content; }
+}
+@mixin from-1800 {
+  @media (min-width: 1801px) { @content; }
+}
+
+
+
+
+
+@mixin from-680-for-1400 {
+  @media (min-width: 680px) and (max-width: 1400px) { @content; }
+}
+
+@mixin from-680-for-1550 {
+  @media (min-width: 680px) and (max-width: 1550px) { @content; }
+}
+
+@mixin from-680-for-1600 {
+  @media (min-width: 680px) and (max-width: 1600px) { @content; }
+}
+
+@mixin from-680-for-1024 {
+  @media (min-width: 680px) and (max-width: 1024px) { @content; }
+}
+
+/* helpers */
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flexBetweenCenter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flexAlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin widthHeightSquare($value) {
+  width: $value;
+  height: $value;
+}
+
+@mixin widthHeight100 {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin pictureFlexCenter {
+  @include widthHeight100;
+  @include flexCenter;
+}
+
+@mixin objectFitCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin objectFitContain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@mixin row($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin col($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin colVertical($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin showSelector {
+  z-index: 1;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s all;
+}
+
+@mixin hideSelector {
+  z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin positionCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

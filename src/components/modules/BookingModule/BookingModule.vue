@@ -3,6 +3,7 @@
     <BookingSection
         :Booking="Booking"
     />
+    
   </div>
 </template>
 

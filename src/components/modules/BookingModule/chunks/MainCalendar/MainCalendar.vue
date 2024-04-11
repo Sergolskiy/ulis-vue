@@ -6,20 +6,29 @@
       </div>
       <div class="main-calendar__content">
         {{date}}
+        
         <VueDatePicker
             class="calendar-style only-calendar"
             range
             multi-calendars
             ref="datepicker"
+            locale="uk"
             :transitions="false"
             :auto-position="false"
             :month-change-on-scroll="false"
+            :config="config"
+            :full-month-name="true"
+            :monthNameFormat="'long'"
             v-model="date"
             @closed="closeCalendar"
-        />
-<!--            :config="config"-->
-
-        <!--        </VueDatePicker>-->
+        >
+          <template #arrow-right>
+              <Arrow  />
+          </template>
+          <template #arrow-left>
+              <Arrow  />
+          </template>
+        </VueDatePicker>
       </div>
     </div>
   </div>
@@ -28,12 +37,14 @@
 <script>
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import Arrow from '../../../../../assets/img/arrow.svg?skipsvgo'
 
 export default {
   name: "MainCalendar",
 
   components: {
     VueDatePicker,
+    Arrow,
   },
 
   props: {
@@ -44,21 +55,21 @@ export default {
   },
 
   computed: {
-    // config() {
-    //   return {
-    //     allowStopPropagation: true,
-    //     closeOnScroll: false,
-    //     modeHeight: 255,
-    //     allowPreventDefault: false,
-    //     closeOnClearValue: true,
-    //     closeOnAutoApply: true,
-    //     noSwipe: false,
-    //     keepActionRow: false,
-    //     onClickOutside: (data) => onClickOutside,
-    //     tabOutClosesMenu: false,
-    //     arrowLeft: undefined,
-    //   }
-    // }
+    config() {
+      return {
+        allowStopPropagation: true,
+        closeOnScroll: false,
+        modeHeight: 255,
+        allowPreventDefault: false,
+        closeOnClearValue: true,
+        closeOnAutoApply: true,
+        noSwipe: false,
+        keepActionRow: false,
+        onClickOutside: (data) => this.onClickOutside(data),
+        tabOutClosesMenu: false,
+        arrowLeft: undefined,
+      }
+    }
   },
 
   data() {
@@ -77,7 +88,7 @@ export default {
     },
 
     onClickOutside(data) {
-
+      console.log(data);
     },
   },
 

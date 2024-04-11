@@ -14,12 +14,12 @@
             :transitions="false"
             :auto-position="false"
             :month-change-on-scroll="false"
-            :config="config"
             v-model="date"
             @closed="closeCalendar"
         />
+<!--            :config="config"-->
 
-<!--        </VueDatePicker>-->
+        <!--        </VueDatePicker>-->
       </div>
     </div>
   </div>
@@ -44,7 +44,21 @@ export default {
   },
 
   computed: {
-
+    // config() {
+    //   return {
+    //     allowStopPropagation: true,
+    //     closeOnScroll: false,
+    //     modeHeight: 255,
+    //     allowPreventDefault: false,
+    //     closeOnClearValue: true,
+    //     closeOnAutoApply: true,
+    //     noSwipe: false,
+    //     keepActionRow: false,
+    //     onClickOutside: (data) => onClickOutside,
+    //     tabOutClosesMenu: false,
+    //     arrowLeft: undefined,
+    //   }
+    // }
   },
 
   data() {
@@ -60,6 +74,10 @@ export default {
   methods: {
     closeCalendar() {
       this.$refs.datepicker.openMenu()
+    },
+
+    onClickOutside(data) {
+
     },
   },
 

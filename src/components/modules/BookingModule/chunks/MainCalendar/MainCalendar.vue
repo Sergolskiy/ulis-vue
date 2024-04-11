@@ -6,17 +6,17 @@
       </div>
       <div class="main-calendar__content">
         {{date}}
-<!--        <VueDatePicker-->
-<!--            class="calendar-style only-calendar"-->
-<!--            range-->
-<!--            multi-calendars-->
-<!--            ref="datepicker"-->
-<!--            :transitions="false"-->
-<!--            :auto-position="false"-->
-<!--            :month-change-on-scroll="false"-->
-<!--            v-model="date"-->
-<!--            @closed="closeCalendar"-->
-<!--        />-->
+        <VueDatePicker
+            class="calendar-style only-calendar"
+            range
+            multi-calendars
+            ref="datepicker"
+            :transitions="false"
+            :auto-position="false"
+            :month-change-on-scroll="false"
+            v-model="date"
+            @closed="closeCalendar"
+        />
 <!--            :config="config"-->
 
         <!--        </VueDatePicker>-->
@@ -26,14 +26,14 @@
 </template>
 
 <script>
-// import VueDatePicker from '@vuepic/vue-datepicker';
-// import '@vuepic/vue-datepicker/dist/main.css'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
   name: "MainCalendar",
 
   components: {
-    // VueDatePicker,
+    VueDatePicker,
   },
 
   props: {
@@ -67,14 +67,14 @@ export default {
     }
   },
 
-  mounted() {
-    this.$refs.datepicker.openMenu()
-  },
+  // mounted() {
+  //   this.$refs.datepicker.openMenu()
+  // },
 
   methods: {
-    closeCalendar() {
-      this.$refs.datepicker.openMenu()
-    },
+    // closeCalendar() {
+    //   this.$refs.datepicker.openMenu()
+    // },
 
     onClickOutside(data) {
 

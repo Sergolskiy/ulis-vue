@@ -54,6 +54,7 @@
                 :label="'Далі'"
                 :ico="true"
                 :secondary="true"
+                :disabled="true"
             />
           </div>
 

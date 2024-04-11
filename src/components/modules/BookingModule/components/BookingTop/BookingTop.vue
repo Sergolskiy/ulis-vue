@@ -62,6 +62,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../../../../scss/colors";
 
 .booking-tabs {
   margin-top: 24px;
@@ -78,14 +79,46 @@ export default {
   &__item {
     display: flex;
     align-items: center;
+
+    &:nth-child(n+2) {
+      position: relative;
+
+      &:before {
+        content: '';
+        position: relative;
+        top: 0;
+        left: -24px;
+        display: block;
+        width: 88px;
+        height: 1px;
+        background: $border-grey;
+      }
+    }
   }
 
   &__number {
-
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $black;
+    color: $white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    padding-top: 2px;
   }
 
   &__name {
-
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 10px;
+    padding-top: 4px;
   }
 
 }

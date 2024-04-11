@@ -107,12 +107,12 @@
     display: flex;
     //height: 43px;
     //max-width: 149px;
-    //width: 100%;
-    width: fit-content;
+    width: 100%;
+    //width: fit-content;
     align-items: center;
     justify-content: center;
-    background: $accent-blue;
-    border-radius: 12px;
+    background: $black;
+    border-radius: 8px;
     font-weight: 400;
     font-size: 16px;
     //line-height: 21px;
@@ -121,9 +121,18 @@
     cursor: pointer;
     outline: 0;
     transition: 0.3s;
-    padding: 11px 28px;
-    border: 1px solid $accent-blue;
+    padding: 14px 28px;
+    border: 1px solid $black;
     position: relative;
+
+    &.disabled-btn {
+      background: $grey-hover;
+      color: #BFC6CC;
+
+      svg path {
+        fill: #BFC6CC;
+      }
+    }
 
     &.no-bg {
       background: transparent !important;
@@ -158,18 +167,13 @@
       padding: 0 20px;
       height: 40px;
     }
-    &.brown,
-    &--brown{
-      //background: $brown;
-      //border-color: $brown;
-    }
 
 
-    &:hover{
-      box-shadow: 0px 0 3px #00000052;
-      background: $dark-blue;
-      border-color: $dark-blue;
-    }
+    //&:hover{
+    //  box-shadow: 0px 0 3px #00000052;
+    //  background: $black-hover;
+    //  border-color: $black-hover;
+    //}
 
     &.sharp{
       border-radius: 0;
@@ -178,7 +182,7 @@
 
     &.secondary{
       color: $black;
-      border-color: $accent-blue;
+      border-color: $border-grey;
       background: $white;
 
 
@@ -186,20 +190,19 @@
         transition: .3s;
       }
       &:hover{
-        @include from-1120 {
-          border-color: $black;
-          //color: $brown;
-        }
+        border-color: $border-grey-hover;
+        background: $grey-hover;
 
 
         .main-button__ico svg path{
-          //stroke: $brown!important;
+
         }
       }
 
 
       &.disabled-btn {
-        background: #cfcfcf;
+        border-color: $border-grey-hover;
+        color: #BFC6CC;
       }
     }
 
@@ -218,35 +221,6 @@
     &.big {
       padding-top: 25px;
       padding-bottom: 25px;
-
-    }
-
-    &.secondary-brown{
-      //border-color: $brown;
-      //color: $brown;
-
-      &:before{
-        content: '';
-        background: linear-gradient(90deg, #F8F4EE 39.36%, rgba(41, 41, 41, 0) 108.3%, #F8F4EE 108.3%);
-        opacity: 0;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 5px;
-        transition: .3s;
-      }
-
-      &:hover{
-        color: white;
-        border-color: white;
-
-        &:before{
-          opacity: 0.1;
-        }
-      }
-
     }
 
 

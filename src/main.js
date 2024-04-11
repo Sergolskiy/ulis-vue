@@ -4,6 +4,7 @@ import App from './App.vue'
 import lodash from 'lodash'
 import {STATIC_VARIABLES} from "./staticData/staticVariables";
 import vSelect from "vue-select";
+import VueDatePicker from '@vuepic/vue-datepicker';
 
 const app = createApp(App)
 
@@ -21,6 +22,11 @@ app.config.globalProperties.$moment=moment
  * Add lodash.js
  */
 app.config.globalProperties.$_=lodash
+
+/**
+ * Add Vue Date Picker
+ */
+app.component('VueDatePicker', VueDatePicker);
 
 /**
  * Add global static variables

@@ -7,6 +7,7 @@
       <div class="choice-booking__info">
         <InfoBlock
             :text="'Ти поки не вніс жодної інформації, як тільки ти заповниш поля на цьому етапі, вони з’являться тут.'"
+            :type="'warning'"
         />
       </div>
     </div>
@@ -40,7 +41,7 @@ export default {
   }
 
   &__info {
-
+    margin-top: 16px;
   }
 
 }

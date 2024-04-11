@@ -4,20 +4,39 @@
       <div class="your-choice__title">
         Введіть дані для проживання
       </div>
+
       <InfoBlock
+          class="mt-3"
           :text="'Заповни, будь ласка, обов’язкові поля (обов’язкові поля помічені символом *).'"
           :type="'error'"
       />
+
+      <div class="your-choice__calendar mt-3">
+        <FormLabel
+            :label="'Дати'"
+            :type="'required'"
+        />
+
+        <MainCalendar
+            :Booking="Booking"
+        />
+      </div>
+
+
     </div>
   </div>
 </template>
 
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
+import FormLabel from "../../../../UI/labels/FormLabel/FormLabel.vue";
+import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 
 export default {
   name: "BookingStepA",
-  components: {InfoBlock},
+
+  components: {MainCalendar, FormLabel, InfoBlock},
+
   props: {
     Booking: {
       type: Object,
@@ -36,6 +55,18 @@ export default {
   border-radius: 8px;
   padding: 16px;
   height: 500px;
+
+  &__inner {
+
+  }
+
+  &__title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
 }
 
 </style>

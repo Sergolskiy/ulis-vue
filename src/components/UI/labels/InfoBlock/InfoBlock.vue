@@ -1,21 +1,88 @@
 <template>
-  {{text}}
+
+  <div class="info-block"
+       :class="{'info-block--error' : type === 'error'}"
+  >
+    <div class="info-block__inner">
+      <div class="info-block__ico">
+        <StatusInfo v-if="type === 'info'" />
+        <StatusWarning v-if="type === 'warning'" />
+        <StatusWarningRed v-if="type === 'error'" />
+      </div>
+      <div class="info-block__right">
+        <div class="info-block__txt">
+          {{text}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </template>
 
 <script>
+import StatusInfo from '../../../../assets/img/info.svg?skipsvgo'
+import StatusWarning from '../../../../assets/img/warning.svg?skipsvgo'
+import StatusWarningRed from '../../../../assets/img/warning-red.svg?skipsvgo'
+
 export default {
   name: "InfoBlock",
+
+  components: {
+    StatusInfo,
+    StatusWarning,
+    StatusWarningRed,
+  },
 
   props: {
     text: {
       type: String,
       default: null,
+    },
+
+    type: {
+      type: String,
+      default: 'info'
     }
   }
 
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../../../../scss/colors";
+
+.info-block {
+
+  &__inner {
+    display: flex;
+  }
+
+  &__ico {
+    display: flex;
+  }
+
+  &__right {
+    margin-left: 10px;
+  }
+
+  &__txt {
+
+  }
+
+  &--error {
+    padding: 16px;
+    background: $warning-red;
+    border: 1px solid $warning-red-border;
+    border-radius: 8px;
+
+    .info-block__right {
+      margin-left: 16px;
+      padding-top: 3px;
+    }
+  }
+
+}
+
 
 </style>

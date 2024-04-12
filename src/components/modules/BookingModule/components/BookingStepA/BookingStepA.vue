@@ -8,16 +8,31 @@
           :text="'Заповни, будь ласка, обов’язкові поля (обов’язкові поля помічені символом *).'"
           :type="'error'"
       />
+
+      <DefaultSelect
+        :label="'Локація'"
+        :options="['Київ, Дудки', 'Карпати, місто']"
+        :withIco="true"
+        :placeholder="'Обери локацію'"
+      />
+
+      <div class="custom-row">
+        <div class="custom-col">
+        
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
+import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
 
 export default {
   name: "BookingStepA",
-  components: {InfoBlock},
+  components: {InfoBlock, DefaultSelect},
   props: {
     Booking: {
       type: Object,

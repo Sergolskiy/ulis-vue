@@ -60,7 +60,7 @@ export default {
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      color: $middle-grey;
+      // color: $middle-grey;
     }
   }
 

@@ -11,6 +11,13 @@
           :type="'error'"
       />
 
+      <DefaultSelect
+          class="mt-3"
+          :label="'Локація'"
+          :options="['Київ, Дудки', 'Карпати, місто']"
+          :inner-icon="'location'"
+          :placeholder="'Обери локацію'"
+      />
 
       <FormLabel
           class="mt-4"
@@ -30,16 +37,53 @@
           <MainCalendar
               :Booking="Booking"
           />
+
+
+          <InfoBlock
+              class="mt-3"
+              :text="'Для кожної дати в календарі вказана ціна на найдешевший доступний будинок.'"
+              :type="'success'"
+          />
+
+        </div>
+
+      </div>
+
+      <div class="custom-row mt-4">
+        <div class="custom-col custom-col--33">
+          <DefaultSelect
+              :label="'Кількість дорослих'"
+              :options="['1 дорослий', '2 дорослих', '3 дорослих']"
+              :inner-icon="'people'"
+              :required="'required'"
+              :placeholder="'0 дорослих'"
+          />
+        </div>
+        <div class="custom-col custom-col--33">
+          <DefaultSelect
+              :label="'Кількість дорослих'"
+              :options="['1 дитина', '2 дитини', '3 дитини']"
+              :inner-icon="'people'"
+              :required="'required'"
+              :placeholder="'0 дітей'"
+          />
         </div>
       </div>
 
-      <div class="custom-row">
-        <div class="custom-col custom-col--33">
-          <DefaultSelect
-              :label="'Локація'"
-              :options="['Київ, Дудки', 'Карпати, місто']"
-              :withIco="true"
-              :placeholder="'Обери локацію'"
+
+      <FormLabel
+          class="mt-4"
+          :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
+      />
+
+      <div class="promo-field">
+        <div class="promo-field__inner">
+          <DefaultInput
+              :label="''"
+          />
+          <MainButton
+              class="promo-field__btn"
+              :label="'Застосувати'"
           />
         </div>
       </div>
@@ -54,11 +98,13 @@ import FormLabel from "../../../../UI/labels/FormLabel/FormLabel.vue";
 import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
+import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
+import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
 export default {
   name: "BookingStepA",
 
-  components: {CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
+  components: {MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
 
   props: {
     Booking: {
@@ -102,5 +148,24 @@ export default {
   }
 
 }
+
+.promo-field {
+
+  &__inner {
+    position: relative;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 143px;
+  }
+
+  :deep(.main-button) {
+    padding: 11px 28px;
+  }
+}
+
 
 </style>

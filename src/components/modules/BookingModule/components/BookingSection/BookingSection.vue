@@ -105,6 +105,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+.booking__btn:deep(.main-button) {
+  width: 215px;
+}
 
 </style>

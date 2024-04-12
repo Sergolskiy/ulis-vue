@@ -8,87 +8,93 @@
         }"
   >
 
-
     <FormLabel
-        v-if="label || labelIcon"
-        class="mb-2"
-        :type="'black'"
+        v-if="label"
+        class="default-select__label"
         :label="label"
-        :labelIcon="labelIcon"
+        :type="required"
     />
 
-    <v-select
-        :options="options"
-        @update:modelValue="onChange"
-        v-model="vSelectModel"
-        :label="optionsLabel"
-        append-to-body
-        :calculate-position="withPopper"
-        :disabled="disabled"
-        :filter-by="myFilter"
-        :clearable="clearable"
-        :searchable="searchable"
-        :selectable="option => !option.hasOwnProperty('disabled')"
-        :placeholder="placeholder"
-    >
-<!--      <template #header>-->
-<!--      -->
-<!--      </template>-->
+    <div class="default-select__wrapper">
 
-      <template v-slot:open-indicator>
-        <div class="v-select__arrow">
-          <ArrowSelect/>
-        </div>
-      </template>
+      <div class="default-select__inner-ico" v-if="innerIcon" :class="innerIcon"></div>
 
-<!--      slot-scope="option"-->
-      <template v-slot:option="option"  v-if="customValue !== ''">
+      <v-select
+          append-to-body
+          :class="{'with-ico' : innerIcon}"
+          class="v-select-item"
+          :options="options"
+          :label="optionsLabel"
+          :calculate-position="withPopper"
+          :disabled="disabled"
+          :filter-by="myFilter"
+          :clearable="clearable"
+          :searchable="searchable"
+          :selectable="option => !option.hasOwnProperty('disabled')"
+          :placeholder="placeholder"
+          v-model="vSelectModel"
+          @update:modelValue="onChange"
+      >
+        <!--      <template #header>-->
+        <!--      -->
+        <!--      </template>-->
 
-        <!-- *********************** ADMIN *********************** -->
-<!--        <div v-if="customValue === 'adminItem'">-->
-<!--          {{option.user_personal_contact.user_full_name}} <br>-->
-<!--          <b>{{option.email}}</b>-->
-<!--        </div>-->
-
-        <!-- *********************** DEFAULT *********************** -->
-        <div class="d-flex flex-column" v-if="!customValue">
-          <div class="d-flex align-items-center" v-if="withIco && option['icoName']">
-            <!-- <LinkButton label="" :type="option['icoName']" class="mr-2"/> -->
-            {{ option[optionsLabel] }} 
+        <template v-slot:open-indicator>
+          <div class="v-select__arrow">
+            <ArrowSelect/>
           </div>
-          <div class="d-flex align-items-center" v-else-if="imageOptionLabel">
-            <div class="default-select__img-icon">
-              <img v-if="option[imageOptionLabel]" :src="option[imageOptionLabel]" alt="">
-            </div>
-            {{ option[optionsLabel] }}
-          </div>
-          <template v-else>
-            {{ option[optionsLabel] }}
-          </template>
-        </div>
-      </template>
-
-
-      <template #selected-option="option" v-if="customValue !== ''">
-
-        <!-- *********************** DEFAULT *********************** -->
-        <template v-if="!customValue">
-
-          {{option[optionsLabel]}}
         </template>
-      </template>
+
+        <!--      slot-scope="option"-->
+        <template v-slot:option="option"  v-if="customValue !== ''">
+
+          <!-- *********************** ADMIN *********************** -->
+          <!--        <div v-if="customValue === 'adminItem'">-->
+          <!--          {{option.user_personal_contact.user_full_name}} <br>-->
+          <!--          <b>{{option.email}}</b>-->
+          <!--        </div>-->
+
+          <!-- *********************** DEFAULT *********************** -->
+          <div class="d-flex flex-column" v-if="!customValue">
+            <div class="d-flex align-items-center" v-if="withIco && option['icoName']">
+              <!-- <LinkButton label="" :type="option['icoName']" class="mr-2"/> -->
+              {{ option[optionsLabel] }}
+            </div>
+            <div class="d-flex align-items-center" v-else-if="imageOptionLabel">
+              <div class="default-select__img-icon">
+                <img v-if="option[imageOptionLabel]" :src="option[imageOptionLabel]" alt="">
+              </div>
+              {{ option[optionsLabel] }}
+            </div>
+            <template v-else>
+              {{ option[optionsLabel] }}
+            </template>
+          </div>
+        </template>
 
 
-      <template slot="no-options" @click="$refs.select.open = false">
-        <div v-if="defaultNoOptions">
-          {{$t(`${defaultNoOptions}.localization_value.value`)}}
-        </div>
-        <div v-else>
-          {{$t('common_SorryMatchingOptions.localization_value.value')}}
-        </div>
-      </template>
+        <template #selected-option="option" v-if="customValue !== ''">
 
-    </v-select>
+          <!-- *********************** DEFAULT *********************** -->
+          <template v-if="!customValue">
+
+            {{option[optionsLabel]}}
+          </template>
+        </template>
+
+
+        <template slot="no-options" @click="$refs.select.open = false">
+          <div v-if="defaultNoOptions">
+            {{$t(`${defaultNoOptions}.localization_value.value`)}}
+          </div>
+          <div v-else>
+            {{$t('common_SorryMatchingOptions.localization_value.value')}}
+          </div>
+        </template>
+
+      </v-select>
+    </div>
+
 
     <span class="default-select__error error-field" v-if="error && errorTxt">{{errorTxt}}</span>
     <span class="default-select__caption" v-if="caption">{{caption}}</span>
@@ -124,6 +130,10 @@ export default {
     error: {
       type: Boolean,
       default: false,
+    },
+    required: {
+      type: String,
+      default: '',
     },
     errorTxt: {
       type: String,
@@ -171,16 +181,20 @@ export default {
     },
     searchable: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    labelIcon: {
+    innerIcon: {
       type: [String, Boolean],
       default: false,
     },
-    withIco: {
-      type: Boolean,
-      default: false,
-    },
+    // labelIcon: {
+    //   type: [String, Boolean],
+    //   default: false,
+    // },
+    // withIco: {
+    //   type: Boolean,
+    //   default: false,
+    // },
     imageOptionLabel: {
       type: [String, Boolean],
       default: false,
@@ -239,16 +253,76 @@ export default {
 
 @import "../../../../scss/colors";
 
+
+.v-select-item {
+  &.with-ico {
+    .vs__search:focus,
+    .vs__search {
+      //padding-left: 44px;
+    }
+  }
+
+  .vs__selected-options {
+    padding-left: 44px;
+  }
+}
+
 .default-select{
   position: relative;
 
-  .vs__dropdown-toggle{
+  &__label {
+    margin-bottom: 4px;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__inner-ico {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 12px;
+    left: 12px;
+
+    &.location {
+      background: url("../../../../assets/img/map.svg") center center no-repeat;
+    }
+
+    &.people {
+      background: url("../../../../assets/img/people.svg") center center no-repeat;
+    }
+  }
+
+
+
+  .vs__search,
+  .vs__selected{
+    padding: 0 !important;
+    margin: 0 !important;
+    padding-top: 3px !important;
+  }
+
+  .vs--single.vs--open .vs__selected {
+    position: static;
+  }
+
+  .vs__dropdown-toggle {
+    border-radius: 8px;
+    border-color: $border-grey;
+    min-height: 48px;
+    box-sizing: border-box;
     padding: 0;
 
     .vs__actions{
       padding: 0;
       min-width: 24px;
-   }
+    }
+  }
+
+  .vs--open .vs__dropdown-toggle {
+    border-color: $border-grey;
+    border-bottom-color: $border-grey;
   }
 
   &.white .vs__dropdown-toggle{
@@ -316,36 +390,49 @@ export default {
     }
   }
 
-  .vs__selected-options{
-    padding: 0;
-  }
+}
 
-  .vs__search, .vs__search:focus{
-    padding: 0;
+.vs__dropdown-menu {
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.16) !important;
+  border: 0 !important;
+}
+
+.vs__dropdown-menu .vs__dropdown-option {
+  padding-left: 44px;
+
+  &--highlight {
+    background: $white;
   }
 }
 
-// .vs--single.vs--open .vs__selected, .vs--single.vs--loading .vs__selected{
-  // this classes  work when you clicked on options, absolute for items 
-// }
+.vs__dropdown-option--selected {
+  position: relative;
 
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background: url("../../../../assets/img/checked.svg") center center no-repeat;
+  }
+}
 
 .v-select {
 
   &.vs--open,
   &:hover{
-    // background-color: $stroke-gray;
     background-color: #DCE0E4;
     transition: .3s;
   }
 
   &__arrow {
     position: relative;
-    // top: 2px;
     left: -6px;
     width: 16px;
     height: 16px;
-    position: relative;
     transition: 0.3s;
     transform: rotate(0deg);
   }
@@ -360,70 +447,11 @@ export default {
     // &.name-icon {
     //   background: url("../../../../assets/img/common/label-ico/fname.svg") center center no-repeat;
     // }
-    // &.lname-icon {
-    //   background: url("../../../../assets/img/common/label-ico/lname.svg") center center no-repeat;
-    // }
-    // &.email-icon {
-    //   background: url("../../../../assets/img/common/label-ico/email.svg") center center no-repeat;
-    // }
-    // &.phone-icon {
-    //   background: url("../../../../assets/img/common/label-ico/phone.svg") center center no-repeat;
-    // }
-    // &.pass-icon {
-    //   background: url("../../../../assets/img/common/label-ico/lock.svg") center center no-repeat;
-    // }
-    // &.customer-icon {
-    //   background: url("../../../../assets/img/common/label-ico/customer.svg") center center no-repeat;
-    // }
-    // &.address-icon {
-    //   background: url("../../../../assets/img/common/label-ico/address.svg") center center no-repeat;
-    // }
-    // &.city-icon {
-    //   background: url("../../../../assets/img/common/label-ico/city.svg") center center no-repeat;
-    // }
-    // &.country-icon {
-    //   background: url("../../../../assets/img/common/label-ico/country.svg") center center no-repeat;
-    // }
-    // &.state-icon {
-    //   background: url("../../../../assets/img/common/label-ico/state.svg") center center no-repeat;
-    // }
-    // &.zip-icon {
-    //   background: url("../../../../assets/img/common/label-ico/zip.svg") center center no-repeat;
-    // }
-    // &.discount-icon {
-    //   background: url("../../../../assets/img/common/label-ico/discount.svg") center center no-repeat;
-    // }
-    // &.payments-icon {
-    //   background: url("../../../../assets/img/common/label-ico/payments.svg") center center no-repeat;
-    // }
-    // &.checklist-icon {
-    //   background: url("../../../../assets/img/common/label-ico/checklist.svg") center center no-repeat;
-    // }
-    // &.sales-icon {
-    //   background: url("../../../../assets/img/common/label-ico/sales.svg") center center no-repeat;
-    // }
-    // &.roles-icon {
-    //   background: url("../../../../assets/img/common/label-ico/roles.svg") center center no-repeat;
-    // }
-    // &.customer-2-icon {
-    //   background: url("../../../../assets/img/common/label-ico/customer-2.svg") center center no-repeat;
-    // }
-    // &.status-icon {
-    //   background: url("../../../../assets/img/common/label-ico/status.svg") center center no-repeat;
-    // }
-    // &.group-icon {
-    //   background: url("../../../../assets/img/common/label-ico/group.svg") center center no-repeat;
-    // }
-
-    &.location-icon {
-      background: url("../../../../assets/img/map.svg") center center no-repeat;
-    }
   }
 }
 
 .v-select__label{
-  // color: $gray-dark;
-  color: #808080;
+  color: $text-grey;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -446,56 +474,10 @@ export default {
   transform: rotate(180deg);
 }
 
-.vs--open .v-select__label{
-  // top: -5px;
-  background: white;
-  padding: 0 2px;
-  font-size: 10px;
-  line-height: 12px;
-}
-
-.vs--open .vs__dropdown-toggle{
-  // border-color: $accent-blue !important;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
-.vs__dropdown-toggle{
-  padding-left: 12px;
-  min-height: 48px;
-  // padding-bottom: 12px !important;
-  // border: 1px solid $middle-gre;
-  box-sizing: border-box;
-  border-radius: 8px;
-}
-
-
-.vs--open .vs__dropdown-toggle{
-  border-color: $accent-blue;
-}
-
-.vs__selected{
-  padding: 0;
-  margin: 0;
-  // top: 8px;
-}
-
-
-.vs__selected-options{
-  // top: 2px;
-  /*display: block;*/
-  /*overflow: hidden;*/
-  // min-height: 48px;
-}
-
 
 
 .vs__dropdown-menu{
-  /*top: 0;*/
-  border-radius: 12px;
-  border: 1px solid $darker-blue;
-  border: 1px solid red;
-  //box-shadow: 0px 4px 7px red;
+  border-radius: 8px;
   padding-top: 0;
   padding-bottom: 0;
   max-height: 200px;
@@ -541,15 +523,10 @@ export default {
     align-items: center;
     color: $black;
     white-space: normal;
-    //border-bottom: 1px solid red;
+    border-bottom: 1px solid $border-grey;
 
     &:last-child{
       border-bottom: 0;
-    }
-
-    &--highlight{
-      background: $darker-blue;
-      color: $black;
     }
   }
 
@@ -567,20 +544,10 @@ export default {
   margin-bottom: 4px !important;
 }
 
-.vs--disabled .vs__dropdown-toggle {
-  background: #EBF2FE;
+.v-select.vs--open, .v-select:hover {
+  background-color: transparent;
 }
 
-.vs--disabled .vs__clear {
-  background-color: #EBF2FE;
-}
 
-.vs--disabled .vs__search {
-  background-color: #EBF2FE;
-}
-
-.vs--disabled .vs__selected {
-  // color: $middle-grey;
-}
 
 </style>

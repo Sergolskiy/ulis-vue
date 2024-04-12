@@ -25,10 +25,7 @@
     <FormLabel
         v-if="label || labelIcon"
         class="mb-2"
-        :type="'black'"
         :label="label"
-        :labelIcon="labelIcon"
-        :bigIco="bigIco"
     />
     <span class="default-input-wrapper">
       <input
@@ -54,15 +51,15 @@
       <span class="default-input-wrap__pass" @click="showSecurityFunc" v-if="textSecurity"></span>
       <span :class="'default-input-wrap__ico ' + icoType"></span>
 
-      <span v-if="passwordValidate && activeInput"
-            class="default-input-wrap__popup"
-      >
-        <PasswordRequirements
-            :value="modelValue"
-            :visibleValidation="true"
-        />
+<!--      <span v-if="passwordValidate && activeInput"-->
+<!--            class="default-input-wrap__popup"-->
+<!--      >-->
+<!--        <PasswordRequirements-->
+<!--            :value="modelValue"-->
+<!--            :visibleValidation="true"-->
+<!--        />-->
 <!--        <span class="password-reqs-info">The password expiration period is one year</span>-->
-      </span>
+<!--      </span>-->
     </span>
     <span class="default-input-wrap__caption" v-if="caption">{{caption}}</span>
     <span class="default-input-wrap__error error-field" v-if="error && errorTxt">{{errorTxt}}</span>
@@ -70,11 +67,11 @@
 </template>
 
 <script>
-  import PasswordRequirements from "../../../coreComponents/PasswordRequirements/PasswordRequirements.vue";
+  // import PasswordRequirements from "../../../coreComponents/PasswordRequirements/PasswordRequirements.vue";
   import FormLabel from "../../labels/FormLabel/FormLabel.vue";
   export default {
     name: "DefaultInput",
-    components: {FormLabel, PasswordRequirements},
+    components: {FormLabel},
     data () {
       return {
         id: null,
@@ -248,15 +245,17 @@
     }
 
     input{
-      border-radius: 12px;
-      border: 1px solid $middle-gre;
+      border-radius: 8px;
+      border: 1px solid $border-grey;
       background: $white;
-      font-size: 14px;
-      line-height: 16px;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
       width: 100%;
       padding-left: 16px;
       padding-right: 16px;
-      height: 42px;
+      height: 48px;
       box-sizing: border-box;
       transition: border-color 0.3s;
 
@@ -268,21 +267,21 @@
 
       &:disabled{
         background: $darker-blue;
-        color: $middle-grey;
-        border-color: $middle-gre;
+        color: $border-grey;
+        border-color: $border-grey;
         opacity: 1;
       }
 
       &:focus-visible,
       &:focus{
-        border-color: $accent-blue;
+        //border-color: $accent-blue;
         outline: 0;
       }
     }
 
     &--alt {
       input {
-        border-bottom: 1px solid $middle-gre;
+        border-bottom: 1px solid $border-grey;
         border-left: none;
         border-right: none;
         border-top: none;
@@ -418,7 +417,7 @@
     //&.big-ico
 
     &.disabled &__label{
-      color: $middle-grey;
+      color: $border-grey;
     }
 
     &.disabled.active input,
@@ -462,25 +461,25 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      color: $middle-grey;
+      color: $border-grey;
       display: flex;
       justify-content: flex-end;
       margin-top: 3px;
       margin-bottom: -10px;
     }
 
-    &__popup {
-      position: absolute;
-      display: block;
-      width: 100%;
-      padding: 16px 16px 20px;
-      background-color: $white;
-      border-radius: 12px;
-      border: 1px solid $darker-blue;
-      left: 0;
-      top: calc(100% + 4px);
-      z-index: 3;
-    }
+    //&__popup {
+    //  position: absolute;
+    //  display: block;
+    //  width: 100%;
+    //  padding: 16px 16px 20px;
+    //  background-color: $white;
+    //  border-radius: 12px;
+    //  border: 1px solid $darker-blue;
+    //  left: 0;
+    //  top: calc(100% + 4px);
+    //  z-index: 3;
+    //}
 
     &.scan-ico{
       &:before{

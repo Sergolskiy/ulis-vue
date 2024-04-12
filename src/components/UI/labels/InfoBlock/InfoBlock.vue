@@ -1,11 +1,15 @@
 <template>
 
   <div class="info-block"
-       :class="{'info-block--error' : type === 'error'}"
+       :class="{
+        'info-block--error' : type === 'error',
+        'info-block--success' : type === 'success'
+      }"
   >
     <div class="info-block__inner">
       <div class="info-block__ico">
         <StatusInfo v-if="type === 'info'" />
+        <StatusInfoGreen v-if="type === 'success'" />
         <StatusWarning v-if="type === 'warning'" />
         <StatusWarningRed v-if="type === 'error'" />
       </div>
@@ -24,6 +28,7 @@
 import StatusInfo from '../../../../assets/img/info.svg?skipsvgo'
 import StatusWarning from '../../../../assets/img/warning.svg?skipsvgo'
 import StatusWarningRed from '../../../../assets/img/warning-red.svg?skipsvgo'
+import StatusInfoGreen from '../../../../assets/img/info-green.svg?skipsvgo'
 
 export default {
   name: "InfoBlock",
@@ -32,6 +37,7 @@ export default {
     StatusInfo,
     StatusWarning,
     StatusWarningRed,
+    StatusInfoGreen,
   },
 
   props: {
@@ -74,6 +80,18 @@ export default {
     padding: 16px;
     background: $warning-red;
     border: 1px solid $warning-red-border;
+    border-radius: 8px;
+
+    .info-block__right {
+      margin-left: 16px;
+      padding-top: 3px;
+    }
+  }
+
+  &--success {
+    padding: 16px;
+    background: $green-bg;
+    border: 1px solid $green;
     border-radius: 8px;
 
     .info-block__right {

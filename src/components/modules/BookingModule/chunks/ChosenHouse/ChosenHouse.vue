@@ -171,7 +171,11 @@
             :label="'Додати сервіси'"
             :secondary="true"
             :ico="true"
-          />
+          >
+            <template #ico>
+              <IconPlus/>
+            </template>
+          </MainButton>
         </div>
       </div>
 
@@ -179,8 +183,8 @@
         <div class="chosen-house__overview-txt">
           1 ніч, 2 дорослих
         </div>
-        <div class="chosen-house__price-big">
-          ₴ 4 600
+        <div class="chosen-house__price-big chosen-house__price-block--big">
+          ₴ 10 600
         </div>
         <div class="chosen-house__overview-txt">
           Враховуючи сервіси
@@ -193,6 +197,7 @@
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
+import IconPlus from '../../../../../assets/img/plus.svg'
 
 import IconMap from '../../../../../assets/img/icon-map-16px-grey.svg'
 import IconPeople from '../../../../../assets/img/icon-people-16px-grey.svg'
@@ -211,6 +216,7 @@ export default {
   components: {
     InfoBlock, 
     MainButton,
+    IconPlus,
     IconMap, IconPeople, IconBuildings, IconClock, IconCalendar, IconBicycle, IconEcommerce, IconBed, IconFood, IconSettle, IconDeport}
 }
 </script>
@@ -219,9 +225,9 @@ export default {
 @import "../../../../../scss/colors";
 
 .chosen-house{
-  margin-top: 9px;
   border: 1px solid $border-grey;
   border-radius: 8px;
+  margin-bottom: 16px;
 
   &__inner{
    padding: 16px;
@@ -324,15 +330,35 @@ export default {
 
 
   &__add-service{
-
+    
   }
 
   &__add-service-btn{
+    margin-bottom: 16px;
+  }
 
+  &__price-block{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #1E1E1E;
+
+    &--big + div{
+      margin-top: -4px;
+    }
+
+    > div {
+      margin-bottom: 4px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__price-big{
-
+    font-size: 24px;
+    font-weight: 600;
   }
 
 }

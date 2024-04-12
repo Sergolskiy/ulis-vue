@@ -8,18 +8,6 @@
         }"
   >
 
-<!--    <div v-if="label && labelIcon" class="v-select__icon"-->
-<!--          :class="{-->
-<!--            [labelIcon]: labelIcon,-->
-<!--          }"-->
-<!--    ></div>-->
-<!--    <div class="v-select__label"-->
-<!--         :class="{-->
-<!--            'v-select__label&#45;&#45;icon': labelIcon,-->
-<!--          }"-->
-<!--    >-->
-<!--      {{ label }}-->
-<!--    </div>-->
 
     <FormLabel
         v-if="label || labelIcon"
@@ -41,6 +29,7 @@
         :clearable="clearable"
         :searchable="searchable"
         :selectable="option => !option.hasOwnProperty('disabled')"
+        :placeholder="placeholder"
     >
 <!--      <template #header>-->
 <!--      -->
@@ -64,8 +53,8 @@
         <!-- *********************** DEFAULT *********************** -->
         <div class="d-flex flex-column" v-if="!customValue">
           <div class="d-flex align-items-center" v-if="withIco && option['icoName']">
-            <LinkButton label="" :type="option['icoName']" class="mr-2"/>
-            {{ option[optionsLabel] }}
+            <!-- <LinkButton label="" :type="option['icoName']" class="mr-2"/> -->
+            {{ option[optionsLabel] }} 
           </div>
           <div class="d-flex align-items-center" v-else-if="imageOptionLabel">
             <div class="default-select__img-icon">
@@ -81,11 +70,6 @@
 
 
       <template #selected-option="option" v-if="customValue !== ''">
-
-        <!-- *********************** PROFORM HS CODE *********************** -->
-<!--        <template v-if="otherValue === 'proformHSCode'">-->
-<!--          {{option.proform_value.translationStorage.ua.name}}-->
-<!--        </template>-->
 
         <!-- *********************** DEFAULT *********************** -->
         <template v-if="!customValue">
@@ -115,15 +99,15 @@
 <script>
 
 import { createPopper } from '@popperjs/core';
-import ArrowSelect from '../../../../assets/img/UI-group/arrow-select.svg'
+import ArrowSelect from '../../../../assets/img/arrov.svg'
 import FormLabel from "../../labels/FormLabel/FormLabel.vue";
-import LinkButton from "../../buttons/LinkButton/LinkButton.vue";
+// import LinkButton from "../../buttons/LinkButton/LinkButton.vue";
 
 export default {
   name: "DefaultSelect",
 
   components: {
-    LinkButton,
+    // LinkButton,
     FormLabel,
     ArrowSelect,
   },
@@ -200,6 +184,10 @@ export default {
     imageOptionLabel: {
       type: [String, Boolean],
       default: false,
+    },
+    placeholder: {
+      type: String,
+      default: false,
     }
   },
 
@@ -249,14 +237,35 @@ export default {
 <style lang="scss">
 
 
-@import "src/scss/colors";
+@import "../../../../scss/colors";
 
 .default-select{
   position: relative;
 
+  .vs__dropdown-toggle{
+    padding: 0;
+
+    .vs__actions{
+      padding: 0;
+      min-width: 24px;
+   }
+  }
+
   &.white .vs__dropdown-toggle{
     background: white;
   }
+
+  .vs--searchable .vs__search,
+  .vs__search{
+    height: 100%;
+    // padding-left: 12px;
+
+    &::placeholder{
+      // color: $gray-text;
+      color: #BFC6CC !important;
+    }
+  }
+
 
   &__option-ico{
     margin-right: 10px;
@@ -265,30 +274,11 @@ export default {
     align-items: center;
   }
 
-  //&--active {
-  //  .v-select__label {
-  //    top: -5px;
-  //    //top: auto;
-  //    //bottom: 36px;
-  //    white-space: nowrap;
-  //    background: white;
-  //    background: linear-gradient(0deg, #F8F4EE 0%, #FFFFFF 105.56%);
-  //    padding: 0 2px;
-  //    font-size: 10px;
-  //    line-height: 12px;
-  //  }
-  //
-  //  .v-select .vs__dropdown-toggle{
-  //    border-color: brown;
-  //
-  //  }
-  //}
-
 
   &.ui-no-valid .v-select .vs__dropdown-toggle{
     border: 1px solid $red;
   }
-
+  
 
   &__error{
     position: absolute;
@@ -325,22 +315,39 @@ export default {
       max-height: 100%;
     }
   }
+
+  .vs__selected-options{
+    padding: 0;
+  }
+
+  .vs__search, .vs__search:focus{
+    padding: 0;
+  }
 }
 
-
+// .vs--single.vs--open .vs__selected, .vs--single.vs--loading .vs__selected{
+  // this classes  work when you clicked on options, absolute for items 
+// }
 
 
 .v-select {
 
+  &.vs--open,
+  &:hover{
+    // background-color: $stroke-gray;
+    background-color: #DCE0E4;
+    transition: .3s;
+  }
+
   &__arrow {
     position: relative;
-    top: 2px;
+    // top: 2px;
     left: -6px;
     width: 16px;
     height: 16px;
     position: relative;
     transition: 0.3s;
-    transform: rotate(180deg);
+    transform: rotate(0deg);
   }
 
   &__icon {
@@ -350,69 +357,74 @@ export default {
     top: 0;
     left: 0;
 
-    &.name-icon {
-      background: url("../../../../assets/img/common/label-ico/fname.svg") center center no-repeat;
-    }
-    &.lname-icon {
-      background: url("../../../../assets/img/common/label-ico/lname.svg") center center no-repeat;
-    }
-    &.email-icon {
-      background: url("../../../../assets/img/common/label-ico/email.svg") center center no-repeat;
-    }
-    &.phone-icon {
-      background: url("../../../../assets/img/common/label-ico/phone.svg") center center no-repeat;
-    }
-    &.pass-icon {
-      background: url("../../../../assets/img/common/label-ico/lock.svg") center center no-repeat;
-    }
-    &.customer-icon {
-      background: url("../../../../assets/img/common/label-ico/customer.svg") center center no-repeat;
-    }
-    &.address-icon {
-      background: url("../../../../assets/img/common/label-ico/address.svg") center center no-repeat;
-    }
-    &.city-icon {
-      background: url("../../../../assets/img/common/label-ico/city.svg") center center no-repeat;
-    }
-    &.country-icon {
-      background: url("../../../../assets/img/common/label-ico/country.svg") center center no-repeat;
-    }
-    &.state-icon {
-      background: url("../../../../assets/img/common/label-ico/state.svg") center center no-repeat;
-    }
-    &.zip-icon {
-      background: url("../../../../assets/img/common/label-ico/zip.svg") center center no-repeat;
-    }
-    &.discount-icon {
-      background: url("../../../../assets/img/common/label-ico/discount.svg") center center no-repeat;
-    }
-    &.payments-icon {
-      background: url("../../../../assets/img/common/label-ico/payments.svg") center center no-repeat;
-    }
-    &.checklist-icon {
-      background: url("../../../../assets/img/common/label-ico/checklist.svg") center center no-repeat;
-    }
-    &.sales-icon {
-      background: url("../../../../assets/img/common/label-ico/sales.svg") center center no-repeat;
-    }
-    &.roles-icon {
-      background: url("../../../../assets/img/common/label-ico/roles.svg") center center no-repeat;
-    }
-    &.customer-2-icon {
-      background: url("../../../../assets/img/common/label-ico/customer-2.svg") center center no-repeat;
-    }
-    &.status-icon {
-      background: url("../../../../assets/img/common/label-ico/status.svg") center center no-repeat;
-    }
-    &.group-icon {
-      background: url("../../../../assets/img/common/label-ico/group.svg") center center no-repeat;
+    // &.name-icon {
+    //   background: url("../../../../assets/img/common/label-ico/fname.svg") center center no-repeat;
+    // }
+    // &.lname-icon {
+    //   background: url("../../../../assets/img/common/label-ico/lname.svg") center center no-repeat;
+    // }
+    // &.email-icon {
+    //   background: url("../../../../assets/img/common/label-ico/email.svg") center center no-repeat;
+    // }
+    // &.phone-icon {
+    //   background: url("../../../../assets/img/common/label-ico/phone.svg") center center no-repeat;
+    // }
+    // &.pass-icon {
+    //   background: url("../../../../assets/img/common/label-ico/lock.svg") center center no-repeat;
+    // }
+    // &.customer-icon {
+    //   background: url("../../../../assets/img/common/label-ico/customer.svg") center center no-repeat;
+    // }
+    // &.address-icon {
+    //   background: url("../../../../assets/img/common/label-ico/address.svg") center center no-repeat;
+    // }
+    // &.city-icon {
+    //   background: url("../../../../assets/img/common/label-ico/city.svg") center center no-repeat;
+    // }
+    // &.country-icon {
+    //   background: url("../../../../assets/img/common/label-ico/country.svg") center center no-repeat;
+    // }
+    // &.state-icon {
+    //   background: url("../../../../assets/img/common/label-ico/state.svg") center center no-repeat;
+    // }
+    // &.zip-icon {
+    //   background: url("../../../../assets/img/common/label-ico/zip.svg") center center no-repeat;
+    // }
+    // &.discount-icon {
+    //   background: url("../../../../assets/img/common/label-ico/discount.svg") center center no-repeat;
+    // }
+    // &.payments-icon {
+    //   background: url("../../../../assets/img/common/label-ico/payments.svg") center center no-repeat;
+    // }
+    // &.checklist-icon {
+    //   background: url("../../../../assets/img/common/label-ico/checklist.svg") center center no-repeat;
+    // }
+    // &.sales-icon {
+    //   background: url("../../../../assets/img/common/label-ico/sales.svg") center center no-repeat;
+    // }
+    // &.roles-icon {
+    //   background: url("../../../../assets/img/common/label-ico/roles.svg") center center no-repeat;
+    // }
+    // &.customer-2-icon {
+    //   background: url("../../../../assets/img/common/label-ico/customer-2.svg") center center no-repeat;
+    // }
+    // &.status-icon {
+    //   background: url("../../../../assets/img/common/label-ico/status.svg") center center no-repeat;
+    // }
+    // &.group-icon {
+    //   background: url("../../../../assets/img/common/label-ico/group.svg") center center no-repeat;
+    // }
+
+    &.location-icon {
+      background: url("../../../../assets/img/map.svg") center center no-repeat;
     }
   }
 }
 
 .v-select__label{
-  color: $black;
-  font-size: 12px;
+  // color: $gray-dark;
+  color: #808080;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -431,11 +443,11 @@ export default {
 }
 
 .vs--open .v-select__arrow{
-  transform: rotate(0);
+  transform: rotate(180deg);
 }
 
 .vs--open .v-select__label{
-  top: -5px;
+  // top: -5px;
   background: white;
   padding: 0 2px;
   font-size: 10px;
@@ -443,19 +455,20 @@ export default {
 }
 
 .vs--open .vs__dropdown-toggle{
-  border-color: $accent-blue !important;
+  // border-color: $accent-blue !important;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
 .vs__dropdown-toggle{
-  padding-left: 19px;
-  min-height: 44px;
-  padding-bottom: 8px !important;
-  border: 1px solid $middle-gre;
+  padding-left: 12px;
+  min-height: 48px;
+  // padding-bottom: 12px !important;
+  // border: 1px solid $middle-gre;
   box-sizing: border-box;
-  border-radius: 12px;
+  border-radius: 8px;
 }
+
 
 .vs--open .vs__dropdown-toggle{
   border-color: $accent-blue;
@@ -464,20 +477,15 @@ export default {
 .vs__selected{
   padding: 0;
   margin: 0;
-  top: 8px;
-
-
+  // top: 8px;
 }
 
-.vs__search, .vs__search:focus{
-  padding: 0;
-}
 
 .vs__selected-options{
-  padding: 0;
-  top: 2px;
+  // top: 2px;
   /*display: block;*/
   /*overflow: hidden;*/
+  // min-height: 48px;
 }
 
 
@@ -486,6 +494,7 @@ export default {
   /*top: 0;*/
   border-radius: 12px;
   border: 1px solid $darker-blue;
+  border: 1px solid red;
   //box-shadow: 0px 4px 7px red;
   padding-top: 0;
   padding-bottom: 0;
@@ -506,7 +515,7 @@ export default {
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: $middle-gre;
+    // background: $middle-gre;
   }
 
   /* Handle on hover */
@@ -521,8 +530,6 @@ export default {
     align-items: center;
     justify-content: center;
   }
-
-
 
   .vs__actions svg path{
     fill: #8F7A61;
@@ -547,14 +554,6 @@ export default {
   }
 
 }
-
-//.v-select.drop-up.vs--open .vs__dropdown-toggle {
-//  border-radius: 0 0 4px 4px;
-//  border-top-color: transparent;
-//  border-bottom-color: rgba(60, 60, 60, 0.26);
-//  background: red !important;
-//}
-
 
 [data-popper-placement='top'],
 [data-popper-placement='bottom'] {
@@ -581,7 +580,7 @@ export default {
 }
 
 .vs--disabled .vs__selected {
-  color: $middle-grey;
+  // color: $middle-grey;
 }
 
 </style>

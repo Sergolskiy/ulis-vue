@@ -23,6 +23,20 @@
       </div>
 
 
+
+      <DefaultSelect
+        :label="'Локація'"
+        :options="['Київ, Дудки', 'Карпати, місто']"
+        :withIco="true"
+        :placeholder="'Обери локацію'"
+      />
+
+      <div class="custom-row">
+        <div class="custom-col">
+
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -31,11 +45,12 @@
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import FormLabel from "../../../../UI/labels/FormLabel/FormLabel.vue";
 import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
+import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
 
 export default {
   name: "BookingStepA",
 
-  components: {MainCalendar, FormLabel, InfoBlock},
+  components: {MainCalendar, FormLabel, InfoBlock, DefaultSelect},
 
   props: {
     Booking: {

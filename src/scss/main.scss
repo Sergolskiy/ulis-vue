@@ -57,7 +57,15 @@
 	.dp__arrow_top {
 		display: none;
 	}
-	
+
+	.dp__menu_inner .dp__instance_calendar:first-child .dp__calendar_row:first-child .dp__cell_offset{
+		color: $grey;
+	}
+
+	.dp__menu_inner .dp__instance_calendar:last-child .dp__calendar_row:last-child .dp__cell_offset{
+		color: $grey;
+	}
+
 }
 
 .calendar-style {

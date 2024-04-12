@@ -6,13 +6,15 @@
       </div>
       <div class="main-calendar__content">
         {{date}}
-        
+
         <VueDatePicker
             class="calendar-style only-calendar"
             range
             multi-calendars
             ref="datepicker"
             locale="uk"
+            inline
+            auto-apply
             :transitions="false"
             :auto-position="false"
             :month-change-on-scroll="false"
@@ -79,12 +81,12 @@ export default {
   },
 
   mounted() {
-    this.$refs.datepicker.openMenu()
+    // this.$refs.datepicker.openMenu()
   },
 
   methods: {
     closeCalendar() {
-      this.$refs.datepicker.openMenu()
+      // this.$refs.datepicker.openMenu()
     },
 
     onClickOutside(data) {

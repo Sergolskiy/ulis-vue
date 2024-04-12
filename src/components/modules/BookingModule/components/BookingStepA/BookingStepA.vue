@@ -11,29 +11,36 @@
           :type="'error'"
       />
 
-      <div class="your-choice__calendar mt-3">
-        <FormLabel
-            :label="'Дати'"
-            :type="'required'"
-        />
 
-        <MainCalendar
-            :Booking="Booking"
-        />
-      </div>
-
-
-
-      <DefaultSelect
-        :label="'Локація'"
-        :options="['Київ, Дудки', 'Карпати, місто']"
-        :withIco="true"
-        :placeholder="'Обери локацію'"
+      <FormLabel
+          class="mt-4"
+          :label="'Дати'"
+          :type="'required'"
       />
 
-      <div class="custom-row">
-        <div class="custom-col">
+      <div class="your-choice__calendar-wrap">
 
+        <CalendarDays
+            :Booking="Booking"
+        />
+
+        <div class="your-choice__calendar mt-3">
+
+
+          <MainCalendar
+              :Booking="Booking"
+          />
+        </div>
+      </div>
+
+      <div class="custom-row">
+        <div class="custom-col custom-col--33">
+          <DefaultSelect
+              :label="'Локація'"
+              :options="['Київ, Дудки', 'Карпати, місто']"
+              :withIco="true"
+              :placeholder="'Обери локацію'"
+          />
         </div>
       </div>
 
@@ -46,11 +53,12 @@ import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import FormLabel from "../../../../UI/labels/FormLabel/FormLabel.vue";
 import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
+import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 
 export default {
   name: "BookingStepA",
 
-  components: {MainCalendar, FormLabel, InfoBlock, DefaultSelect},
+  components: {CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
 
   props: {
     Booking: {
@@ -58,6 +66,10 @@ export default {
       default: null,
     }
   },
+
+  mounted() {
+
+  }
 
 }
 </script>
@@ -69,7 +81,7 @@ export default {
   border: 1px solid $border-grey;
   border-radius: 8px;
   padding: 16px;
-  height: 500px;
+  //height: 500px;
 
   &__inner {
 
@@ -80,6 +92,13 @@ export default {
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
+  }
+
+  &__calendar-wrap {
+    border-radius: 8px;
+    border: 1px solid $border-grey;
+    padding: 16px;
+    margin-top: 4px;
   }
 
 }

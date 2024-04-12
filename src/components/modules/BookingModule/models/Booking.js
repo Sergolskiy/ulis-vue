@@ -5,6 +5,9 @@ export class Booking {
 
     this.data = {
       activeStep: 1,
+
+      date: null,
+
     }
 
   }

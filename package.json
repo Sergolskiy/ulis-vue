@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@vuepic/vue-datepicker": "^8.4.0",
     "bootstrap-4-grid": "^3.4.0",
     "lodash": "^4.17.21",

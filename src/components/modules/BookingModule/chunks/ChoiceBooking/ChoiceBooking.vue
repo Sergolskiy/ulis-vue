@@ -5,10 +5,74 @@
         Твій вибір
       </div>
       <div class="choice-booking__info">
+        <div class="choice-booking__listing custom-row">
+          <div class="choice-booking__listing-col custom-col">
+            <div class="choice-booking__listing-date">
+              <div class="choice-booking__listing-date-col">
+                <div class="choice-booking__listing-date-label">
+                  Заїзд
+                </div>
+                <div class="choice-booking__listing-date-field">
+                  пн, 4 груд. 2023 
+                </div>
+              </div>
+              <div class="choice-booking__listing-date-col">
+                <div class="choice-booking__listing-date-label">
+                  Виїзд
+                </div>
+                <div class="choice-booking__listing-date-field">
+                  чт, 5 груд. 2023
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="choice-booking__listing-col custom-col">
+            <div class="choice-booking__listing-item">
+              <div class="choice-booking__listing-ico">
+                <IconMap/>
+              </div>
+              <div class="choice-booking__listing-txt">
+                Київ, Дудки
+              </div>
+            </div>
+          </div>
+          <div class="choice-booking__listing-col custom-col custom-col--50">
+            <div class="choice-booking__listing-item">
+              <div class="choice-booking__listing-ico">
+                <IconPeople/>
+              </div>
+              <div class="choice-booking__listing-txt">
+                2 дорослих
+              </div>
+            </div>
+          </div>
+          <div class="choice-booking__listing-col custom-col custom-col--50">
+            <div class="choice-booking__listing-item">
+              <div class="choice-booking__listing-ico">
+                <IconMan/>
+              </div>
+              <div class="choice-booking__listing-txt">
+                1 дитина
+              </div>
+            </div>
+          </div>
+          <div class="choice-booking__listing-col custom-col custom-col--50">
+            <div class="choice-booking__listing-item">
+              <div class="choice-booking__listing-ico">
+                <IconAnimal/>
+              </div>
+              <div class="choice-booking__listing-txt">
+                1 тварина
+              </div>
+            </div>
+          </div>
+        </div>
+
         <InfoBlock
             :text="'Ти поки не вніс жодної інформації, як тільки ти заповниш поля на цьому етапі, вони з’являться тут.'"
             :type="'warning'"
         />
+     
       </div>
     </div>
   </div>
@@ -16,9 +80,14 @@
 
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
+import IconMap from '../../../../../assets/img/map.svg'
+import IconPeople from '../../../../../assets/img/people.svg'
+import IconMan from '../../../../../assets/img/man.svg'
+import IconAnimal from '../../../../../assets/img/animal.svg'
+
 export default {
   name: "ChoiceBooking",
-  components: {InfoBlock}
+  components: {InfoBlock, IconMap, IconPeople, IconMan, IconAnimal}
 }
 </script>
 
@@ -42,6 +111,78 @@ export default {
 
   &__info {
     margin-top: 16px;
+  }
+
+  &__listing{
+
+  }
+
+  &__listing-date{
+    padding: 8px;
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid $border-grey;
+    min-height: 56px;
+  }
+
+  &__listing-date-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+
+    &:nth-child(odd){
+      position: relative;
+
+      &:after{
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) translateX(50%);
+        height: 24px;
+        width: 1px;
+        background: $border-grey;
+      }
+    }
+
+    &:nth-child(even)> div {
+      text-align: right;
+    }
+  }
+
+  &__listing-date-label{
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  &__listing-date-field{
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__listing-col{
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  &__listing-item{
+    display: flex;
+    align-items: flex-end;
+    border-radius: 4px;
+    min-height: 40px;
+    border: 1px solid $border-grey;
+    padding: 0 8px 8px;
+  }
+
+  &__listing-ico{
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__listing-txt{
+    font-size: 16px;
   }
 
 }

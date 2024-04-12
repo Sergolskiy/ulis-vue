@@ -99,7 +99,7 @@
 <script>
 
 import { createPopper } from '@popperjs/core';
-import ArrowSelect from '../../../../assets/img/arrov.svg'
+import ArrowSelect from '../../../../assets/img/arrow.svg'
 import FormLabel from "../../labels/FormLabel/FormLabel.vue";
 // import LinkButton from "../../buttons/LinkButton/LinkButton.vue";
 

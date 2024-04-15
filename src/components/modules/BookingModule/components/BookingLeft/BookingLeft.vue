@@ -5,21 +5,34 @@
         <Account/>
       </div>
 
+      <div class="left-side__mobile">
+        <MobileDetailBooking
+            @openPopup="openPopup"
+        />
+      </div>
+
       <div class="left-side__choice">
         <ChoiceBooking/>
       </div>
 
-      <div class="left-side__row">
+      <div class="left-side__chosen-house">
         <ChosenHouse/>
       </div>
 
-      <div class="left-side__row mb-3">
+      <div class="left-side__btn mb-3">
         <MainButton
             :label="'Додати ще один будинок'"
           >
           </MainButton>
       </div>
     </div>
+
+    <DetailPopup
+        class="mobile-detail-popup"
+        :class="{'active': openDetailPopup}"
+        @close="closePopup"
+    />
+
   </div>
 </template>
 
@@ -28,16 +41,22 @@ import Account from "../../chunks/Account/Account.vue";
 import ChoiceBooking from "../../chunks/ChoiceBooking/ChoiceBooking.vue";
 import ChosenHouse from "../../chunks/ChosenHouse/ChosenHouse.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
+import MobileDetailBooking from "@/components/modules/BookingModule/chunks/MobileDetailBooking/MobileDetailBooking.vue";
+import DetailPopup from "@/components/modules/BookingModule/chunks/DetailPopup/DetailPopup.vue";
 
 export default {
   name: "BookingLeft",
 
   components: {
+    DetailPopup,
+    MobileDetailBooking,
     Account,
     ChoiceBooking,
     ChosenHouse,
     MainButton
   },
+
+  emits: ['openPopup', 'close'],
 
   props: {
     Booking: {
@@ -46,12 +65,40 @@ export default {
     }
   },
 
+  data() {
+    return {
+      openDetailPopup: false,
+    }
+  },
+
+  methods: {
+    openPopup() {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden'
+      this.openDetailPopup = true
+    },
+
+    closePopup() {
+      document.body.style.overflow = 'initial'
+      this.openDetailPopup = false
+    },
+  }
+
 }
 </script>
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
 @import "../../../../../scss/mixins/mixins";
+
+.mobile-detail-popup {
+  transition: 0.3s;
+  transform: translateX(-100%);
+
+  &.active {
+    transform: translateX(0);
+  }
+}
 
 .left-side {
 
@@ -68,11 +115,44 @@ export default {
   }
 
   &__account {
+    @include for-1120 {
+      width: 50%;
+    }
 
+    @include for-768 {
+      width: 100%;
+    }
+  }
+
+  &__mobile {
+    width: 50%;
+
+    @include from-1120 {
+      display: none;
+    }
+
+    @include for-768 {
+      margin-top: 16px;
+      width: 100%;
+    }
   }
 
   &__choice {
+    @include for-1120 {
+      display: none;
+    }
+  }
 
+  &__chosen-house {
+    @include for-1120 {
+      display: none;
+    }
+  }
+
+  &__btn {
+    @include for-1120 {
+      display: none;
+    }
   }
 
 }

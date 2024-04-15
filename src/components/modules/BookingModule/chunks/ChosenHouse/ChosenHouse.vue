@@ -21,7 +21,7 @@
           <div class="chosen-house__overview">
             <div class="chosen-house__overview-item">
               <div class="chosen-house__overview-ico">
-                <IconMap/>
+                <IconPeople/>
               </div>
               <div class="chosen-house__overview-txt">
                 Для 2-х гостей (+1)
@@ -29,7 +29,7 @@
             </div>
             <div class="chosen-house__overview-item">
               <div class="chosen-house__overview-ico">
-                <IconPeople/>
+                <IconMap/>
               </div>
               <div class="chosen-house__overview-txt">
                 Київ, Дудки

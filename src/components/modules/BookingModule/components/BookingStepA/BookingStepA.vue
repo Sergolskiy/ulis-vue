@@ -79,9 +79,11 @@
           />
 
           <DefaultCheckbox
+              class="w-100"
               :label="'Я візьму тваринку з собою'"
               :required="'required'"
               :bordered="true"
+              v-model="checked"
           />
         </div>
       </div>
@@ -129,6 +131,12 @@ export default {
     Booking: {
       type: Object,
       default: null,
+    }
+  },
+
+  data() {
+    return {
+      checked: false,
     }
   },
 

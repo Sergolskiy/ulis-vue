@@ -132,7 +132,7 @@
     &--bordered {
       border: 1px solid $border-grey;
       border-radius: 8px;
-      padding: 14px;
+      padding: 12px;
     }
 
     &__input{
@@ -152,7 +152,7 @@
       padding-left: 27px;
       padding-top: 2px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       font-style: normal;
       font-weight: 400;
       line-height: 20px;
@@ -163,7 +163,7 @@
         content: '';
         position: absolute;
         left: 0;
-        top: 0;
+        top: 1px;
         width: 18px;
         height: 18px;
         border: 1px solid $grey;
@@ -178,16 +178,17 @@
         content: '';
         position: absolute;
         left: 0;
-        top: 0;
+        top: 1px;
         width: 18px;
         height: 18px;
         border-radius: 4px;
         display: flex;
-        background-color: $accent-blue;
-        //background-image: url("../../../../assets/img/UI-group/white-check.svg");
+        //background-color: $black;
+        //background-image: url("../../../../assets/img/checked-white.svg");
+        background-image: url("../../../../assets/img/checkbox.svg");
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 11px;
+        background-size: 16px;
         //background-size: contain;
         opacity: 0;
       }

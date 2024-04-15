@@ -214,11 +214,11 @@
     }
 
 
-    //&:hover{
-    //  box-shadow: 0px 0 3px #00000052;
-    //  background: $black-hover;
-    //  border-color: $black-hover;
-    //}
+    &:hover{
+      //box-shadow: 0px 0 3px #00000052;
+      background: $black-hover;
+      border-color: $black-hover;
+    }
 
     &.sharp{
       border-radius: 0;

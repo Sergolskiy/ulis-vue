@@ -6,12 +6,34 @@
             'secondary' : secondary,
             'big' : big,
             'text-btn' : textBtn,
+            'main-button--ico-left' : icoPosition == 'left',
+            'main-button--ico-right' : icoPosition == 'right'
           }"
   >
-    <div class="main-button__ico" v-if="ico">
+
+    <!-- OLD ICON HTML-->
+    <!-- <div class="main-button__ico" v-if="ico">
         <slot name="ico">
 
         </slot>
+    </div> -->
+
+    <!-- NEW ICON HTML -->
+
+    <!-- "icoCustom" need if you need some custom icon (not from the icons list) -->
+    <div class="main-button__ico" v-if="icoCustom">
+        <slot name="ico">
+
+        </slot>
+    </div>
+
+    <div class="main-button__ico"
+        v-if="!icoCustom && ico"
+        :class="'main-button__ico-' + ico"
+    >
+      <IconPlus v-if="ico == 'plus'"/>
+      <IconArrow v-if="ico == 'arrow'" 
+        :class="'main-button__ico-' + ico + '--' + icoPosition"/>
     </div>
     {{label}}
 
@@ -47,17 +69,33 @@
   // import TooltipBtn from "../../tooltips/TooltipBtn/TooltipBtn.vue"
 
 
+  import IconPlus from '../../../../assets/img/plus.svg'
+  import IconArrow from '../../../../assets/img/arrow.svg'
+
   export default {
     name: "MainButton",
 
     components: {
       // VPopover,
-      // TooltipBtn
+      // TooltipBtn,
+      IconPlus,
+      IconArrow,
     },
 
     props: {
       tooltip: Boolean,
-      ico: Boolean,
+      ico: {
+        type: String,
+        default: '',
+      },
+      icoPosition: {
+        type: String,
+        default: '',
+      },
+      icoCustom: {
+        type: Boolean,
+        default: false,
+      },
       disabled: {
         type: Boolean,
         default: false,
@@ -121,17 +159,23 @@
     cursor: pointer;
     outline: 0;
     transition: 0.3s;
-    padding: 14px 28px;
+    padding: 11px 28px;
     border: 1px solid $black;
     position: relative;
 
     &.disabled-btn {
+      border-color: $border-grey-hover;
       background: $grey-hover !important;
       color: #BFC6CC;
 
       svg path {
         fill: #BFC6CC;
+        stroke: #BFC6CC;
       }
+    }
+
+    &.disabled-btn.secondary {
+      background: $white !important;
     }
 
     &.no-bg {
@@ -206,6 +250,12 @@
       }
     }
 
+    &:not(.secondary) &__ico{
+      svg path {
+        stroke: $white;
+      }
+    }
+
     &.text-btn {
       box-shadow: none;
       border: 0 ;
@@ -227,8 +277,8 @@
     &__ico{
       /*width: 19px;*/
       /*height: 19px;*/
-      max-width: 30px;
-      margin-right: 5px;
+      max-width: 24px;
+      display: flex;
 
       svg{
         width: 100%;
@@ -270,6 +320,39 @@
       position: absolute;
       top: 2px;
       right: 2px;
+    }
+
+    &__ico-arrow {
+      transform: translateY(-1px);
+
+      &--left {
+        transform: rotate(90deg);
+      }
+    
+      &--right{
+        transform: rotate(-90deg);
+      }
+    }
+    &.disabled-btn &__ico-arrow svg path{
+      fill: $white;
+      stroke: #BFC6CC;
+    }
+    &.disabled-btn &__ico-plus svg path{
+      fill: #BFC6CC;
+      stroke: #BFC6CC;
+    }
+
+    &--ico-left {
+
+    }
+    &--ico-left &__ico {
+      margin-right: 5px;
+    }
+    &--ico-right {
+      flex-direction: row-reverse;
+    }
+    &--ico-right &__ico {
+      margin-left: 5px;
     }
   }
 </style>

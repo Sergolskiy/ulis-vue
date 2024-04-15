@@ -14,7 +14,8 @@
               Будинок на 1 спальню у лісі з додатковим текстом для тестування
             </div>
             <div class="chosen-house__price-small">
-              4600 ₴
+              4600
+              <IconUAH/>
             </div>
           </div>
 
@@ -57,7 +58,8 @@
               Чан
             </div>
             <div class="chosen-house__price-small">
-              2600 ₴
+              2600
+              <IconUAH/>
             </div>
           </div>
 
@@ -100,7 +102,8 @@
               Сауна
             </div>
             <div class="chosen-house__price-small">
-              2600 ₴
+              2600
+              <IconUAH/>
             </div>
           </div>
 
@@ -170,11 +173,9 @@
           <MainButton
             :label="'Додати сервіси'"
             :secondary="true"
-            :ico="true"
+            :ico="'plus'"
+            :icoPosition="'left'"
           >
-            <template #ico>
-              <IconPlus/>
-            </template>
           </MainButton>
         </div>
       </div>
@@ -184,7 +185,8 @@
           1 ніч, 2 дорослих
         </div>
         <div class="chosen-house__price-big chosen-house__price-block--big">
-          ₴ 10 600
+          <IconUAH/>
+          10 600
         </div>
         <div class="chosen-house__overview-txt">
           Враховуючи сервіси
@@ -197,7 +199,7 @@
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
-import IconPlus from '../../../../../assets/img/plus.svg'
+import IconUAH from '../../../../../assets/img/currencies.svg'
 
 import IconMap from '../../../../../assets/img/icon-map-16px-grey.svg'
 import IconPeople from '../../../../../assets/img/icon-people-16px-grey.svg'
@@ -216,13 +218,14 @@ export default {
   components: {
     InfoBlock, 
     MainButton,
-    IconPlus,
+    IconUAH,
     IconMap, IconPeople, IconBuildings, IconClock, IconCalendar, IconBicycle, IconEcommerce, IconBed, IconFood, IconSettle, IconDeport}
 }
 </script>
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .chosen-house{
   border: 1px solid $border-grey;
@@ -285,6 +288,12 @@ export default {
     font-size: 16px;
     font-weight: 500;
     white-space: nowrap;
+    display: flex;
+
+    svg {
+      transform: scale(0.7);
+      margin: -5px;
+    }
   }
 
   &__overview-item{
@@ -335,6 +344,10 @@ export default {
 
   &__add-service-btn{
     margin-bottom: 16px;
+
+    @include for-768{
+      margin-bottom: 32px;
+    }
   }
 
   &__price-block{
@@ -359,6 +372,7 @@ export default {
   &__price-big{
     font-size: 24px;
     font-weight: 600;
+    display: flex;
   }
 
 }

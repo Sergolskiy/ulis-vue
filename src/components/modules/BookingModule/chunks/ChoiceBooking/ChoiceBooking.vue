@@ -166,11 +166,19 @@ export default {
   &__listing-date-field{
     font-size: 16px;
     font-weight: 500;
+
+    @include for-768 {
+     font-size: 14px;
+    }
   }
 
   &__listing-col{
     margin-bottom: 16px;
     padding: 0 8px;
+
+    @include for-768 {
+      padding: 0 4px;
+    }
   }
 
   &__listing-item{
@@ -190,6 +198,9 @@ export default {
 
   &__listing-txt{
     font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
 }

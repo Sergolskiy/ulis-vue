@@ -45,16 +45,18 @@
           <div class="booking__btn">
             <MainButton
                 :label="'Назад'"
-                :ico="true"
                 :secondary="true"
+                :ico="'arrow'"
+                :icoPosition="'left'"
             />
           </div>
           <div class="booking__btn">
             <MainButton
                 :label="'Далі'"
-                :ico="true"
                 :secondary="true"
                 :disabled="true"
+                :ico="'arrow'"
+                :icoPosition="'right'"
             />
           </div>
 

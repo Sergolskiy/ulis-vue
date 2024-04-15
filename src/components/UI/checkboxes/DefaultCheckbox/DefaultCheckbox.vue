@@ -1,6 +1,7 @@
 <template>
   <div class="default-checkbox"
        :class="{
+          'default-checkbox--bordered' : bordered,
           'empty-label' : !label,
           'default-checkbox__big-checkbox-style' : bigCheckboxStyle
         }"
@@ -50,6 +51,10 @@
       errorTxt: {
         type: String,
         default: '',
+      },
+      bordered: {
+        type: Boolean,
+        default: false,
       },
       disabled: {
         type: Boolean,
@@ -124,6 +129,12 @@
     position: relative;
     width: fit-content;
 
+    &--bordered {
+      border: 1px solid $border-grey;
+      border-radius: 8px;
+      padding: 14px;
+    }
+
     &__input{
       display: none;
     }
@@ -141,10 +152,10 @@
       padding-left: 27px;
       padding-top: 2px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+      font-weight: 400;
+      line-height: 20px;
       display: flex;
 
 
@@ -153,9 +164,9 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 20px;
-        height: 20px;
-        border: 1px solid $middle-grey;
+        width: 18px;
+        height: 18px;
+        border: 1px solid $grey;
         box-sizing: border-box;
         background: $white;
         border-radius: 4px;
@@ -168,12 +179,12 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border-radius: 4px;
         display: flex;
         background-color: $accent-blue;
-        background-image: url("../../../../assets/img/UI-group/white-check.svg");
+        //background-image: url("../../../../assets/img/UI-group/white-check.svg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: 11px;

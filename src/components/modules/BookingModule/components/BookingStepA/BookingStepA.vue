@@ -36,6 +36,8 @@
 
           <MainCalendar
               :Booking="Booking"
+              :multiCalendars="true"
+              :mobile-single="true"
           />
 
 
@@ -50,7 +52,7 @@
       </div>
 
       <div class="custom-row mt-4">
-        <div class="custom-col custom-col--33">
+        <div class="custom-col custom-col--33 custom-col--xs-100">
           <DefaultSelect
               :label="'Кількість дорослих'"
               :options="['1 дорослий', '2 дорослих', '3 дорослих']"
@@ -59,13 +61,27 @@
               :placeholder="'0 дорослих'"
           />
         </div>
-        <div class="custom-col custom-col--33">
+        <div class="custom-col custom-col--33 custom-col--xs-100">
           <DefaultSelect
               :label="'Кількість дорослих'"
               :options="['1 дитина', '2 дитини', '3 дитини']"
               :inner-icon="'people'"
               :required="'required'"
               :placeholder="'0 дітей'"
+          />
+        </div>
+        <div class="custom-col custom-col--33 custom-col--xs-100">
+
+          <FormLabel
+              class="mb-1"
+              :label="'Наявність тварин'"
+              :type="'required'"
+          />
+
+          <DefaultCheckbox
+              :label="'Я візьму тваринку з собою'"
+              :required="'required'"
+              :bordered="true"
           />
         </div>
       </div>
@@ -100,11 +116,14 @@ import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
+import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
 
 export default {
   name: "BookingStepA",
 
-  components: {MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
+  components: {
+    DefaultCheckbox,
+    MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
 
   props: {
     Booking: {
@@ -122,12 +141,18 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .your-choice {
   border: 1px solid $border-grey;
   border-radius: 8px;
   padding: 16px;
   //height: 500px;
+
+  @include for-550 {
+    padding: 0;
+    border: 0;
+  }
 
   &__inner {
 
@@ -145,6 +170,11 @@ export default {
     border: 1px solid $border-grey;
     padding: 16px;
     margin-top: 4px;
+
+    @include for-550 {
+      padding: 0;
+      border: 0;
+    }
   }
 
 }

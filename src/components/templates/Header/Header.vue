@@ -46,6 +46,15 @@
           </div>
         </div>
       </div>
+
+      <div class="header__mobile-btn">
+        <MobileMenu/>
+      </div>
+
+    </div>
+    
+    <div class="mobile-header">
+      <div class="mobile-header__inner"></div>
     </div>
   </div>
 </template>
@@ -54,6 +63,7 @@
 import IN from '../../../assets/img/header/in.svg?skipsvgo'
 import FB from '../../../assets/img/header/fb.svg?skipsvgo'
 import TW from '../../../assets/img/header/tw.svg?skipsvgo'
+import MobileMenu from '../../../assets/img/mobile-menu-btn.svg?skipsvgo'
 
 export default {
   name: "Header",
@@ -62,6 +72,7 @@ export default {
     IN,
     FB,
     TW,
+    MobileMenu,
   },
 
 }
@@ -79,14 +90,29 @@ export default {
     justify-content: space-between;
     padding: 24px 34px;
     background: $black;
+
+    @include for-1120 {
+      padding: 12px 16px;
+    }
   }
 
   &__logo {
 
+    a {
+      display: flex;
+    }
+
+    @include for-1120 {
+      img {
+        width: 98px;
+      }
+    }
   }
 
   &__menu {
-
+    @include for-1120 {
+      display: none;
+    }
   }
 
   &__menu-items {
@@ -123,6 +149,9 @@ export default {
 
   &__right {
 
+    @include for-1120 {
+      display: none;
+    }
   }
 
   &__social {
@@ -140,6 +169,12 @@ export default {
 
   &__social-link {
 
+  }
+
+  &__mobile-btn {
+    @include from-1120 {
+      display: none;
+    }
   }
 
 }

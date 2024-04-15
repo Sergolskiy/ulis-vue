@@ -34,6 +34,32 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
+
+.left-side {
+
+  &__inner {
+
+    @include for-992 {
+      display: flex;
+      gap: 16px;
+    }
+
+    @include for-768 {
+      flex-direction: column;
+    }
+  }
+
+  &__account {
+
+  }
+
+  &__choice {
+
+  }
+
+}
 
 </style>

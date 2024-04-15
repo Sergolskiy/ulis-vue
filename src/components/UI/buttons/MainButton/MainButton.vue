@@ -126,7 +126,7 @@
     position: relative;
 
     &.disabled-btn {
-      background: $grey-hover;
+      background: $grey-hover !important;
       color: #BFC6CC;
 
       svg path {

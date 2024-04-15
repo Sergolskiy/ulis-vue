@@ -106,9 +106,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .booking__btn:deep(.main-button) {
   width: 215px;
+
+  @include for-768 {
+    width: 136px;
+  }
 }
 
 </style>

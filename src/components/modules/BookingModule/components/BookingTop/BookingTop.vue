@@ -63,6 +63,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .booking-tabs {
   margin-top: 24px;
@@ -83,6 +84,14 @@ export default {
     &:nth-child(n+2) {
       position: relative;
 
+      @include for-768 {
+        padding-left: 20%;
+      }
+
+      @include for-550 {
+        padding-left: 15%;
+      }
+
       &:before {
         content: '';
         position: relative;
@@ -92,6 +101,31 @@ export default {
         width: 88px;
         height: 1px;
         background: $border-grey;
+
+        @include for-1120 {
+          position: absolute;
+          top: 12px;
+          left: -8vw;
+          display: block;
+          width: 6vw;
+          height: 1px;
+          background: #DCE0E4;
+        }
+
+        @include for-992 {
+          display: none;
+        }
+
+        @include for-768 {
+          display: block;
+          left: 26px;
+          width: 45%;
+        }
+
+        @include for-550 {
+          left: 11px;
+          width: 30%;
+        }
       }
     }
   }
@@ -119,6 +153,10 @@ export default {
     line-height: 20px;
     margin-left: 10px;
     padding-top: 4px;
+
+    @include for-768 {
+      display: none;
+    }
   }
 
 }

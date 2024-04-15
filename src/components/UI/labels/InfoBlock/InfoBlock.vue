@@ -57,6 +57,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../../scss/colors";
+@import "../../../../scss/mixins/mixins";
 
 .info-block {
 
@@ -73,7 +74,10 @@ export default {
   }
 
   &__txt {
-
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
   }
 
   &--error {
@@ -84,7 +88,10 @@ export default {
 
     .info-block__right {
       margin-left: 16px;
-      padding-top: 3px;
+
+      @include for-550 {
+        margin-left: 8px;
+      }
     }
   }
 
@@ -96,7 +103,10 @@ export default {
 
     .info-block__right {
       margin-left: 16px;
-      padding-top: 3px;
+
+      @include for-550 {
+        margin-left: 8px;
+      }
     }
   }
 

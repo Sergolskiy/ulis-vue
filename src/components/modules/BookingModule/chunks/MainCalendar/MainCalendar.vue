@@ -9,7 +9,7 @@
         <VueDatePicker
             class="calendar-style only-calendar"
             range
-            multi-calendars
+            :multi-calendars="checkMobile"
             ref="datepicker"
             locale="uk"
             inline
@@ -76,10 +76,31 @@ export default {
     Booking: {
       type: Object,
       default: null,
-    }
+    },
+    mobileSingle: {
+      type: Boolean,
+      default: false,
+    },
+    multiCalendars: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
+
+    checkMobile() {
+      if(!this.mobileSingle) {
+        return this.multiCalendars
+      }
+
+      if(window.innerWidth < 1120) {
+        return false
+      }
+
+      return true
+
+    },
 
     disabledDates() {
       let today = new Date();

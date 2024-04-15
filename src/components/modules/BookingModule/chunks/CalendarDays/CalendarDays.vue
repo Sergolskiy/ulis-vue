@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="calendar-days__calendar-duration ml-3">
+    <div class="calendar-days__calendar-duration">
       <div class="calendar-days__calendar-duration-name">
         Тривалість
       </div>
@@ -69,6 +69,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .calendar-days {
 
@@ -87,6 +88,10 @@ export default {
   &__calendar-between-first {
     position: relative;
     width: 152px;
+
+    @include for-768 {
+      width: 93px;
+    }
 
     &:after {
       content: '';
@@ -116,20 +121,38 @@ export default {
     line-height: 20px;
     color: $grey;
 
+    @include for-768 {
+      font-size: 14px;
+    }
+
     &.active-date {
       color: $black;
+
+      @include for-768 {
+        font-size: 12px;
+      }
     }
   }
 
   &__calendar-between-last {
     width: 152px;
     text-align: right;
+
+    @include for-768 {
+      width: 93px;
+    }
   }
 
   &__calendar-duration {
     border-radius: 8px;
     border: 1px solid $border-grey;
     padding: 8px 16px;
+    margin-left: 16px;
+
+    @include for-768 {
+      margin-left: 6px;
+      padding: 8px;
+    }
   }
 
   &__calendar-duration-name {

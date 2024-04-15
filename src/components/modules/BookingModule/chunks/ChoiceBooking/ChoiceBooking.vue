@@ -80,10 +80,10 @@
 
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
-import IconMap from '../../../../../assets/img/map.svg'
-import IconPeople from '../../../../../assets/img/people.svg'
-import IconMan from '../../../../../assets/img/man.svg'
-import IconAnimal from '../../../../../assets/img/animal.svg'
+import IconMap from '../../../../../assets/img/map.svg?skipsvgo'
+import IconPeople from '../../../../../assets/img/people.svg?skipsvgo'
+import IconMan from '../../../../../assets/img/man.svg?skipsvgo'
+import IconAnimal from '../../../../../assets/img/animal.svg?skipsvgo'
 
 export default {
   name: "ChoiceBooking",

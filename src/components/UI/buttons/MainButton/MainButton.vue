@@ -69,8 +69,8 @@
   // import TooltipBtn from "../../tooltips/TooltipBtn/TooltipBtn.vue"
 
 
-  import IconPlus from '../../../../assets/img/plus.svg'
-  import IconArrow from '../../../../assets/img/arrow.svg'
+  import IconPlus from '../../../../assets/img/plus.svg?skipsvgo'
+  import IconArrow from '../../../../assets/img/arrow.svg?skipsvgo'
 
   export default {
     name: "MainButton",
@@ -162,6 +162,7 @@
     padding: 11px 28px;
     border: 1px solid $black;
     position: relative;
+    min-height: 48px;
 
     &.disabled-btn {
       border-color: $border-grey-hover;

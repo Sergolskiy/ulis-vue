@@ -117,7 +117,7 @@ export default {
   }
 
   &__account {
-    @include for-1120 {
+    @include for-992 {
       width: 50%;
     }
 
@@ -129,7 +129,7 @@ export default {
   &__mobile {
     width: 50%;
 
-    @include from-1120 {
+    @include from-992 {
       display: none;
     }
 
@@ -140,19 +140,19 @@ export default {
   }
 
   &__choice {
-    @include for-1120 {
+    @include for-992 {
       display: none;
     }
   }
 
   &__chosen-house {
-    @include for-1120 {
+    @include for-992 {
       display: none;
     }
   }
 
   &__btn {
-    @include for-1120 {
+    @include for-992 {
       display: none;
     }
   }

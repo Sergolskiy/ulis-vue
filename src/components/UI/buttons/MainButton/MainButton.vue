@@ -355,5 +355,11 @@
     &--ico-right &__ico {
       margin-left: 5px;
     }
+
+    &.h-40{
+      min-height: 40px;
+      padding-top: 0;
+      padding-bottom: 0;  
+    }
   }
 </style>

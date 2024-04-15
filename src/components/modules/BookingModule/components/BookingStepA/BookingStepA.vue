@@ -100,7 +100,7 @@
               :label="''"
           />
           <MainButton
-              class="promo-field__btn"
+              class="promo-field__btn h-40"
               :label="'Застосувати'"
           />
         </div>
@@ -200,9 +200,9 @@ export default {
     width: 143px;
   }
 
-  :deep(.main-button) {
-    padding: 11px 28px;
-  }
+  // :deep(.main-button) {
+  //   padding: 11px 28px;
+  // }
 }
 
 

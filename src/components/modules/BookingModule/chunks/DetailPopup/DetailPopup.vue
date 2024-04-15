@@ -19,6 +19,8 @@
         <div class="left-side__btn mb-3">
           <MainButton
               :label="'Додати ще один будинок'"
+              :ico="'plus'"
+              :icoPosition="'right'"
           >
           </MainButton>
         </div>

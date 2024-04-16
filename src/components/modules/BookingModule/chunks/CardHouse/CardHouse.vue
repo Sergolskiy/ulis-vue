@@ -6,12 +6,10 @@
           <div class="card-house__photo"
               :class="{'card-house__photo--big' : detailedInfo}"
           >
-            <img class="card-house__photo-img"
-                src="../../../../../assets/img/house.png" alt="house">
+            <CardSlider
+                :detailedInfo="detailedInfo"
+            />
 
-            <div class="card-house__photo-scale">
-              <IconScaleButton/>
-            </div>
           </div>
           <div class="card-house__overview">
             <div class="card-house__name">
@@ -228,7 +226,6 @@ import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect
 import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 
-import IconScaleButton from '../../../../../assets/img/scale-button.svg?skipsvgo'
 import IconUAH from '../../../../../assets/img/currencies.svg?skipsvgo'
 import IconMap from '../../../../../assets/img/icon-map-16px-grey.svg?skipsvgo'
 import IconPeople from '../../../../../assets/img/icon-people-16px-grey.svg?skipsvgo'
@@ -238,16 +235,17 @@ import IconKitchen from '../../../../../assets/img/card/kitchen.svg?skipsvgo'
 import IconBedroom from '../../../../../assets/img/card/bedroom.svg?skipsvgo'
 import IconLivingRoom from '../../../../../assets/img/card/living-room.svg?skipsvgo'
 import IconOutside from '../../../../../assets/img/card/outside.svg?skipsvgo'
+import CardSlider from "@/components/modules/BookingModule/chunks/CardSlider/CardSlider.vue";
 
 
 export default {
   name: "CardHouse",
   components: {
+    CardSlider,
     MainButton,
     DefaultSelect,
     MainCalendar,
     CalendarDays,
-    IconScaleButton,
     IconUAH,
     IconMap,
     IconPeople,
@@ -377,25 +375,6 @@ export default {
         min-width: 369px;
       }
     }
-  }
-
-  &__photo-scale {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    background: #8C6D46;
-    cursor: pointer;
-  }
-
-  &__photo-img {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   &__overview {

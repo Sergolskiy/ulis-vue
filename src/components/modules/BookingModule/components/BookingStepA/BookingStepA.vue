@@ -63,16 +63,6 @@
           />
         </div>
         <div class="custom-col custom-col--33 custom-col--xs-50">
-<!--          <DefaultSelect-->
-<!--              :label="'Кількість дітей'"-->
-<!--              :options="optionsChild"-->
-<!--              :optionsChild="true"-->
-<!--              :innerSelect="true"-->
-<!--              :inner-icon="'people'"-->
-<!--              :required="'required'"-->
-<!--              :placeholder="'0 дітей'"-->
-<!--          />-->
-
           <CustomSelect
               :label="'Кількість дітей'"
               :options="optionsChild"
@@ -176,25 +166,7 @@ export default {
         {
           id: 1,
           count: 0,
-          selections: [
-            // {
-            //   options: [
-            //     {id: 1, years: 1,},  {
-            //       id: 2,    years: 2,  },  {
-            //       id: 3,    years: 3,  },  {
-            //       id: 4,    years: 4,  },  {
-            //       id: 5,    years: 5,  },  {
-            //       id: 6,    years: 6,  },  {
-            //       id: 7,    years: 7,  },  {
-            //       id: 8,    years: 8,  },  {
-            //       id: 9,    years: 9,  },  {
-            //       id: 10,    years: 10,  },  {
-            //       id: 11,    years: 11,  },  {
-            //       id: 12,    years: 12,  },
-            //   ],
-            //   selected: null,
-            // },
-          ],
+          selections: [],
         }
       ],
 

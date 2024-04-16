@@ -48,15 +48,18 @@
                 :secondary="true"
                 :ico="'arrow'"
                 :icoPosition="'left'"
+                :disabled="Booking.data.activeStep === 1"
+                @click="Booking.data.activeStep = Booking.data.activeStep - 1"
             />
           </div>
           <div class="booking__btn">
+<!--            :disabled="true"-->
             <MainButton
                 :label="'Далі'"
                 :secondary="true"
-                :disabled="true"
                 :ico="'arrow'"
                 :icoPosition="'right'"
+                @click="Booking.data.activeStep = Booking.data.activeStep + 1"
             />
           </div>
 

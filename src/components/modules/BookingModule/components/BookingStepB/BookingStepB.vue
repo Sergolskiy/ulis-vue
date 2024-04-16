@@ -2,7 +2,14 @@
 
   <div class="custom-row">
     <div class="custom-col">
-      <CardHouse/>
+      <CardHouse
+        :Booking="Booking"
+      />
+    </div>
+    <div class="custom-col">
+      <CardHouse
+        :Booking="Booking"
+      />
     </div>
   </div>
 

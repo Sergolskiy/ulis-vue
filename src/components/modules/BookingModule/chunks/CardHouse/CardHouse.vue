@@ -108,39 +108,9 @@
       <div class="card-house__section"
            v-if="detailedInfo && !comfortsCalendarToggle"
       >
-        <div class="card-house__categories categories">
-          <div class="card-house__categories-item categories__item"
-               v-for="(item, index) in categories"
-               :key="index"
-          >
-            <div class="card-house__categories-title categories__title">
-              <div class="card-house__categories-icon categories__icon">
-                <IconBathroom v-if="item.ico == 'bathroom'"/>
-                <IconKitchen v-if="item.ico == 'kitchen'"/>
-                <IconBedroom v-if="item.ico == 'bedroom'"/>
-                <IconLivingRoom v-if="item.ico == 'living-room'"/>
-                <IconOutside v-if="item.ico == 'outside'"/>
-              </div>
-              <div class="card-house__categories-name categories__name">
-                {{ item.name }}
-              </div>
-            </div>
-            <div class="card-house__categories-row categories__row">
-              <div class="card-house__categories-col categories__col"
-                  v-for="(category, index) in item.list"
-                  :key="index"
-              >
-                <div class="card-house__categories-item-content categories__item-content">
-                  {{ category }}
-                </div>
-              </div>
-
-              <div class="card-house__categories-dropdown categories__dropdown">
-                <div class="categories__dropdown-btn"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Highlights 
+          :highlights="highlights"
+        />
       </div>
 
       <div class="card-house__section"
@@ -223,6 +193,7 @@
 <script>
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
+import Highlights from "../../chunks/Highlights/Highlights.vue";
 import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 
@@ -244,6 +215,7 @@ export default {
     CardSlider,
     MainButton,
     DefaultSelect,
+    Highlights,
     MainCalendar,
     CalendarDays,
     IconUAH,
@@ -268,7 +240,7 @@ export default {
     return {
       detailedInfo: false,
       comfortsCalendarToggle: false,
-      categories: [
+      highlights: [
         {
           name: 'Ванна кімната',
           ico: 'bathroom',
@@ -523,25 +495,58 @@ export default {
   &__calendar-days{
     margin-bottom: 24px;
 
-    :deep(.calendar-days__calendar-between-date), 
-    :deep(.calendar-days__calendar-duration-count) {
-      font-weight: 500;
+
+    @include from-680 {
+      :deep(.calendar-days__calendar-between-date), 
+      :deep(.calendar-days__calendar-duration-count) {
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__categories{
+
+    @include for-992 {
+      margin-bottom: 12px;
     }
   }
 
   &__price-section {
-    margin-bottom: 24px;
+
+    @include from-680 {
+      margin-bottom: 24px;
+    } 
+
+    @include for-680 {
+      margin-top: 12px;
+    }
   }
 
   &__price-row {
     display: flex;
     align-items: center;
+
+    @include for-680 {
+      flex-direction: column-reverse;
+      margin-bottom: 8px;
+    }
   }
 
   &__price-col {
+    
+    @include for-680 {
+      width: 100%;
+      margin-bottom: 8px;
+    }
 
     &--left{
       flex: 1 1 auto;
+
+      @include for-550 {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     &--right {
@@ -561,10 +566,29 @@ export default {
     display: flex;
     margin: 0 -12px;
     justify-content: flex-end;
+
+    @include for-550 {
+      margin: 0 -4px;
+    }
   }
 
   &__bottom-btn {
     padding: 0 12px;
+
+    @include for-550 {
+      padding: 0 4px;
+    }
+
+    .main-button{
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .main-button.secondary {
+      @include for-550 {
+        max-width: 96px;
+      }
+    }
   }
 
 }
@@ -606,84 +630,5 @@ export default {
     }
   }
 }
-
-.categories {
-
-  &__item {
-
-  }
-
-  &__title {
-    display: flex;
-    margin-bottom: 8px;
-  }
-
-  &__icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
-
-  &__name {
-    font-weight: 500;
-    padding-top: 4px;
-  }
-
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -4px;
-    margin-bottom: 8px;
-    position: relative;
-
-    @include for-992{
-      transition: .3s;
-      padding-right: 34px;
-      max-height: 30px;
-      overflow: hidden;
-    }
-  }
-
-  &__col {
-    padding: 0 4px;
-    margin-bottom: 8px;
-  }
-
-  &__item-content {
-    padding: 8px;
-    font-size: 12px;
-    border-radius: 8px;
-    border: 1px solid $border-grey;
-    height: 30px;
-  }
-
-  &__dropdown {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-
-    @include from-992{
-      display: none;
-    }
-  }
-
-  &__dropdown-btn {
-    background: $white;
-    width: 30px;
-    height: 30px;
-    border: 1px solid $border-grey;
-    border-radius: 8px;
-    cursor: pointer;
-    background-image: url("../../../../../assets/img/arrow.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 12px;
-  }
-
-}
-
-
-
 
 </style>

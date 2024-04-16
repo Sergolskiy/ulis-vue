@@ -18,14 +18,13 @@
     <div class="default-select__wrapper">
 
       <div class="default-select__inner-ico" v-if="innerIcon" :class="innerIcon"></div>
-
       <v-select
-          append-to-body
           :class="{'with-ico' : innerIcon}"
           class="v-select-item"
           :options="options"
           :label="optionsLabel"
           :calculate-position="withPopper"
+          :append-to-body="!innerSelect"
           :disabled="disabled"
           :filter-by="myFilter"
           :clearable="clearable"
@@ -202,7 +201,11 @@ export default {
     placeholder: {
       type: String,
       default: false,
-    }
+    },
+    innerSelect: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   watch: {
@@ -548,6 +551,42 @@ export default {
   background-color: transparent;
 }
 
+
+.small-select {
+  width: 70px;
+  height: 36px;
+
+  .v-select-item .vs__selected-options {
+    padding-left: 14px;
+  }
+
+  .vs__dropdown-toggle {
+    min-height: 36px;
+    border-radius: 6px;
+  }
+
+  .v-select__arrow {
+    left: 0;
+  }
+
+  .vs__dropdown-menu .vs__dropdown-option {
+    min-height: 32px;
+    padding-left: 16px;
+  }
+
+  .vs__dropdown-menu {
+    min-width: 70px;
+    max-height: 163px;
+  }
+
+  .vs__dropdown-option--selected:after {
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+  }
+}
 
 
 </style>

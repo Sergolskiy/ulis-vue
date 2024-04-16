@@ -34,6 +34,8 @@
       <MainButton
           class="mob-detail-booking__btn"
           :label="'Переглянути'"
+          :ico="'arrow'"
+          :icoPosition="'right'"
           @click="$emit('openPopup')"
       />
 

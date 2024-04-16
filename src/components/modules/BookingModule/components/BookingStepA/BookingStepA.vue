@@ -7,7 +7,7 @@
 
       <InfoBlock
           class="mt-3"
-          :text="'Заповни, будь ласка, обов’язкові поля (обов’язкові поля помічені символом *).'"
+          text='Заповни, будь ласка, обов’язкові поля (обов’язкові поля помічені символом <span class="red">*</span>).'
           :type="'error'"
       />
 
@@ -17,6 +17,7 @@
           :options="['Київ, Дудки', 'Карпати, місто']"
           :inner-icon="'location'"
           :placeholder="'Обери локацію'"
+          :required="'required'"
       />
 
       <FormLabel
@@ -52,7 +53,7 @@
       </div>
 
       <div class="custom-row mt-4">
-        <div class="custom-col custom-col--33 custom-col--xs-100">
+        <div class="custom-col custom-col--33 custom-col--xs-50">
           <DefaultSelect
               :label="'Кількість дорослих'"
               :options="['1 дорослий', '2 дорослих', '3 дорослих']"
@@ -61,13 +62,24 @@
               :placeholder="'0 дорослих'"
           />
         </div>
-        <div class="custom-col custom-col--33 custom-col--xs-100">
-          <DefaultSelect
-              :label="'Кількість дорослих'"
-              :options="['1 дитина', '2 дитини', '3 дитини']"
+        <div class="custom-col custom-col--33 custom-col--xs-50">
+<!--          <DefaultSelect-->
+<!--              :label="'Кількість дітей'"-->
+<!--              :options="optionsChild"-->
+<!--              :optionsChild="true"-->
+<!--              :innerSelect="true"-->
+<!--              :inner-icon="'people'"-->
+<!--              :required="'required'"-->
+<!--              :placeholder="'0 дітей'"-->
+<!--          />-->
+
+          <CustomSelect
+              :label="'Кількість дітей'"
+              :options="optionsChild"
+              :innerSelect="true"
               :inner-icon="'people'"
-              :required="'required'"
               :placeholder="'0 дітей'"
+              @updateCounter="changeCounter"
           />
         </div>
         <div class="custom-col custom-col--33 custom-col--xs-100">
@@ -87,7 +99,6 @@
           />
         </div>
       </div>
-
 
       <FormLabel
           class="mt-4"
@@ -119,11 +130,14 @@ import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays
 import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
+import CustomSelect from "@/components/UI/selections/CustomSelect/CustomSelect.vue";
+
 
 export default {
   name: "BookingStepA",
 
   components: {
+    CustomSelect,
     DefaultCheckbox,
     MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
 
@@ -134,15 +148,77 @@ export default {
     }
   },
 
+  emits: ['updateCounter'],
+
   data() {
     return {
       checked: false,
+
+      defaultSelect: {
+        options: [
+          {id: 1, years: 1,},  {
+            id: 2,    years: 2,  },  {
+            id: 3,    years: 3,  },  {
+            id: 4,    years: 4,  },  {
+            id: 5,    years: 5,  },  {
+            id: 6,    years: 6,  },  {
+            id: 7,    years: 7,  },  {
+            id: 8,    years: 8,  },  {
+            id: 9,    years: 9,  },  {
+            id: 10,    years: 10,  },  {
+            id: 11,    years: 11,  },  {
+            id: 12,    years: 12,  },
+        ],
+        selected: {id: 1, years: 1,},
+      },
+
+      optionsChild: [
+        {
+          id: 1,
+          count: 0,
+          selections: [
+            // {
+            //   options: [
+            //     {id: 1, years: 1,},  {
+            //       id: 2,    years: 2,  },  {
+            //       id: 3,    years: 3,  },  {
+            //       id: 4,    years: 4,  },  {
+            //       id: 5,    years: 5,  },  {
+            //       id: 6,    years: 6,  },  {
+            //       id: 7,    years: 7,  },  {
+            //       id: 8,    years: 8,  },  {
+            //       id: 9,    years: 9,  },  {
+            //       id: 10,    years: 10,  },  {
+            //       id: 11,    years: 11,  },  {
+            //       id: 12,    years: 12,  },
+            //   ],
+            //   selected: null,
+            // },
+          ],
+        }
+      ],
+
     }
   },
 
   mounted() {
 
-  }
+  },
+
+  methods: {
+    changeCounter(item) {
+      if(this.optionsChild[0].count < item) {
+        this.optionsChild[0].selections.push(this.$_.cloneDeep(this.defaultSelect))
+      }
+
+      if(this.optionsChild[0].count > item) {
+        this.optionsChild[0].selections.splice(this.optionsChild[0].selections.length - 1, 1)
+      }
+      console.log(item);
+
+      this.optionsChild[0].count = item
+    },
+  },
 
 }
 </script>

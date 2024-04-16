@@ -23,6 +23,10 @@
 		justify-content: space-between;
 		gap: 20px;
 
+		@include for-1120 {
+			margin-top: 16px;
+		}
+
 		@include for-992 {
 			flex-direction: column;
 		}
@@ -277,4 +281,7 @@
 	}
 }
 
+.red {
+	color: $warning-red-border;
+}
 

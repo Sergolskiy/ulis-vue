@@ -14,8 +14,7 @@
         <StatusWarningRed v-if="type === 'error'" />
       </div>
       <div class="info-block__right">
-        <div class="info-block__txt">
-          {{text}}
+        <div class="info-block__txt" v-html="text">
         </div>
       </div>
     </div>

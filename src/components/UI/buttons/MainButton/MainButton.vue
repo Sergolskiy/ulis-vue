@@ -1,13 +1,14 @@
 <template>
   <button class="main-button"
           :type="type"
-          :class="{'main-button--tooltip' : tooltip == true,
+          :class="{'main-button--tooltip' : tooltip === true,
             'disabled-btn' : disabled,
             'secondary' : secondary,
             'big' : big,
             'text-btn' : textBtn,
-            'main-button--ico-left' : icoPosition == 'left',
-            'main-button--ico-right' : icoPosition == 'right'
+            'main-button--ico-left' : icoPosition === 'left',
+            'main-button--ico-right' : icoPosition === 'right',
+            'main-button--ico-plus' : ico === 'plus',
           }"
   >
 
@@ -353,6 +354,10 @@
       flex-direction: row-reverse;
     }
     &--ico-right &__ico {
+      margin-left: 13px;
+    }
+
+    &--ico-plus &__ico {
       margin-left: 5px;
     }
 

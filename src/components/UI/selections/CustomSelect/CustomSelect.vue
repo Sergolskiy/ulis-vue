@@ -12,7 +12,6 @@
       >
 
         <div class="custom-select__inner-ico" v-if="innerIcon" :class="innerIcon"></div>
-
         <div class="custom-select__selected" v-if="getLabel !== ''">
           {{getLabel}}
         </div>
@@ -130,8 +129,8 @@ export default {
 
   computed: {
     getLabel() {
-      if(this.selected && this.selected[this.optionsLabel]) {
-        return this.selected[this.optionsLabel]
+      if(this.options[0].selected) {
+        return this.options[0].selected
       }
       return ''
     },
@@ -206,7 +205,12 @@ export default {
   }
 
   &__placeholder {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
     padding-top: 2px;
+    color: $grey;
   }
 
   &__arrow {

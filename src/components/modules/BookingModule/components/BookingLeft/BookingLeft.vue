@@ -12,11 +12,15 @@
       </div>
 
       <div class="left-side__choice">
-        <ChoiceBooking/>
+        <ChoiceBooking
+            :Booking="Booking"
+        />
       </div>
 
       <div class="left-side__chosen-house">
-        <ChosenHouse/>
+        <ChosenHouse
+            :Booking="Booking"
+        />
       </div>
 
       <div class="left-side__btn mb-3">
@@ -32,6 +36,7 @@
     <DetailPopup
         class="mobile-detail-popup"
         :class="{'active': openDetailPopup}"
+        :Booking="Booking"
         @close="closePopup"
     />
 

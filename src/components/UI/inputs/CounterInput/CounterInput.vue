@@ -101,6 +101,10 @@ export default {
     display: flex;
     align-items: center;
 
+    &:deep(.default-input-wrap) {
+      pointer-events: none;
+    }
+
     &:deep(.default-input) {
       padding: 0;
       width: 36px;

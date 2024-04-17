@@ -1,197 +1,213 @@
 <template>
   <div class="chosen-house">
     <div class="chosen-house__inner">
-      <div class="chosen-house__block-title">
-        Будинок №1
-      </div>
-      <div class="chosen-house__content">
-        <div class="chosen-house__img">
-          <img src="../../../../../assets/img/chosen-house.png" alt="logo">
-        </div>
-        <div class="chosen-house__info">
-          <div class="chosen-house__title">
-            <div class="chosen-house__name">
-              Будинок на 1 спальню у лісі з додатковим текстом для тестування
-            </div>
-            <div class="chosen-house__price-small">
-              4600
-              <IconUAH/>
-            </div>
-          </div>
 
-          <div class="chosen-house__overview">
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconPeople/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                Для 2-х гостей (+1)
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconMap/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                Київ, Дудки
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconBuildings/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                36 м <sup>2</sup>
-              </div>
-            </div>
-          </div>
+      <div class="chosen-house__info-block"
+           v-if="Booking.data.activeStep === 2">
+        <div class="chosen-house__block-title">
+          Твій будинок
         </div>
+        <InfoBlock
+            :text="'Ти поки не вніс жодної інформації, як тільки ти заповниш поля на цьому етапі, вони з’являться тут.'"
+            :type="'warning'"
+        />
       </div>
 
-      <div class="chosen-house__content chosen-house__service">
-        <div class="chosen-house__img chosen-house__service-img">
-          <img src="../../../../../assets/img/chosen-house-chan.png" alt="logo">
+      <template
+          v-if="Booking.data.activeStep > 2">
+        <div class="chosen-house__block-title">
+          Будинок №1
         </div>
-        <div class="chosen-house__info chosen-house__service-info">
-          <div class="chosen-house__title">
-            <div class="chosen-house__name chosen-house__service-name">
-              Чан
-            </div>
-            <div class="chosen-house__price-small">
-              2600
-              <IconUAH/>
-            </div>
+        <div class="chosen-house__content">
+          <div class="chosen-house__img">
+            <img src="../../../../../assets/img/chosen-house.png" alt="logo">
           </div>
+          <div class="chosen-house__info">
+            <div class="chosen-house__title">
+              <div class="chosen-house__name">
+                Будинок на 1 спальню у лісі з додатковим текстом для тестування
+              </div>
+              <div class="chosen-house__price-small">
+                4600
+                <IconUAH/>
+              </div>
+            </div>
 
-          <div class="chosen-house__overview">
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconPeople/>
+            <div class="chosen-house__overview">
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconPeople/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  Для 2-х гостей (+1)
+                </div>
               </div>
-              <div class="chosen-house__overview-txt">
-                2 гостя
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconMap/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  Київ, Дудки
+                </div>
               </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconClock/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                4 грудня 13:00
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconBuildings/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                Капці, шапочки, рушники та напої
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconBuildings/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  36 м <sup>2</sup>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="chosen-house__content chosen-house__service">
-        <div class="chosen-house__img chosen-house__service-img">
-          <img src="../../../../../assets/img/chosen-house-sauna.png" alt="logo">
-        </div>
-        <div class="chosen-house__info chosen-house__service-info">
-          <div class="chosen-house__title">
-            <div class="chosen-house__name chosen-house__service-name">
-              Сауна
-            </div>
-            <div class="chosen-house__price-small">
-              2600
-              <IconUAH/>
-            </div>
+        <div class="chosen-house__content chosen-house__service">
+          <div class="chosen-house__img chosen-house__service-img">
+            <img src="../../../../../assets/img/chosen-house-chan.png" alt="logo">
           </div>
+          <div class="chosen-house__info chosen-house__service-info">
+            <div class="chosen-house__title">
+              <div class="chosen-house__name chosen-house__service-name">
+                Чан
+              </div>
+              <div class="chosen-house__price-small">
+                2600
+                <IconUAH/>
+              </div>
+            </div>
 
-          <div class="chosen-house__overview">
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconClock/>
+            <div class="chosen-house__overview">
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconPeople/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  2 гостя
+                </div>
               </div>
-              <div class="chosen-house__overview-txt">
-                4 грудня 13:00
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconClock/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  4 грудня 13:00
+                </div>
               </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconBicycle/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                2 велосипеди (+ дитячий)
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconEcommerce/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                1 послуга
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconBed/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                Пізнє виселення та раннє заселення
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconSettle/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                пн, 4 грудня 2023 10:00
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconDeport/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                пн, 4 грудня 2023 20:00
-              </div>
-            </div>
-            <div class="chosen-house__overview-item">
-              <div class="chosen-house__overview-ico">
-                <IconFood/>
-              </div>
-              <div class="chosen-house__overview-txt">
-                1 x Половина курча з запеченою картоплею з розмарином
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconBuildings/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  Капці, шапочки, рушники та напої
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="chosen-house__add-service">
-        <div class="chosen-house__add-service-btn">
-          <MainButton
-            :label="'Додати сервіси'"
-            :secondary="true"
-            :ico="'plus'"
-            :icoPosition="'left'"
-          >
-          </MainButton>
-        </div>
-      </div>
+        <div class="chosen-house__content chosen-house__service">
+          <div class="chosen-house__img chosen-house__service-img">
+            <img src="../../../../../assets/img/chosen-house-sauna.png" alt="logo">
+          </div>
+          <div class="chosen-house__info chosen-house__service-info">
+            <div class="chosen-house__title">
+              <div class="chosen-house__name chosen-house__service-name">
+                Сауна
+              </div>
+              <div class="chosen-house__price-small">
+                2600
+                <IconUAH/>
+              </div>
+            </div>
 
-      <div class="chosen-house__price-block">
-        <div class="chosen-house__overview-txt">
-          1 ніч, 2 дорослих
+            <div class="chosen-house__overview">
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconClock/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  4 грудня 13:00
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconBicycle/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  2 велосипеди (+ дитячий)
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconEcommerce/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  1 послуга
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconBed/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  Пізнє виселення та раннє заселення
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconSettle/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  пн, 4 грудня 2023 10:00
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconDeport/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  пн, 4 грудня 2023 20:00
+                </div>
+              </div>
+              <div class="chosen-house__overview-item">
+                <div class="chosen-house__overview-ico">
+                  <IconFood/>
+                </div>
+                <div class="chosen-house__overview-txt">
+                  1 x Половина курча з запеченою картоплею з розмарином
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="chosen-house__price-big chosen-house__price-block--big">
-          <IconUAH/>
-          10 600
+
+        <div class="chosen-house__add-service">
+          <div class="chosen-house__add-service-btn">
+            <MainButton
+                :label="'Додати сервіси'"
+                :secondary="true"
+                :ico="'plus'"
+                :icoPosition="'left'"
+            >
+            </MainButton>
+          </div>
         </div>
-        <div class="chosen-house__overview-txt">
-          Враховуючи сервіси
+
+        <div class="chosen-house__price-block">
+          <div class="chosen-house__overview-txt">
+            1 ніч, 2 дорослих
+          </div>
+          <div class="chosen-house__price-big chosen-house__price-block--big">
+            <IconUAH/>
+            10 600
+          </div>
+          <div class="chosen-house__overview-txt">
+            Враховуючи сервіси
+          </div>
         </div>
-      </div>
+      </template>
+
     </div>
   </div>
 </template>
@@ -219,7 +235,25 @@ export default {
     InfoBlock, 
     MainButton,
     IconUAH,
-    IconMap, IconPeople, IconBuildings, IconClock, IconCalendar, IconBicycle, IconEcommerce, IconBed, IconFood, IconSettle, IconDeport}
+    IconMap,
+    IconPeople,
+    IconBuildings,
+    IconClock, IconCalendar,
+    IconBicycle,
+    IconEcommerce,
+    IconBed,
+    IconFood,
+    IconSettle,
+    IconDeport
+  },
+
+  props: {
+    Booking: {
+      type: Object,
+      default: null,
+    }
+  },
+
 }
 </script>
 
@@ -234,6 +268,10 @@ export default {
 
   &__inner{
    padding: 16px;
+  }
+
+  &__info-block {
+
   }
 
   &__block-title{

@@ -4,75 +4,77 @@
       <div class="choice-booking__title">
         Твій вибір
       </div>
-      <div class="choice-booking__info">
-        <div class="choice-booking__listing custom-row">
-          <div class="choice-booking__listing-col custom-col">
-            <div class="choice-booking__listing-date">
-              <div class="choice-booking__listing-date-col">
-                <div class="choice-booking__listing-date-label">
-                  Заїзд
-                </div>
-                <div class="choice-booking__listing-date-field">
-                  пн, 4 груд. 2023
-                </div>
-              </div>
-              <div class="choice-booking__listing-date-col">
-                <div class="choice-booking__listing-date-label">
-                  Виїзд
-                </div>
-                <div class="choice-booking__listing-date-field">
-                  чт, 5 груд. 2023
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="choice-booking__listing-col custom-col">
-            <div class="choice-booking__listing-item">
-              <div class="choice-booking__listing-ico">
-                <IconMap/>
-              </div>
-              <div class="choice-booking__listing-txt">
-                Київ, Дудки
-              </div>
-            </div>
-          </div>
-          <div class="choice-booking__listing-col custom-col custom-col--50">
-            <div class="choice-booking__listing-item">
-              <div class="choice-booking__listing-ico">
-                <IconPeople/>
-              </div>
-              <div class="choice-booking__listing-txt">
-                2 дорослих
-              </div>
-            </div>
-          </div>
-          <div class="choice-booking__listing-col custom-col custom-col--50">
-            <div class="choice-booking__listing-item">
-              <div class="choice-booking__listing-ico">
-                <IconMan/>
-              </div>
-              <div class="choice-booking__listing-txt">
-                1 дитина
-              </div>
-            </div>
-          </div>
-          <div class="choice-booking__listing-col custom-col custom-col--50">
-            <div class="choice-booking__listing-item">
-              <div class="choice-booking__listing-ico">
-                <IconAnimal/>
-              </div>
-              <div class="choice-booking__listing-txt">
-                1 тварина
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="choice-booking__info"
+           v-if="Booking.data.activeStep === 1">
         <InfoBlock
             :text="'Ти поки не вніс жодної інформації, як тільки ти заповниш поля на цьому етапі, вони з’являться тут.'"
             :type="'warning'"
         />
+      </div>
 
+      <div class="choice-booking__listing custom-row"
+           v-if="Booking.data.activeStep > 1"
+      >
+        <div class="choice-booking__listing-col custom-col">
+          <div class="choice-booking__listing-date">
+            <div class="choice-booking__listing-date-col">
+              <div class="choice-booking__listing-date-label">
+                Заїзд
+              </div>
+              <div class="choice-booking__listing-date-field">
+                пн, 4 груд. 2023
+              </div>
+            </div>
+            <div class="choice-booking__listing-date-col">
+              <div class="choice-booking__listing-date-label">
+                Виїзд
+              </div>
+              <div class="choice-booking__listing-date-field">
+                чт, 5 груд. 2023
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="choice-booking__listing-col custom-col">
+          <div class="choice-booking__listing-item">
+            <div class="choice-booking__listing-ico">
+              <IconMap/>
+            </div>
+            <div class="choice-booking__listing-txt">
+              Київ, Дудки
+            </div>
+          </div>
+        </div>
+        <div class="choice-booking__listing-col custom-col custom-col--50">
+          <div class="choice-booking__listing-item">
+            <div class="choice-booking__listing-ico">
+              <IconPeople/>
+            </div>
+            <div class="choice-booking__listing-txt">
+              2 дорослих
+            </div>
+          </div>
+        </div>
+        <div class="choice-booking__listing-col custom-col custom-col--50">
+          <div class="choice-booking__listing-item">
+            <div class="choice-booking__listing-ico">
+              <IconMan/>
+            </div>
+            <div class="choice-booking__listing-txt">
+              1 дитина
+            </div>
+          </div>
+        </div>
+        <div class="choice-booking__listing-col custom-col custom-col--50">
+          <div class="choice-booking__listing-item">
+            <div class="choice-booking__listing-ico">
+              <IconAnimal/>
+            </div>
+            <div class="choice-booking__listing-txt">
+              1 тварина
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -87,7 +89,21 @@ import IconAnimal from '../../../../../assets/img/animal.svg?skipsvgo'
 
 export default {
   name: "ChoiceBooking",
-  components: {InfoBlock, IconMap, IconPeople, IconMan, IconAnimal}
+  components: {
+    InfoBlock,
+    IconMap,
+    IconPeople,
+    IconMan,
+    IconAnimal,
+  },
+
+  props: {
+    Booking: {
+      type: Object,
+      default: null,
+    },
+  },
+
 }
 </script>
 
@@ -120,11 +136,11 @@ export default {
     margin-top: 16px;
   }
 
-  &__listing{
-
+  &__listing {
+    margin-top: 16px;
   }
 
-  &__listing-date{
+  &__listing-date {
     padding: 8px;
     display: flex;
     border-radius: 4px;
@@ -132,16 +148,16 @@ export default {
     min-height: 56px;
   }
 
-  &__listing-date-col{
+  &__listing-date-col {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
 
-    &:nth-child(odd){
+    &:nth-child(odd) {
       position: relative;
 
-      &:after{
+      &:after {
         content: '';
         position: absolute;
         right: 0;
@@ -153,26 +169,26 @@ export default {
       }
     }
 
-    &:nth-child(even)> div {
+    &:nth-child(even) > div {
       text-align: right;
     }
   }
 
-  &__listing-date-label{
+  &__listing-date-label {
     font-size: 12px;
     margin-bottom: 4px;
   }
 
-  &__listing-date-field{
+  &__listing-date-field {
     font-size: 16px;
     font-weight: 500;
 
     @include for-768 {
-     font-size: 14px;
+      font-size: 14px;
     }
   }
 
-  &__listing-col{
+  &__listing-col {
     margin-bottom: 16px;
     padding: 0 8px;
 
@@ -181,7 +197,7 @@ export default {
     }
   }
 
-  &__listing-item{
+  &__listing-item {
     display: flex;
     align-items: flex-end;
     border-radius: 4px;
@@ -190,13 +206,13 @@ export default {
     padding: 0 8px 8px;
   }
 
-  &__listing-ico{
+  &__listing-ico {
     margin-right: 8px;
     width: 24px;
     height: 24px;
   }
 
-  &__listing-txt{
+  &__listing-txt {
     font-size: 16px;
     text-overflow: ellipsis;
     white-space: nowrap;

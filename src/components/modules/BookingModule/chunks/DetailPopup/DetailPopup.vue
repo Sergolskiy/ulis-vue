@@ -12,9 +12,13 @@
 
       <div class="detail-popup__content">
 
-        <ChoiceBooking/>
+        <ChoiceBooking
+            :Booking="Booking"
+        />
 
-        <ChosenHouse/>
+        <ChosenHouse
+            :Booking="Booking"
+        />
 
         <div class="left-side__btn mb-3">
           <MainButton
@@ -39,7 +43,20 @@ import BackTo from '../../../../../../src/assets/img/back-to.svg?skipsvgo'
 
 export default {
   name: "DetailPopup",
-  components: {ChosenHouse, ChoiceBooking, MainButton, BackTo}
+  components: {
+    ChosenHouse,
+    ChoiceBooking,
+    MainButton,
+    BackTo
+  },
+
+  props: {
+    Booking: {
+      type: Object,
+      default: null,
+    }
+  },
+
 }
 </script>
 

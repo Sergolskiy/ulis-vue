@@ -167,6 +167,7 @@ export default {
           id: 1,
           count: 0,
           selections: [],
+          selected: null,
         }
       ],
 
@@ -186,7 +187,12 @@ export default {
       if(this.optionsChild[0].count > item) {
         this.optionsChild[0].selections.splice(this.optionsChild[0].selections.length - 1, 1)
       }
-      console.log(item);
+
+      if(item > 0) {
+        this.optionsChild[0].selected = item + ' ' + this.getNoun(item, 'дитина', 'дитини', 'дітей')
+      } else {
+        this.optionsChild[0].selected = null
+      }
 
       this.optionsChild[0].count = item
     },

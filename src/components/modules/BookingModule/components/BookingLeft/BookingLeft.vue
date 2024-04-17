@@ -17,13 +17,13 @@
         />
       </div>
 
-      <div class="left-side__chosen-house">
+      <div class="left-side__chosen-house" v-if="Booking.data.activeStep >= 2">
         <ChosenHouse
             :Booking="Booking"
         />
       </div>
 
-      <div class="left-side__btn mb-3">
+      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 2">
         <MainButton
             :label="'Додати ще один будинок'"
             :ico="'plus'"

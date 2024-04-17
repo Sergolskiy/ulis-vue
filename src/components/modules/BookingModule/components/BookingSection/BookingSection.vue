@@ -53,8 +53,8 @@
             />
           </div>
           <div class="booking__btn">
-<!--            :disabled="true"-->
             <MainButton
+                :disabled="true"
                 :label="'Далі'"
                 :secondary="true"
                 :ico="'arrow'"

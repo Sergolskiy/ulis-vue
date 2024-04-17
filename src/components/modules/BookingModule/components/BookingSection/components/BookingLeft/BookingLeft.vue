@@ -23,7 +23,7 @@
         />
       </div>
 
-      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 2">
+      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 3">
         <MainButton
             :label="'Додати ще один будинок'"
             :ico="'plus'"
@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import Account from "../../chunks/Account/Account.vue";
-import ChoiceBooking from "../../chunks/ChoiceBooking/ChoiceBooking.vue";
-import ChosenHouse from "../../chunks/ChosenHouse/ChosenHouse.vue";
-import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
+import Account from "../../../../chunks/Account/Account.vue";
+import ChoiceBooking from "../../../../chunks/ChoiceBooking/ChoiceBooking.vue";
+import ChosenHouse from "../../../../chunks/ChosenHouse/ChosenHouse.vue";
+import MainButton from "../../../../../../UI/buttons/MainButton/MainButton.vue";
 import MobileDetailBooking from "@/components/modules/BookingModule/chunks/MobileDetailBooking/MobileDetailBooking.vue";
 import DetailPopup from "@/components/modules/BookingModule/chunks/DetailPopup/DetailPopup.vue";
 
@@ -95,8 +95,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../../scss/colors";
-@import "../../../../../scss/mixins/mixins";
+@import "../../../../../../../scss/colors";
+@import "../../../../../../../scss/mixins/mixins";
 
 .mobile-detail-popup {
   transition: 0.3s;

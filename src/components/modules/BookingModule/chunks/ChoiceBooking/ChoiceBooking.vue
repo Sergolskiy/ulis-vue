@@ -16,24 +16,28 @@
            v-if="Booking.data.activeStep > 1"
       >
         <div class="choice-booking__listing-col custom-col">
-          <div class="choice-booking__listing-date">
-            <div class="choice-booking__listing-date-col">
-              <div class="choice-booking__listing-date-label">
-                Заїзд
-              </div>
-              <div class="choice-booking__listing-date-field">
-                пн, 4 груд. 2023
-              </div>
-            </div>
-            <div class="choice-booking__listing-date-col">
-              <div class="choice-booking__listing-date-label">
-                Виїзд
-              </div>
-              <div class="choice-booking__listing-date-field">
-                чт, 5 груд. 2023
-              </div>
-            </div>
-          </div>
+          <CalendarDays
+              :Booking="Booking"
+              :duration="false"
+          />
+<!--          <div class="choice-booking__listing-date">-->
+<!--            <div class="choice-booking__listing-date-col">-->
+<!--              <div class="choice-booking__listing-date-label">-->
+<!--                Заїзд-->
+<!--              </div>-->
+<!--              <div class="choice-booking__listing-date-field">-->
+<!--                пн, 4 груд. 2023-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="choice-booking__listing-date-col">-->
+<!--              <div class="choice-booking__listing-date-label">-->
+<!--                Виїзд-->
+<!--              </div>-->
+<!--              <div class="choice-booking__listing-date-field">-->
+<!--                чт, 5 груд. 2023-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
         <div class="choice-booking__listing-col custom-col">
           <div class="choice-booking__listing-item">
@@ -86,10 +90,12 @@ import IconMap from '../../../../../assets/img/map.svg?skipsvgo'
 import IconPeople from '../../../../../assets/img/people.svg?skipsvgo'
 import IconMan from '../../../../../assets/img/man.svg?skipsvgo'
 import IconAnimal from '../../../../../assets/img/animal.svg?skipsvgo'
+import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 
 export default {
   name: "ChoiceBooking",
   components: {
+    CalendarDays,
     InfoBlock,
     IconMap,
     IconPeople,

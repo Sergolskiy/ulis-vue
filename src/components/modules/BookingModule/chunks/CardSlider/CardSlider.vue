@@ -1,26 +1,27 @@
 <template>
   <Splide class="card-slider" :options="{ rewind: true }" aria-label="My Favorite Images">
 
-    <SplideSlide>
+    <SplideSlide v-for="(item, index) in images" :key="index">
       <div class="card-house__photo-inner"
-           :class="{'card-house__photo-inner--big' : detailedInfo}">
+           :class="{
+              'card-house__photo-inner--big' : detailedInfo,
+              'card-house__photo-inner--full' : popup,
+            }">
         <img class="card-house__photo-img"
-             src="../../../../../assets/img/house.png" alt="house">
+             :src="item.src" :alt="item.alt">
       </div>
     </SplideSlide>
-    <SplideSlide>
-      <div class="card-house__photo-inner"
-           :class="{'card-house__photo-inner--big' : detailedInfo}">
-        <img class="card-house__photo-img"
-             src="../../../../../assets/img/house.png" alt="house">
-      </div>
-    </SplideSlide>
+<!--    <SplideSlide>-->
+<!--      <div class="card-house__photo-inner"-->
+<!--           :class="{'card-house__photo-inner&#45;&#45;big' : detailedInfo}">-->
+<!--        <img class="card-house__photo-img"-->
+<!--             src="../../../../../assets/img/house.png" alt="house">-->
+<!--      </div>-->
+<!--    </SplideSlide>-->
 
   </Splide>
 
-  <div class="card-house__photo-scale">
-    <IconScaleButton/>
-  </div>
+
 
 
 </template>
@@ -42,7 +43,15 @@ export default {
     detailedInfo: {
       type: Boolean,
       default: false,
-    }
+    },
+    popup: {
+      type: Boolean,
+      default: false,
+    },
+    images: {
+      type: Array,
+      default: false,
+    },
   }
 
 
@@ -76,6 +85,12 @@ export default {
         min-width: 369px;
       }
     }
+
+    &--full {
+      height: auto;
+      width: 100%;
+      margin-bottom: 0;
+    }
   }
 
   &__photo-img {
@@ -86,16 +101,7 @@ export default {
     align-items: center;
   }
 
-  &__photo-scale {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    background: #8C6D46;
-    cursor: pointer;
-  }
+
 }
 
 .card-slider {

@@ -50,7 +50,7 @@
                    :key="index"
               >
                 <DefaultSelect
-                    class="small-select"
+                    class="extra-small-select"
                     :options="item.options"
                     :customValue="'true'"
                     :optionsLabel="'years'"
@@ -153,17 +153,25 @@ export default {
   },
 
   mounted() {
-    document.addEventListener('click', event => {
-      if(!event.target.closest('.custom-select') && this.openSelect) {
-        this.toggleSelect()
-      }
-    })
+    document.addEventListener('click', this.eventListener)
   },
 
   methods: {
     toggleSelect() {
       this.openSelect = !this.openSelect
     },
+
+
+    eventListener(event) {
+      if(!event.target.closest('.custom-select') && this.openSelect) {
+        this.toggleSelect()
+      }
+    }
+  },
+
+
+  beforeUnmount() {
+    document.removeEventListener('click', this.eventListener)
   },
 
 }

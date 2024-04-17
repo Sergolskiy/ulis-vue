@@ -8,8 +8,13 @@
           >
             <CardSlider
                 :detailedInfo="detailedInfo"
+                :images="images"
             />
-
+            <div class="card-house__photo-scale"
+                 @click="toggleSliderPopup(true)"
+            >
+              <IconScaleButton/>
+            </div>
           </div>
           <div class="card-house__overview">
             <div class="card-house__name">
@@ -48,7 +53,7 @@
                 v-if="detailedInfo"
             >
               <p>
-                Будинок з однією спальною кімнатою обладнано функціональною кухнею та санвузлом. 
+                Будинок з однією спальною кімнатою обладнано функціональною кухнею та санвузлом.
                 спальні є місце для роботи, а у вітальні є камін та панорамні вікна з чудовими краєвидами. Будинок має садові меблі та мангал.
               </p>
                 Спальні місця:<br>
@@ -72,7 +77,7 @@
                  v-if="!detailedInfo"
             >
               <div class="card-house__more-btn">
-                <MainButton 
+                <MainButton
                   :label="'Детальніше'"
                   :ico="'plus'"
                   :icoPosition="'right'"
@@ -89,14 +94,14 @@
       >
         <div class="card-house__toggle-section">
           <div class="card-house__toggle-col">
-            <MainButton 
+            <MainButton
               :label="'Зручності'"
               :secondary="comfortsCalendarToggle"
               @click="comfortsCalendarToggle = false"
             />
           </div>
           <div class="card-house__toggle-col">
-            <MainButton 
+            <MainButton
               :label="'Календар доступності'"
               :secondary="!comfortsCalendarToggle"
               @click="comfortsCalendarToggle = true"
@@ -108,7 +113,7 @@
       <div class="card-house__section"
            v-if="detailedInfo && !comfortsCalendarToggle"
       >
-        <Highlights 
+        <Highlights
           :highlights="highlights"
         />
       </div>
@@ -147,6 +152,7 @@
             <div class="card-house__price-col card-house__price-col--right">
               <div class="card-house__house-number">
                 <DefaultSelect
+                    class="small-select"
                     :options="[`1.1`, '1.2', '2.1']"
                     :selected="'1.1'"
                 />
@@ -172,14 +178,14 @@
       >
         <div class="card-house__bottom">
           <div class="card-house__bottom-btn">
-            <MainButton 
+            <MainButton
               :label="'Закрити'"
               :secondary="true"
               @click="detailedInfo = false"
             />
           </div>
           <div class="card-house__bottom-btn">
-            <MainButton 
+            <MainButton
               :label="'Забронювати'"
             />
           </div>
@@ -188,6 +194,15 @@
 
     </div>
   </div>
+
+  <transition name="fade">
+    <SliderPopup
+        v-if="openSliderPopup"
+        :images="images"
+        @closeSliderPopup="toggleSliderPopup(false)"
+    />
+  </transition>
+
 </template>
 
 <script>
@@ -207,11 +222,15 @@ import IconBedroom from '../../../../../assets/img/card/bedroom.svg?skipsvgo'
 import IconLivingRoom from '../../../../../assets/img/card/living-room.svg?skipsvgo'
 import IconOutside from '../../../../../assets/img/card/outside.svg?skipsvgo'
 import CardSlider from "@/components/modules/BookingModule/chunks/CardSlider/CardSlider.vue";
+import SliderPopup from "@/components/modules/BookingModule/chunks/SliderPopup/SliderPopup.vue";
+import IconScaleButton from "@/assets/img/scale-button.svg";
 
 
 export default {
   name: "CardHouse",
   components: {
+    IconScaleButton,
+    SliderPopup,
     CardSlider,
     MainButton,
     DefaultSelect,
@@ -229,6 +248,8 @@ export default {
     IconOutside
   },
 
+  emits: ['closeSliderPopup'],
+
   props: {
     Booking: {
       type: Object,
@@ -236,8 +257,19 @@ export default {
     }
   },
 
-  data: function () {
+  data () {
     return {
+      openSliderPopup: false,
+      images: [
+        {
+          src: '/src/assets/img/house.png',
+          alt: 'house',
+        },
+        {
+          src: '/src/assets/img/house.png',
+          alt: 'house',
+        },
+      ],
       detailedInfo: false,
       comfortsCalendarToggle: false,
       highlights: [
@@ -297,7 +329,14 @@ export default {
           ]
         },
       ],
-    };
+    }
+  },
+
+  methods: {
+    toggleSliderPopup(val) {
+      this.openSliderPopup = val
+      document.body.style.overflow = val ? 'hidden' : 'initial'
+    }
   },
 }
 </script>
@@ -347,6 +386,17 @@ export default {
         min-width: 369px;
       }
     }
+  }
+
+  &__photo-scale {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: #8C6D46;
+    cursor: pointer;
   }
 
   &__overview {
@@ -629,6 +679,16 @@ export default {
       padding-top: 2px;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 </style>

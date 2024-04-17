@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import CardHouse from "../../chunks/CardHouse/CardHouse.vue";
+import CardHouse from "../../../../chunks/CardHouse/CardHouse.vue";
 
 export default {
   name: "BookingStepB",

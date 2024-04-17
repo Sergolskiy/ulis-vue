@@ -19,7 +19,9 @@
       </div>
     </div>
 
-    <div class="calendar-days__calendar-duration">
+    <div class="calendar-days__calendar-duration"
+         v-if="duration"
+    >
       <div class="calendar-days__calendar-duration-name">
         Тривалість
       </div>
@@ -38,7 +40,11 @@ export default {
     Booking: {
       type: Object,
       default: null,
-    }
+    },
+    duration: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   computed: {
@@ -76,6 +82,8 @@ export default {
   &__calendar-top {
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 411px;
   }
 
   &__calendar-between {
@@ -83,15 +91,17 @@ export default {
     border: 1px solid $border-grey;
     padding: 8px;
     display: flex;
+    width: 100%;
   }
 
   &__calendar-between-first {
     position: relative;
-    width: 152px;
-
-    @include for-768 {
-      width: 93px;
-    }
+    //width: 152px;
+    width: 50%;
+    
+    //@include for-768 {
+    //  width: 93px;
+    //}
 
     &:after {
       content: '';
@@ -135,12 +145,13 @@ export default {
   }
 
   &__calendar-between-last {
-    width: 152px;
+    //width: 152px;
+    width: 50%;
     text-align: right;
 
-    @include for-768 {
-      width: 93px;
-    }
+    //@include for-768 {
+    //  width: 93px;
+    //}
   }
 
   &__calendar-duration {

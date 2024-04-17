@@ -236,6 +236,11 @@ export default {
 
   methods: {
     withPopper (dropdownList, component, {width}) {
+      if(this.innerIcon) {
+        dropdownList.classList.add("inner-icon");
+      }
+
+      console.log(dropdownList);
       dropdownList.style.width = width
       const popper = createPopper(component.$refs.toggle, dropdownList, {})
       return () => popper.destroy()
@@ -263,11 +268,16 @@ export default {
     .vs__search {
       //padding-left: 44px;
     }
+
+    .vs__selected-options {
+      padding-left: 44px;
+    }
   }
 
   .vs__selected-options {
-    padding-left: 44px;
+    padding-left: 12px;
   }
+
 }
 
 .default-select{
@@ -398,14 +408,25 @@ export default {
 .vs__dropdown-menu {
   box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.16) !important;
   border: 0 !important;
+  min-width: 70px !important;
+  padding: 0 !important;
 }
 
 .vs__dropdown-menu .vs__dropdown-option {
-  padding-left: 44px;
+  padding-left: 12px;
 
   &--highlight {
     background: $white;
   }
+}
+
+.vs--open .vs__dropdown-toggle{
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.vs__dropdown-menu.inner-icon .vs__dropdown-option{
+  padding-left: 44px;
 }
 
 .vs__dropdown-option--selected {
@@ -480,7 +501,7 @@ export default {
 
 
 .vs__dropdown-menu{
-  border-radius: 8px;
+  border-radius: 8px !important;
   padding-top: 0;
   padding-bottom: 0;
   max-height: 200px;
@@ -552,7 +573,7 @@ export default {
 }
 
 
-.small-select {
+.default-select.extra-small-select {
   width: 70px;
   height: 36px;
 
@@ -588,5 +609,8 @@ export default {
   }
 }
 
+.default-select.small-select .vs__dropdown-toggle {
+  min-height: 44px;
+}
 
 </style>

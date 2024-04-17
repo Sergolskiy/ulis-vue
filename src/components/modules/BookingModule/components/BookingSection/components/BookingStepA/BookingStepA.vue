@@ -112,10 +112,10 @@
 </template>
 
 <script>
-import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
-import FormLabel from "../../../../UI/labels/FormLabel/FormLabel.vue";
-import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
-import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
+import InfoBlock from "../../../../../../UI/labels/InfoBlock/InfoBlock.vue";
+import FormLabel from "../../../../../../UI/labels/FormLabel/FormLabel.vue";
+import MainCalendar from "../../../../chunks/MainCalendar/MainCalendar.vue";
+import DefaultSelect from "../../../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
@@ -202,8 +202,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../../scss/colors";
-@import "../../../../../scss/mixins/mixins";
+@import "../../../../../../../scss/colors";
+@import "../../../../../../../scss/mixins/mixins";
 
 .your-choice {
   border: 1px solid $border-grey;

@@ -191,6 +191,7 @@ export default {
     @include for-1120 {
       svg {
         width: 98px;
+        height: 32px;
       }
     }
   }

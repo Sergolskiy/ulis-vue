@@ -53,8 +53,8 @@
             />
           </div>
           <div class="booking__btn">
+<!--                :disabled="true"-->
             <MainButton
-                :disabled="true"
                 :label="'Далі'"
                 :secondary="true"
                 :ico="'arrow'"
@@ -77,13 +77,13 @@
 
 <script>
 
-import BookingLeft from "../BookingLeft/BookingLeft.vue";
-import BookingStepA from "../BookingStepA/BookingStepA.vue";
-import BookingStepB from "../BookingStepB/BookingStepB.vue";
-import BookingStepC from "../BookingStepC/BookingStepC.vue";
-import BookingStepD from "../BookingStepD/BookingStepD.vue";
-import BookingStepE from "../BookingStepE/BookingStepE.vue";
-import BookingTop from "../BookingTop/BookingTop.vue";
+import BookingLeft from "@/components/modules/BookingModule/components/BookingSection/components/BookingLeft/BookingLeft.vue";
+import BookingStepA from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepA/BookingStepA.vue";
+import BookingStepB from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepB/BookingStepB.vue";
+import BookingStepC from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepC/BookingStepC.vue";
+import BookingStepD from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepD/BookingStepD.vue";
+import BookingStepE from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepE/BookingStepE.vue";
+import BookingTop from "@/components/modules/BookingModule/components/BookingSection/components/BookingTop/BookingTop.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 
 export default {

@@ -122,8 +122,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../../scss/colors";
-@import "../../../../../scss/mixins/mixins";
+@import "../../../../../../../scss/colors";
+@import "../../../../../../../scss/mixins/mixins";
 
 .booking-tabs {
   margin-top: 24px;
@@ -243,7 +243,7 @@ export default {
       .booking-tabs__number {
         @include for-768 {
           font-size: 0;
-          background: $black url("../../../../../assets/img/checked-white.svg") center center no-repeat;
+          background: $black url("../../../../../../../assets/img/checked-white.svg") center center no-repeat;
           background-size: 16px;
         }
       }

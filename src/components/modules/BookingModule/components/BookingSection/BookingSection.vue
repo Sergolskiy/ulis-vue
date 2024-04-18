@@ -53,12 +53,12 @@
             />
           </div>
           <div class="booking__btn">
-<!--                :disabled="true"-->
             <MainButton
                 :label="'Далі'"
                 :secondary="true"
                 :ico="'arrow'"
                 :icoPosition="'right'"
+                :disabled="Booking.data.activeStep > 1"
                 @click="Booking.data.activeStep = Booking.data.activeStep + 1"
             />
           </div>

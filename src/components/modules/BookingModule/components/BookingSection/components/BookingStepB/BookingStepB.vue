@@ -102,6 +102,57 @@ export default {
         },
       ],
 
+      houseImgTest: [
+        {
+          images: [
+            {
+              src: '/assets/house.png',
+              alt: 'house',
+            },
+            {
+              src: '/assets/house.png',
+              alt: 'house',
+            },
+          ],
+        },
+        {
+          images: [
+            {
+              src: '/assets/image 55.png',
+              alt: 'house',
+            },
+            {
+              src: '/assets/image 55.png',
+              alt: 'house',
+            },
+          ],
+        },
+        {
+          images: [
+            {
+              src: '/assets/image 57.png',
+              alt: 'house',
+            },
+            {
+              src: '/assets/image 57.png',
+              alt: 'house',
+            },
+          ],
+        },
+        {
+          images: [
+            {
+              src: '/assets/image 58.png',
+              alt: 'house',
+            },
+            {
+              src: '/assets/image 58.png',
+              alt: 'house',
+            },
+          ],
+        },
+      ],
+
     }
   },
 

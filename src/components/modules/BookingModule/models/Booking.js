@@ -4,7 +4,7 @@ export class Booking {
   constructor() {
 
     this.data = {
-      activeStep: 3,
+      activeStep: 1,
 
       activeHouse: 1,
 

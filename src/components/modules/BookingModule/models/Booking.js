@@ -6,6 +6,8 @@ export class Booking {
     this.data = {
       activeStep: 3,
 
+      activeHouse: 1,
+
       date: null,
 
     }

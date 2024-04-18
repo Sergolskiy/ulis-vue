@@ -1,6 +1,6 @@
 <template>
   <div class="counter-input"
-       v-bind:class="{'pointer-none': disabled}"
+       v-bind:class="{'pointer-none': disabled, 'counter-input--border' : border}"
   >
     <div class="counter-input__control" :class="{'counter-input__control--disabled' : minValue === localValue}" @click="subCount">
       <IconMinus/>
@@ -21,6 +21,14 @@
     <div class="counter-input__control" @click="addCount">
       <IconPlus/>
     </div>
+
+    <div class="counter-input__content">
+      <slot name="content">
+
+      </slot>
+    </div>
+
+
   </div>
 </template>
 
@@ -40,6 +48,10 @@ export default {
     value: {
       type: [String, Number, Boolean],
       default: '',
+    },
+    border: {
+      type: Boolean,
+      default: false,
     },
     error: {
       type: Boolean,
@@ -100,6 +112,12 @@ export default {
   .counter-input {
     display: flex;
     align-items: center;
+
+    &--border {
+      padding: 8px;
+      border: 1px solid $border-grey;
+      border-radius: 8px;
+    }
 
     &:deep(.default-input-wrap) {
       pointer-events: none;

@@ -106,23 +106,26 @@
 
     &__label{
       position: relative;
-      padding-top: 2px;
-      padding-left: 28px;
+      //padding-top: 2px;
+      //padding-left: 28px;
       cursor: pointer;
-      font-size: 14px;
-      line-height: 21px;
-      color: $black;
-      font-weight: 600;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      padding: 12px 12px 12px 36px;
+      border: 1px solid $border-grey;
+      border-radius: 8px;
 
 
       &:before{
         content: '';
         position: absolute;
-        left: 0;
-        top: 2px;
-        width: 20px;
-        height: 20px;
-        border: 1px solid $middle-grey;
+        left: 12px;
+        top: 13px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $border-grey;
         box-sizing: border-box;
         display: flex;
         border-radius: 50%;
@@ -132,10 +135,10 @@
       &:after{
         content: '';
         position: absolute;
-        left: 6px;
-        top: 8px;
-        width: 8px;
-        height: 8px;
+        left: 17px;
+        top: 18px;
+        width: 6px;
+        height: 6px;
         display: flex;
         opacity: 0;
         border-radius: 50%;
@@ -147,8 +150,8 @@
       &:before{
         /*background-color: $brown;*/
         //border-color: $brown;
-        background-color: $accent-blue;
-        border: 1px solid $accent-blue;
+        background-color: $black;
+        border: 1px solid $black;
       }
 
       &:after{

@@ -33,6 +33,34 @@
       </div>
     </div>
 
+    <div class="services__house-tabs">
+      <div class="services__house-tab"
+           :class="{'services__house-tab--active' : Booking.data.activeHouse === 1}"
+           @click="Booking.data.activeHouse = 1"
+      >
+        Будинок №1
+      </div>
+      <div class="services__house-tab"
+           :class="{'services__house-tab--active' : Booking.data.activeHouse === 2}"
+           @click="Booking.data.activeHouse = 2"
+      >
+        Будинок №2
+      </div>
+    </div>
+
+    <div class="services__list">
+      <div class="custom-row">
+        <div class="custom-col mb-4" v-for="(item, index) in serviceImg" :key="index">
+          <CardService
+              :Booking="Booking"
+              :image="item.image"
+              :removeHouseBtn="index === 2"
+              @removeService="removeService"
+          />
+        </div>
+      </div>
+    </div>
+
 
   </div>
 
@@ -42,10 +70,12 @@
 <script>
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import IconUAH from "@/assets/img/currencies.svg";
+import CardHouse from "@/components/modules/BookingModule/chunks/CardHouse/CardHouse.vue";
+import CardService from "@/components/modules/BookingModule/chunks/CardService/CardService.vue";
 
 export default {
   name: "BookingStepC",
-  components: {IconUAH, MainButton},
+  components: {CardService, CardHouse, IconUAH, MainButton},
 
   props: {
     Booking: {
@@ -53,6 +83,63 @@ export default {
       default: null,
     }
   },
+
+  emits: ['removeService'],
+
+  data() {
+    return {
+      serviceImg: [
+        {
+          image: {
+            src: '/src/assets/img/service-img/sauna.png',
+            alt: 'sauna',
+            name: 'Сауна',
+          },
+        },
+        {
+          image: {
+            src: '/src/assets/img/service-img/chan.png',
+            alt: 'chan',
+            name: 'Чан',
+          },
+        },
+        {
+          image: {
+            src: '/src/assets/img/service-img/bicycle.png',
+            alt: 'bicycle',
+            name: 'Велосипеди',
+          },
+        },
+        {
+          image: {
+            src: '/src/assets/img/service-img/cook.png',
+            alt: 'house',
+            name: 'Кухня',
+          },
+        },
+        {
+          image: {
+            src: '/src/assets/img/service-img/tree.png',
+            alt: 'house',
+            name: 'Посади дерево в УЛІС',
+          },
+        },
+        {
+          image: {
+            src: '/src/assets/img/service-img/late-check-out.png',
+            alt: 'house',
+            name: 'house',
+          },
+        },
+      ],
+    }
+  },
+
+  methods: {
+    removeService() {
+
+    },
+  }
 
 }
 </script>
@@ -99,6 +186,40 @@ export default {
       }
     }
   }
+
+  &__house-tabs {
+    margin-top: 16px;
+    display: flex;
+    border-radius: 8px;
+    background: #F4F4F4;
+    padding: 4px;
+    width: fit-content;
+  }
+
+  &__house-tab {
+    padding: 14px 27px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 8px;
+    background: #F4F4F4;
+    cursor: pointer;
+    color: $black;
+    border-radius: 8px;
+    transition: 0.3s;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &--active {
+      background: $black;
+      color: $white;
+    }
+  }
+
+
 }
 
 

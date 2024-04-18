@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BookingSection from "./components/BookingSection/BookingSection.vue";
+import BookingSection from "@/components/modules/BookingModule/components/BookingSection/BookingSection.vue";
 import {Booking} from "./models/Booking";
 
 export default {

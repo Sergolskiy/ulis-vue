@@ -1,5 +1,5 @@
 <template>
-  <Splide class="card-slider" :options="{ rewind: true }" aria-label="My Favorite Images">
+  <Splide class="card-slider" :options="{ rewind: false }" aria-label="My Favorite Images">
 
     <SplideSlide v-for="(item, index) in images" :key="index">
       <div class="card-house__photo-inner"
@@ -111,6 +111,13 @@ export default {
 
     svg {
       display: none;
+    }
+
+    &.splide__arrow {
+      &[disabled] {
+        pointer-events: none;
+        background: $black url("../../../../../assets/img/arrow-grey.svg") center center no-repeat;
+      }
     }
 
     &.splide__arrow--prev {

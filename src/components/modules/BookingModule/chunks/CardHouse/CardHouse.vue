@@ -17,7 +17,8 @@
             </div>
           </div>
           <div class="card-house__overview">
-            <div class="card-house__name">
+            <div class="card-house__name"
+                 :class="{'card-house__name--active' : detailedInfo}">
               Будинок на 1 спальню у лісі
             </div>
             <div class="card-house__features features"
@@ -254,22 +255,17 @@ export default {
     Booking: {
       type: Object,
       default: null,
-    }
+    },
+
+    images: {
+      type: Array,
+      default: false,
+    },
   },
 
   data () {
     return {
       openSliderPopup: false,
-      images: [
-        {
-          src: '/src/assets/img/house.png',
-          alt: 'house',
-        },
-        {
-          src: '/src/assets/img/house.png',
-          alt: 'house',
-        },
-      ],
       detailedInfo: false,
       comfortsCalendarToggle: false,
       highlights: [
@@ -286,46 +282,50 @@ export default {
           name: 'Кухня',
           ico: 'kitchen',
           list: [
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
+            'Питна вода',
+            'Електроплита',
+            'Холодильник',
+            'Мікрохвильова піч',
+            'Каструлі, сковорідки',
+            'Столові прибори',
+            'Рушники',
+            'Сіль, перець, цукор',
+            'Чашки, стакани, бокали',
           ]
         },
         {
           name: 'Спальня',
           ico: 'bedroom',
           list: [
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
+            'Ліжко queensize',
+            'Ортопедичний матрац',
+            'Меблі для зберігання речей',
+            'Комплект білизни',
           ]
         },
         {
           name: 'Вітальня',
           ico: 'living-room',
           list: [
-            'Приклад категорії',
-            'Приклад категорії',
+            'Камін',
+            'Телевізор (SmartTV)',
+            'Диван',
+            'Кондиціонер',
+            'Wi-Fi',
+            'В’язанка дров',
+            'Паливні брикети для обігріву',
           ]
         },
         {
           name: 'Надворі',
           ico: 'outside',
           list: [
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
-            'Приклад категорії',
+            'Простора тераса',
+            'Садові меблі',
+            'Мангал',
+            'Місце для багаття',
+            'Набір для гриля',
+            '2,5 кг вугілля для мангалу',
           ]
         },
       ],
@@ -395,8 +395,13 @@ export default {
     width: 32px;
     height: 32px;
     border-radius: 4px;
-    background: #8C6D46;
+    background: #8c6d4652;
     cursor: pointer;
+
+    //svg g path {
+    //  fill-opacity: 1;
+    //  fill: rgb(99 72 42 / 63%);
+    //}
   }
 
   &__overview {
@@ -420,6 +425,10 @@ export default {
     margin-bottom: 16px;
     width: 100%;
 
+    &--active {
+      margin-bottom: 8px;
+    }
+
     @include for-680 {
       margin-bottom: 8px;
     }
@@ -436,9 +445,9 @@ export default {
       flex-wrap: wrap;
       margin: 0 -8px;
 
-      @include from-992 {
-        margin-bottom: 20px;
-      }
+      //@include from-992 {
+      //  margin-bottom: 20px;
+      //}
 
       .features__item {
         padding: 0 8px;

@@ -1,7 +1,7 @@
 <template>
   <Modal
-      @close="$emit('close')"
-      class="custom-popup"
+      @close="$emit('closeDeletePopup')"
+      class="custom-popup small-popup"
   >
     <template v-slot:header>
       <span v-if="deletePopupText.title">{{deletePopupText.title}}</span>
@@ -17,15 +17,15 @@
       <div class="custom-popup__btns">
         <div v-if="deletePopupText.no" class="custom-popup__btns-item">
           <MainButton
-              class="w-100 btn--big"
+              class="w-100"
               :secondary="true"
               :label="deletePopupText.no"
-              @click="$emit('close')"
+              @click="$emit('closeDeletePopup')"
           />
         </div>
         <div v-if="deletePopupText.yes" class="custom-popup__btns-item">
           <MainButton
-              class="w-100 btn--big"
+              class="w-100 red"
               :label="deletePopupText.yes"
               @click="$emit('confirm')"
           />
@@ -40,7 +40,7 @@ import Modal from "@/components/coreComponents/Modal/Modal.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
 export default {
-  name: "DeleteHousePopup",
+  name: "DeleteItemPopup",
   components: {MainButton, Modal},
 
   props: {
@@ -54,5 +54,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.custom-popup {
+
+  &__content {
+
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btns-item {
+    width: 100%;
+  }
+
+}
 
 </style>

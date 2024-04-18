@@ -40,7 +40,7 @@
             :Booking="Booking"
         />
 
-        <div class="booking__buttons">
+        <div class="booking__buttons" v-if="Booking.data.activeStep !== 3">
 
           <div class="booking__btn">
             <MainButton
@@ -114,12 +114,6 @@ export default {
 @import "../../../../../scss/colors";
 @import "../../../../../scss/mixins/mixins";
 
-.booking__btn:deep(.main-button) {
-  width: 215px;
 
-  @include for-768 {
-    width: 136px;
-  }
-}
 
 </style>

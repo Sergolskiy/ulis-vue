@@ -3,9 +3,9 @@
     <div class="modal-component__wrapper">
       <div class="modal-component__inner">
         <div class="modal-component__content">
-          <div class="modal-component__close" @click="close">
-            <CloseIcon/>
-          </div>
+<!--          <div class="modal-component__close" @click="close">-->
+<!--            <CloseIcon/>-->
+<!--          </div>-->
 
           <div class="modal-component__header">
             <slot name="header"></slot>
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import CloseIcon from '../../../../src/assets/img/UI-group/close-ico.svg?skipsvgo'
+// import CloseIcon from '../../../../src/assets/img/UI-group/close-ico.svg?skipsvgo'
 export default {
   name: "Modal",
   components: {
-    CloseIcon
+    // CloseIcon
   },
   data() {
     return {
@@ -116,6 +116,35 @@ export default {
       line-height: 29px;
       font-weight: 800;
       margin-bottom: 16px;
+    }
+
+    &.small-popup {
+
+      .modal-component__wrapper {
+        max-width: 446px;
+      }
+
+      .modal-component__content {
+        padding: 24px 16px 16px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+      }
+
+      .modal-component__header {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+      }
+
+      .modal-component__footer {
+        margin-top: 32px;
+      }
+
     }
   }
 </style>

@@ -275,6 +275,17 @@
       padding-bottom: 25px;
     }
 
+    &.red {
+      background: $warning-red-border;
+      color: $white;
+      border-color: $warning-red-border;
+
+      &:hover {
+        background-color: $warning-red-hover;
+        color: $black;
+      }
+    }
+
 
     &__ico{
       /*width: 19px;*/

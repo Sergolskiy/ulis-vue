@@ -5,19 +5,31 @@
       <CardHouse
         :Booking="Booking"
         :images="item.images"
+        :removeHouseBtn="index === 2"
+        @removeHouse="removeHouse"
       />
     </div>
   </div>
+
+  <DeleteItemPopup
+      v-if="openRemovePopup"
+      :deletePopupText="deletePopupText"
+      @closeDeletePopup="openRemovePopup = false"
+  />
 
 </template>
 
 <script>
 import CardHouse from "../../../../chunks/CardHouse/CardHouse.vue";
+import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteItemPopup/DeleteItemPopup.vue";
 
 export default {
   name: "BookingStepB",
 
+  emits: ['removeHouse', 'closeDeletePopup'],
+
   components: {
+    DeleteItemPopup,
     CardHouse
   },
 
@@ -30,6 +42,15 @@ export default {
 
   data() {
     return {
+      openRemovePopup: false,
+
+      deletePopupText: {
+        title: 'Видалити будинок?',
+        txt: 'Ти впевнений, що хочеш виконати цю дію? Якщо ти видалиш будинок, то всі обрані фільтри та сервіси не збережуться.',
+        no: 'Не хочу',
+        yes: 'Видалити',
+      },
+
       houseImg: [
         {
           images: [
@@ -82,7 +103,13 @@ export default {
       ],
 
     }
-  }
+  },
+
+  methods: {
+    removeHouse() {
+      this.openRemovePopup = true
+    },
+  },
 
 }
 </script>

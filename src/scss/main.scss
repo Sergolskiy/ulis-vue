@@ -57,7 +57,13 @@
 	}
 	
 	&__btn {
-	
+		.main-button {
+			width: 215px;
+
+			@include for-768 {
+				width: 136px;
+			}
+		}
 	}
 	
 }

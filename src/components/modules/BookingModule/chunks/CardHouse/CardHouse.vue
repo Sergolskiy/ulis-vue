@@ -77,6 +77,13 @@
             <div class="card-house__more"
                  v-if="!detailedInfo"
             >
+              <div class="card-house__more-btn mr-3" v-if="removeHouseBtn">
+                <MainButton
+                    :label="'Видалити дім'"
+                    :secondary="true"
+                    @click="$emit('removeHouse')"
+                />
+              </div>
               <div class="card-house__more-btn">
                 <MainButton
                   :label="'Детальніше'"
@@ -259,6 +266,10 @@ export default {
 
     images: {
       type: Array,
+    },
+
+    removeHouseBtn: {
+      type: Boolean,
       default: false,
     },
   },

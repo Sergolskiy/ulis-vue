@@ -58,7 +58,7 @@
                 :secondary="true"
                 :ico="'arrow'"
                 :icoPosition="'right'"
-                :disabled="Booking.data.activeStep > 1"
+                :disabled="Booking.data.activeStep > 2"
                 @click="Booking.data.activeStep = Booking.data.activeStep + 1"
             />
           </div>

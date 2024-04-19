@@ -1,12 +1,104 @@
 <template>
 
-  <div class="service-content service-content--sauna">
+  <div class="service-content service-content--bicycle">
     <div class="service-content__item">
       <div class="service-content__title">
         <FormLabel
-            class="mt-4"
+            :label="'Тип оренди'"
+            :type="'required'"
+        />
+      </div>
+
+      <div class="custom-row flex-wrap mt-1">
+        <div class="custom-col custom-col--20 custom-col--lg-25  custom-col--xs-50">
+          <RadioDefault
+              :label="'Погодинно'"
+              :modelValue="rentalType === 'hourly'"
+              :name="'rentalType'"
+              :btnStyle="true"
+              @update:modelValue="rentalType = 'hourly'"
+          />
+        </div>
+        <div class="custom-col custom-col--20 custom-col--lg-25  custom-col--xs-50">
+          <RadioDefault
+              :label="'Подобово'"
+              :modelValue="rentalType === 'daily'"
+              :name="'rentalType'"
+              :btnStyle="true"
+              @update:modelValue="rentalType = 'daily'"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="service-content__item">
+      <div class="custom-row flex-wrap">
+        <div class="custom-col custom-col--16 custom-col--lg-25 custom-col--sm-33 custom-col--xs-50">
+          <div class="service-content__title">
+            <FormLabel
+                class="nowrap"
+                :label="'К-ть велосипедів'"
+                :type="'required'"
+            />
+          </div>
+          <CounterInput
+              class="mt-1 wfc"
+              :border="true"
+              :value="countBicycle"
+              :minValue="0"
+              @update:updateCounter="(item) => countBicycle = item"
+          />
+        </div>
+
+        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-33 custom-col--xs-50">
+          <div class="service-content__title">
+            <FormLabel
+                :label="'Дит велосипед'"
+            />
+          </div>
+          <CounterInput
+              class="mt-1 wfc"
+              :border="true"
+              :value="countChildBicycle"
+              :minValue="0"
+              @update:updateCounter="(item) => countChildBicycle = item"
+          />
+        </div>
+
+        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-33 custom-col--xs-50">
+          <div class="service-content__title">
+            <FormLabel
+                :label="'Дитяче крісло'"
+            />
+          </div>
+          <CounterInput
+              class="mt-1 wfc"
+              :border="true"
+              :value="countChildSeat"
+              :minValue="0"
+              @update:updateCounter="(item) => countChildSeat = item"
+          />
+        </div>
+
+        <div class="custom-col custom-col--50 custom-col--sm-100"
+            v-if="rentalType == 'daily'"
+        >
+          <DefaultSelect
+              :label="'Кількість діб'"
+              :placeholder="'Обери к-ть діб'"
+              :required="'required'"
+              :options="['1', '2']"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="service-content__item">
+      <div class="service-content__title">
+        <FormLabel
             :label="'Дати'"
             :type="'required'"
+            :disabled="!countBicycle"
         />
       </div>
 
@@ -17,6 +109,7 @@
               :modelValue="day === 1"
               :name="'day'"
               @update:modelValue="day = 1"
+              :disabled="!countBicycle"
           />
         </div>
         <div class="custom-col custom-col--p4 wfc">
@@ -25,6 +118,7 @@
               :modelValue="day === 2"
               :name="'day'"
               @update:modelValue="day = 2"
+              :disabled="!countBicycle"
           />
         </div>
         <div class="custom-col custom-col--p4 wfc">
@@ -33,6 +127,7 @@
               :modelValue="day === 3"
               :name="'day'"
               @update:modelValue="day = 3"
+              :disabled="!countBicycle"
           />
         </div>
         <div class="custom-col custom-col--p4 wfc">
@@ -41,97 +136,35 @@
               :modelValue="day === 4"
               :name="'day'"
               @update:modelValue="day = 4"
+              :disabled="!countBicycle"
           />
         </div>
       </div>
     </div>
 
-    <div class="service-content__item">
-      <div class="service-content__title">
-        <FormLabel
-            :label="'Час'"
-            :type="'required'"
-        />
-      </div>
-
-      <div class="custom-row custom-row--p4 flex-wrap mt-1">
-        <div class="custom-col custom-col--p4 wfc">
-          <RadioDefault
-              :label="'10:00 - 12:00'"
-              :modelValue="day === 1"
-              :name="'day'"
-              @update:modelValue="day = 1"
-          />
-        </div>
-        <div class="custom-col custom-col--p4 wfc">
-          <RadioDefault
-              :label="'14:00 - 16:00'"
-              :modelValue="day === 2"
-              :name="'day'"
-              @update:modelValue="day = 2"
-          />
-        </div>
-        <div class="custom-col custom-col--p4 wfc">
-          <RadioDefault
-              :label="'18:00 - 20:00'"
-              :modelValue="day === 3"
-              :name="'day'"
-              @update:modelValue="day = 3"
-          />
-        </div>
-      </div>
-    </div>
-
-
-    <div class="service-content__item">
-
-      <div class="custom-row flex-wrap">
-        <div class="custom-col wfc">
-          <div class="service-content__title">
-            <FormLabel
-                :label="'Кількість осіб'"
-                :type="'required'"
+    <template  v-if="rentalType == 'hourly'">
+      <div class="service-content__item">
+        <div class="custom-row">
+          <div class="custom-col custom-col--50 custom-col--xs-100">
+            <DefaultSelect
+                :label="'Час'"
+                :placeholder="'Обери час'"
+                :required="'required'"
+                :options="['10:00', '11:00']"
             />
           </div>
-          <CounterInput
-              class="mt-1"
-              :border="true"
-              :value="countPeople"
-              :minValue="0"
-              @update:updateCounter="(item) => countPeople = item"
-          />
-        </div>
-
-        <div class="custom-col wfc">
-          <div class="service-content__title">
-            <FormLabel
-                :label="'Віники'"
+          <div class="custom-col custom-col--50 custom-col--xs-100">
+            <DefaultSelect
+                :label="'Тривалість'"
+                :placeholder="'Обери час'"
+                :required="'required'"
+                :options="['10:00', '11:00']"
+                :disabled="true"
             />
           </div>
-          <CounterInput
-              class="mt-1"
-              :border="true"
-              :value="countBrooms"
-              :minValue="0"
-              @update:updateCounter="(item) => countBrooms = item"
-          >
-            <template #content>
-              <div class="d-flex align-items-center service-content__brooms-price">
-                <IconUAH style="transform: scale(0.8);"/>
-                <span>100</span>
-              </div>
-            </template>
-          </CounterInput>
         </div>
-      </div>
     </div>
-
-
-    <div class="service-content__item mt-4">
-      <IconPlus style="transform: translateY(6px); filter: grayscale(1)"/>
-      <span class="service-content__caption ml-1">Капці, шапочки, рушники та напої</span>
-    </div>
-
+    </template>
   </div>
 
 </template>
@@ -140,6 +173,7 @@
 import FormLabel from "@/components/UI/labels/FormLabel/FormLabel.vue";
 import RadioDefault from "@/components/UI/radiobuttons/RadioDefault/RadioDefault.vue";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
+import DefaultSelect from "@/components/UI/selections/DefaultSelect/DefaultSelect.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import IconPlus from "@/assets/img/plus-gray.svg?skipsvgo";
 
@@ -150,14 +184,17 @@ export default {
     IconUAH,
     CounterInput,
     RadioDefault,
-    FormLabel
+    FormLabel,
+    DefaultSelect
   },
 
   data() {
     return {
-      day: 1,
-      countPeople: 0,
-      countBrooms: 0,
+      rentalType: 'hourly',
+      day: 0,
+      countBicycle: 0,
+      countChildBicycle: 0,
+      countChildSeat: 0,
     }
   }
 }

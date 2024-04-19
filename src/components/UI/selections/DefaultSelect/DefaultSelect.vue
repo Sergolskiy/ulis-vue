@@ -13,6 +13,7 @@
         class="default-select__label"
         :label="label"
         :type="required"
+        :disabled="disabled"
     />
 
     <div class="default-select__wrapper">
@@ -104,7 +105,7 @@
 <script>
 
 import { createPopper } from '@popperjs/core';
-import ArrowSelect from '../../../../assets/img/arrow.svg'
+import ArrowSelect from '../../../../assets/img/arrow.svg?skipsvgo'
 import FormLabel from "../../labels/FormLabel/FormLabel.vue";
 // import LinkButton from "../../buttons/LinkButton/LinkButton.vue";
 
@@ -403,6 +404,29 @@ export default {
     }
   }
 
+
+  /* bicycle disabled styles START */
+  &.disabled {
+    .vs--disabled .vs__dropdown-toggle,
+    .vs--disabled .vs__clear,
+    .vs--disabled .vs__search,
+    .vs--disabled .vs__selected,
+    .vs--disabled .vs__open-indicator {
+      background: $white;
+    }
+
+    .v-select__arrow{
+      z-index: 1;
+      cursor: not-allowed;
+      
+      svg path{
+        stroke: $grey;
+      }
+    }
+  }
+
+  /* bicycle disabled styles END */
+
 }
 
 .vs__dropdown-menu {
@@ -612,5 +636,7 @@ export default {
 .default-select.small-select .vs__dropdown-toggle {
   min-height: 44px;
 }
+
+
 
 </style>

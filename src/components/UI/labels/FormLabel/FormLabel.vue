@@ -14,6 +14,7 @@
     <div class="form-label__txt"
          :class="{
             // 'form-label__txt--icon': labelIcon,
+            'form-label__txt--disabled': disabled,
           }">
       {{label}} <span class="form-label__star" v-if="type === 'required'">*</span>
     </div>
@@ -42,6 +43,10 @@ export default {
     //   type: Boolean,
     //   default: false,
     // },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 
 }
@@ -70,7 +75,13 @@ export default {
     //&--icon {
     //  margin-left: 20px;
     //}
+
+    &--disabled{
+      color: $grey;
+    }
   }
+
+
 
   //&__icon {
   //  width: 16px;

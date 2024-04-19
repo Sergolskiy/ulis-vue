@@ -8,7 +8,7 @@
            @change="change"
            :name="name"
     >
-    <label :for="'radio-default-' + id" class="radio-default__label" v-bind:class="{'d-flex': cardFlex}">
+    <label :for="'radio-default-' + id" class="radio-default__label" v-bind:class="{'d-flex': cardFlex, 'radio-btn-style' : btnStyle}">
       {{ label }}
 
       <slot name="card">
@@ -65,6 +65,10 @@
         default: '',
       },
       cardFlex: {
+        type: Boolean,
+        default: false,
+      },
+      btnStyle: {
         type: Boolean,
         default: false,
       },
@@ -144,6 +148,20 @@
         border-radius: 50%;
         background-color: $white;
       }
+
+      &.radio-btn-style{
+        min-height: 48px;
+        padding-left: 24px;
+        padding-right: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:before, &:after{
+          content: none;
+        }
+      }
     }
 
     &__input:checked + &__label{
@@ -157,13 +175,27 @@
       &:after{
         opacity: 1;
       }
+
+      &.radio-btn-style{
+        background: $black;
+        border: none;
+        color: $white;
+      }
     }
 
     &__input:disabled + &__label{
+      color: $grey;
       &:before{
-        opacity: 0.4;
+        background: #F9F9F9;
       }
     }
+
+    &__input:checked:disabled + &__label{
+      &:before{
+        border: 1px solid $border-grey;
+      }
+    }
+
 
     &__input:checked:disabled + &__label{
       &:after{

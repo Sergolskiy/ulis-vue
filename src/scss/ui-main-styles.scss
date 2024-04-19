@@ -66,6 +66,10 @@ input[type="number"] {
   &--p4{
     margin: 0 -4px;
   }
+
+  @include for-680{
+    margin: 0 -4px;
+  }
 }
 
 .custom-col{
@@ -74,7 +78,8 @@ input[type="number"] {
   margin-bottom: 16px;
 
   @include for-680{
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
+    padding: 0 4px;
   }
 
   &--p4{
@@ -192,6 +197,12 @@ input[type="number"] {
     }
   }
 
+  &--lg-20{
+    @include for-1200{
+      width: 20%;
+    }
+  }
+
   &--lg-25{
     @include for-1200{
       width: 25%;
@@ -207,6 +218,12 @@ input[type="number"] {
   &--lg-50{
     @include for-1200{
       width: 50%;
+    }
+  }
+
+  &--lg-60{
+    @include for-1200{
+      width: 60%;
     }
   }
 

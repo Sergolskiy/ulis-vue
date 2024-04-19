@@ -77,7 +77,7 @@ export default {
   }
 
   &__slider {
-    // border-radius: 8px;
+    border-radius: 8px;
     overflow: hidden;
   }
 

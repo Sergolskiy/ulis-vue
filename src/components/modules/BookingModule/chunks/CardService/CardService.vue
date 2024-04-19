@@ -89,6 +89,10 @@
               v-if="image.alt === 'sauna' || image.alt === 'chan'"
           />
 
+          <!-- <BicycleService
+              v-if="image.alt === 'bicycle'"
+          /> -->
+
         </div>
 
         <div class="card-service__section">
@@ -170,12 +174,14 @@ import SliderPopup from "@/components/modules/BookingModule/chunks/SliderPopup/S
 import IconScaleButton from "@/assets/img/scale-button.svg";
 import SaunaChanService
   from "@/components/modules/BookingModule/chunks/CardService/components/SaunaChanService/SaunaChanService.vue";
+// import BicycleService from "@/components/modules/BookingModule/chunks/CardService/components/BicycleService/BicycleService.vue";
 
 
 export default {
   name: "CardService",
   components: {
     SaunaChanService,
+    // BicycleService,
     IconScaleButton,
     SliderPopup,
     CardSlider,

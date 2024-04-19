@@ -516,6 +516,11 @@ export default {
     margin-top: 16px;
     width: 100%;
 
+    @include for-768 {
+      flex-direction: column;
+      align-items: end;
+    }
+
     @include from-550 {
       justify-content: end;
       display: flex;
@@ -523,6 +528,15 @@ export default {
   }
 
   &__more-btn{
+
+    &.mr-3 {
+      @include for-768 {
+        margin-right: 0!important;
+        margin-bottom: 8px;
+      }
+    }
+
+
 
     @include from-550 {
       max-width: 215px;

@@ -69,7 +69,7 @@ export default {
     width: 256px;
     min-width: 256px;
     position: relative;
-    border-radius: 8px;
+    // border-radius: 8px;
     overflow: hidden;
 
     @include for-550 {
@@ -99,12 +99,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    object-fit: cover;
   }
 
 
 }
 
 .card-slider {
+
+  @include for-550 {
+    height: 100%;
+  }
+
   &:deep(.splide__arrow) {
     opacity: 1;
     background: $black url("../../../../../assets/img/arrow-white.svg") center center no-repeat;

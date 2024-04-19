@@ -54,6 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../../../../scss/mixins/mixins";
 
 .custom-popup {
 
@@ -68,6 +69,13 @@ export default {
 
   &__btns-item {
     width: 100%;
+
+    @include for-550 {
+      .main-button {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
 
 }

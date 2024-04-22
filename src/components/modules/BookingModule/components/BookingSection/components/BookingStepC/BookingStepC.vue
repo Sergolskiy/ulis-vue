@@ -113,7 +113,7 @@ export default {
         {
           image: {
             src: '/src/assets/img/service-img/cook.png',
-            alt: 'house',
+            alt: 'cooking',
             name: 'Кухня',
           },
         },

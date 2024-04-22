@@ -132,7 +132,9 @@ export default {
       font-style: normal;
       font-weight: 400;
       line-height: 20px;
+    }
 
+    &--select &:deep(.default-input){
       @include for-768 {
         width: 20px;
         height: 24px;
@@ -164,7 +166,9 @@ export default {
           stroke: #BFC6CC;
         }
       }
+    }
 
+    &--select &__control {
       @include for-768 {
         width: 25px;
         height: 25px;

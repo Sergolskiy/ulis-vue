@@ -33,7 +33,7 @@
 
     <div class="service-content__item">
       <div class="custom-row flex-wrap">
-        <div class="custom-col custom-col--16 custom-col--lg-25 custom-col--sm-33 custom-col--xs-50">
+        <div class="custom-col custom-col--16 custom-col--lg-25 custom-col--sm-25 custom-col--xs-50">
           <div class="service-content__title">
             <FormLabel
                 class="nowrap"
@@ -42,7 +42,7 @@
             />
           </div>
           <CounterInput
-              class="mt-1 wfc"
+              class="mt-1"
               :border="true"
               :value="countBicycle"
               :minValue="0"
@@ -50,14 +50,14 @@
           />
         </div>
 
-        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-33 custom-col--xs-50">
+        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-25 custom-col--xs-50">
           <div class="service-content__title">
             <FormLabel
                 :label="'Дит велосипед'"
             />
           </div>
           <CounterInput
-              class="mt-1 wfc"
+              class="mt-1"
               :border="true"
               :value="countChildBicycle"
               :minValue="0"
@@ -65,14 +65,14 @@
           />
         </div>
 
-        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-33 custom-col--xs-50">
+        <div class="custom-col custom-col--16 custom-col--lg-25  custom-col--sm-25 custom-col--xs-50">
           <div class="service-content__title">
             <FormLabel
                 :label="'Дитяче крісло'"
             />
           </div>
           <CounterInput
-              class="mt-1 wfc"
+              class="mt-1"
               :border="true"
               :value="countChildSeat"
               :minValue="0"

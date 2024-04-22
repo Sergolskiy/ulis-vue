@@ -59,7 +59,7 @@
               <div class="card-service__more" v-if="!detailedInfo">
                 <div class="card-service__more-btn mr-3" v-if="removeHouseBtn">
                   <MainButton
-                      :label="'Видалити дім'"
+                      :label="'Видалити сервіс'"
                       :secondary="true"
                       @click="$emit('removeHouse')"
                   />
@@ -91,6 +91,10 @@
 
           <BicycleService
               v-if="image.alt === 'bicycle'"
+          />
+
+          <CookingService
+              v-if="image.alt === 'cooking'"
           />
 
         </div>
@@ -175,6 +179,7 @@ import IconScaleButton from "@/assets/img/scale-button.svg";
 import SaunaChanService
   from "@/components/modules/BookingModule/chunks/CardService/components/SaunaChanService/SaunaChanService.vue";
 import BicycleService from "@/components/modules/BookingModule/chunks/CardService/components/BicycleService/BicycleService.vue";
+import CookingService from "@/components/modules/BookingModule/chunks/CardService/components/CookingService/CookingService.vue";
 
 
 export default {
@@ -182,6 +187,7 @@ export default {
   components: {
     SaunaChanService,
     BicycleService,
+    CookingService,
     IconScaleButton,
     SliderPopup,
     CardSlider,
@@ -356,6 +362,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
   }
 
   &__photo {
@@ -429,6 +436,19 @@ export default {
 
   &__description{
     max-width: 340px;
+
+    @include for-1200 {
+      max-width: 220px;
+    }
+
+    @include for-992 {
+      max-width: 350px;
+    }
+
+    @include for-768 {
+      max-width: 100%;
+    }
+    
   }
 
   &__features{
@@ -458,6 +478,11 @@ export default {
 
   &__bottom-small {
     margin-top: -45px;
+
+    @include for-768 {
+      margin-top: 0;
+      width: 100%;
+    }
   }
 
   &__price-block {
@@ -525,6 +550,22 @@ export default {
   }
 
   &__more-btn{
+
+    &.mr-3 {
+
+      @include for-768 {
+        margin-bottom: 8px;
+
+        .main-button{
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+
+      @include for-550 {
+        margin-right: 0!important;
+      }
+    }
 
     @include from-550 {
       max-width: 215px;

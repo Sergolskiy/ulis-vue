@@ -34,6 +34,7 @@
             </div>
             <div class="custom-select__option-top-right">
               <CounterInput
+                  class="counter-input--select"
                   :value="options[0].count"
                   :minValue="0"
                   @update:updateCounter="(item) => {$emit('updateCounter', item)}"

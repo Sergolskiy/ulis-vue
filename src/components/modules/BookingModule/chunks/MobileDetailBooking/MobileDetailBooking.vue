@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import IconPeople from "@/assets/img/icon-people-16px-grey.svg";
-import IconMap from "@/assets/img/icon-map-16px-grey.svg";
-import IconBuildings from "@/assets/img/icon-buildings-16px-grey.svg";
-import IconDeport from "@/assets/img/icon-deport-16px-grey.svg";
+import IconPeople from "@/assets/img/icon-people-16px-grey.svg?skipsvgo";
+import IconMap from "@/assets/img/icon-map-16px-grey.svg?skipsvgo";
+import IconBuildings from "@/assets/img/icon-buildings-16px-grey.svg?skipsvgo";
+import IconDeport from "@/assets/img/icon-deport-16px-grey.svg?skipsvgo";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
 export default {

@@ -174,14 +174,10 @@ import FormLabel from "@/components/UI/labels/FormLabel/FormLabel.vue";
 import RadioDefault from "@/components/UI/radiobuttons/RadioDefault/RadioDefault.vue";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import DefaultSelect from "@/components/UI/selections/DefaultSelect/DefaultSelect.vue";
-import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
-import IconPlus from "@/assets/img/plus-gray.svg?skipsvgo";
 
 export default {
   name: "BicycleService",
   components: {
-    IconPlus,
-    IconUAH,
     CounterInput,
     RadioDefault,
     FormLabel,

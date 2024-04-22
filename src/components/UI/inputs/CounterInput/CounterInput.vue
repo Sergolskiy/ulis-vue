@@ -1,6 +1,6 @@
 <template>
   <div class="counter-input"
-       v-bind:class="{'pointer-none': disabled, 'counter-input--border' : border}"
+       v-bind:class="{'pointer-none': disabled, 'counter-input--border' : border, 'counter-input--btn-style': btnStyle}"
   >
     <div class="counter-input__control" :class="{'counter-input__control--disabled' : minValue === localValue}" @click="subCount">
       <IconMinus/>
@@ -66,6 +66,10 @@ export default {
       default: '',
     },
     minValue: Number,
+    btnStyle: {
+      type: Boolean,
+      default: false,
+    }
   },
   mounted() {
     this.localValue = this.value
@@ -183,5 +187,34 @@ export default {
       padding-left: 6px;
       padding-right: 6px;
     }
+
+
+    &--btn-style {
+      justify-content: space-between;
+      background: $black;
+      border-radius: 8px;
+      min-height: 48px;
+      padding: 0 24px;
+    }
+
+    &--btn-style &__counter, 
+    &--btn-style &__control {
+      background: transparent;
+    }
+
+    &--btn-style &__control :deep(svg path)  {
+      stroke: white;
+    }
+
+    &--btn-style :deep(.default-input) {
+      color: $white;
+      background: transparent;
+    }
+
+    &--btn-style &__content{
+      display: none;
+    }
   }
+
+
 </style>

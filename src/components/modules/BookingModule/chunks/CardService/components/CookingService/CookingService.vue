@@ -5,6 +5,9 @@
     <div class="service-cook">
       <div class="service-cook__large-title">
         Мої страви
+        <div class="service-cook__large-title-icon">
+          <IconBasket/>
+        </div>
       </div>
       <div class="service-cook__list service-cook__slider">
 
@@ -32,6 +35,9 @@
 
       <div class="service-cook__large-title">
         Твій кошик
+        <div class="service-cook__large-title-icon">
+          <IconBasket/>
+        </div>
       </div>
 
       <div class="service-cook__list-basket">
@@ -95,6 +101,7 @@ import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import IconHeart from "@/assets/img/icon-heart.svg?skipsvgo";
 import IconDelete from "@/assets/img/icon-delete.svg?skipsvgo";
+import IconBasket from '@/assets/img/icon-basket.svg?skipsvgo'
 import CookingSlider from "@/components/modules/BookingModule/chunks/CookingSlider/CookingSlider.vue";
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/vue-splide/css';
@@ -108,6 +115,7 @@ export default {
     IconUAH,
     IconHeart,
     IconDelete,
+    IconBasket,
     Splide,
     SplideSlide,
   },
@@ -145,6 +153,33 @@ export default {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 16px;
+
+    @include for-768 {
+      font-size: 28px;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__large-title-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $border-grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+
+    @include from-768 {
+      display: none;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__list {
@@ -465,12 +500,18 @@ export default {
       align-self: flex-end;
       justify-content: start;
       width: calc(100% - 116px);
+      font-size: 16px;
     }
 
     svg{
       width: 24px;
       height: 24px;
       margin-top: -4px;
+
+      @include for-550 {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 
@@ -479,6 +520,7 @@ export default {
 
     @include for-550{
       align-self: flex-end;
+      margin-left: 4px;
     }
 
     :deep(.counter-input) {

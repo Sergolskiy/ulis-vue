@@ -110,6 +110,20 @@
               <!--                + 600 грн за прибирання за пухнастиком-->
               <!--              </div>-->
               <!--            </div>-->
+
+              <!-- ELEMENT FOR SERVICE COOKING START -->
+              <div class="card-service__price-col card-service__price-col--left card-service__price-col--left-cooking">
+                <div class="card-service__section--cooking-bottom">
+                  <DefaultSelect
+                  :label="'Час'"
+                  :placeholder="'Обери час'"
+                  :required="'required'"
+                  :options="['10:00', '11:00']"
+                />
+                </div>
+              </div>
+              <!-- ELEMENT FOR SERVICE COOKING END -->
+
               <div class="card-service__price-col card-service__price-col--right">
                 <div class="card-service__price-block">
                   <div class="card-service__overview-txt">
@@ -317,6 +331,11 @@ export default {
 
   &__section {
     margin-top: 16px;
+
+    &--cooking-bottom{
+      max-width: 153px;
+      width: 100%;
+    }
   }
 
   &__section-head{
@@ -659,6 +678,13 @@ export default {
         align-items: flex-end;
         display: flex;
         flex-direction: column;
+      }
+
+      &--left-cooking{
+
+        @include for-550 {
+          align-items: flex-start;
+        }
       }
     }
 

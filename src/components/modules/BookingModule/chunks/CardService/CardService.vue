@@ -101,7 +101,9 @@
 
         <div class="card-service__section">
           <div class="card-service__price-section">
-            <div class="card-service__price-row justify-content-end">
+            <div class="card-service__price-row justify-content-end"
+                 :class="{'card-service__price-row--cooking' : image.alt === 'cooking'}"
+            >
               <!--            <div class="card-service__price-col card-service__price-col&#45;&#45;left">-->
               <!--              <div class="card-service__overview-txt">-->
               <!--                + 550 грн за додаткового гостя-->
@@ -112,7 +114,9 @@
               <!--            </div>-->
 
               <!-- ELEMENT FOR SERVICE COOKING START -->
-              <div class="card-service__price-col card-service__price-col--left card-service__price-col--left-cooking">
+              <div class="card-service__price-col card-service__price-col--left card-service__price-col--left-cooking"
+                   v-if="image.alt === 'cooking'"
+              >
                 <div class="card-service__section--cooking-bottom">
                   <DefaultSelect
                   :label="'Час'"
@@ -662,6 +666,13 @@ export default {
       flex-direction: column-reverse;
       margin-bottom: 8px;
     }
+
+    &--cooking {
+      @include for-680 {
+        flex-direction: initial;
+        align-items: flex-end;
+      }
+    }
   }
 
   &__price-col {
@@ -679,18 +690,25 @@ export default {
         display: flex;
         flex-direction: column;
       }
-
-      &--left-cooking{
-
-        @include for-550 {
-          align-items: flex-start;
-        }
-      }
     }
 
     &--right {
       display: flex;
       align-items: end;
+    }
+
+    &--left-cooking{
+
+      @include for-550 {
+        align-items: flex-start;
+        margin-bottom: 0;
+      }
+    }
+    &--left-cooking + &--right {
+      @include for-550 {
+        margin-bottom: 0;
+        width: fit-content;
+      }
     }
   }
 

@@ -228,7 +228,7 @@ export default {
   data () {
     return {
       openSliderPopup: false,
-      detailedInfo: true,
+      detailedInfo: false,
       comfortsCalendarToggle: false,
       highlights: [
         {

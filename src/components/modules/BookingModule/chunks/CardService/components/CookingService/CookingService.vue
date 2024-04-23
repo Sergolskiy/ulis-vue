@@ -8,7 +8,16 @@
       </div>
       <div class="service-cook__list">
 
-        <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,}" aria-label="My Favorite Images">
+        <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
+        breakpoints: {
+          850: {
+            perPage: 2,
+          },
+          640: {
+            perPage: 1,
+          },
+        }
+        }" aria-label="My Favorite Images">
           <SplideSlide v-for="(item, index) in slides" :key="index">
             <CookingSlider
                 :item="item"

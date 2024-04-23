@@ -6,41 +6,41 @@
       <div class="service-cook__large-title">
         Мої страви
       </div>
-      <div class="service-cook__list">
+      <div class="service-cook__list service-cook__slider">
 
         <!-- TEMPORARY WRAPPER START  -->
-        <div style="max-width: 241px; width: 100%;">
+        <div style="max-width: 241px; width: 100%; display: flex; margin-bottom: 16px;">
         
-          <div class="service-cook__item">
-            <div class="service-cook__card">
-              <div class="service-cook__photo">
-                <div class="service-cook__photo-img">
+          <div class="service-cook__item-card">
+            <div class="service-cook__card service-cook-card">
+              <div class="service-cook-card__photo">
+                <div class="service-cook-card__photo-img">
                   <img src="../../../../../../../assets/img/service-img/dish02.png" alt="dish">
                 </div>
               </div>
-              <div class="service-cook__date">
+              <div class="service-cook-card__date">
                 13:00 - 20:00
               </div>
-              <div class="service-cook__favorite"
-                  :class="{'service-cook__favorite--active' : inFavor}"
+              <div class="service-cook-card__favorite"
+                  :class="{'service-cook-card__favorite--active' : inFavor}"
                   @click="inFavor = !inFavor"
               >
                 <IconHeart/>
               </div>
-              <div class="service-cook__name">
+              <div class="service-cook-card__name">
                 Соковита котлета по-київськи з картопляним пюре
               </div>
-              <div class="service-cook__row">
-                <div class="service-cook__gram">
+              <div class="service-cook-card__row">
+                <div class="service-cook-card__gram">
                   300 г
                 </div>
-                <div class="service-cook__price">
+                <div class="service-cook-card__price">
                   255
                   <IconUAH/>
                 </div>
               </div>
-              <div class="service-cook__footer">
-                <div class="service-cook__btn"
+              <div class="service-cook-card__footer">
+                <div class="service-cook-card__btn"
                      v-if="!wantedFlag"
                 >
                   <MainButton
@@ -48,7 +48,7 @@
                     @click="wantedFlag = true"
                   />
                 </div>
-                <div class="service-cook__counter"
+                <div class="service-cook-card__counter"
                      v-if="wantedFlag"
                 >
                   <CounterInput
@@ -66,6 +66,60 @@
         <!-- TEMPORARY WRAPPER END -->
 
       </div>
+
+
+      <div class="service-cook__large-title">
+        Твій кошик
+      </div>
+
+      <div class="service-cook__list-basket">
+        
+        <div class="service-cook-line-card service-cook__item-line-card">
+          <div class="service-cook-line-card__photo">
+            <div class="service-cook-line-card__photo-img">
+              <img src="../../../../../../../assets/img/service-img/dish02.png" alt="dish">
+            </div>
+          </div>
+          <div class="service-cook-line-card__info">
+            <div class="service-cook-line-card__name">
+              <span class="service-cook-line-card__name-count nowrap">
+                1 x
+              </span>
+              <span class="service-cook-line-card__name-txt">
+                Соковита котлета по-київськи з картопляним пюре
+              </span>
+            </div>
+            <div class="service-cook-line-card__gram">
+              300 г
+            </div>
+          </div>
+          <div class="service-cook-line-card__price">
+            255
+            <IconUAH/>
+          </div>
+          <div class="service-cook-line-card__count">
+            <CounterInput
+              :border="true"
+              :value="countDish"
+              :minValue="0"
+              @update:updateCounter="(item) => countDish = item"
+          >
+            <template #content>
+              <div class="d-flex align-items-center">
+                <span class="ml-2">днів</span>
+              </div>
+            </template>
+          </CounterInput>
+          </div>
+          <div class="service-cook-line-card__delete">
+            <div class="square-delete-btn">
+              <div class="square-delete-btn__inner">
+                <IconDelete/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
    
@@ -78,6 +132,7 @@ import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import IconHeart from "@/assets/img/icon-heart.svg?skipsvgo";
+import IconDelete from "@/assets/img/icon-delete.svg?skipsvgo";
 
 export default {
   name: "CookingService",
@@ -86,6 +141,7 @@ export default {
     CounterInput,
     IconUAH,
     IconHeart,
+    IconDelete,
   },
 
   data() {
@@ -93,6 +149,7 @@ export default {
       countDish: 0,
       inFavor: false,
       wantedFlag: false,
+      countDish: 0,
     }
   }
 }
@@ -118,15 +175,26 @@ export default {
 
   }
 
-  &__card {
-    border-radius: 8px;
-    background: $white;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 16px;
-    border: 1px solid $border-grey;
+  &__list-basket{
+
+    @include for-550 {
+      border-radius: 8px;
+      border: 1px solid $border-grey;
+    }
   }
+
+}
+
+.service-cook-card {
+  border-radius: 8px;
+  border: 1px solid $border-grey;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 16px;
+ 
+
 
   &__photo {
     height: 209px;
@@ -233,6 +301,230 @@ export default {
 
   &__counter {
 
+  }
+}
+
+.service-cook-line-card {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  @include from-550{
+    border-radius: 8px;
+    border: 1px solid $border-grey;
+    margin-bottom: 16px;
+  }
+
+  @include for-768 {
+    align-items: initial;
+    flex-wrap: wrap;
+    min-height: 100px;
+  }
+
+
+  &:not(:last-child):after{
+    @include for-550 {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%);
+      height: 1px;
+      width: calc(100% - 32px);
+      background: $border-grey;
+    }
+  }
+
+  
+  &__photo {
+    max-width: 72px;
+    width: 100%;
+    height: 72px;
+    margin-right: 16px;
+
+    @include for-768 {
+      margin-right: 0;
+      position: absolute;
+      left: 16px;
+      top: 16px;
+    }
+
+    @include for-550 {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__photo-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    @include for-768 {
+      padding-left: 80px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include for-550 {
+      padding-left: 64px;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    display: flex;
+    margin-bottom: 12px;
+
+    @include for-550 {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__name-count {
+    min-width: 25px;
+    margin-right: 4px;
+
+    @include for-550 {
+      display: none;
+    }
+  }
+
+  &__gram {
+    border-radius: 8px;
+    border: 1px solid $border-grey;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    width: fit-content;
+
+    @include for-768 {
+      margin-left: 16px;
+      margin-bottom: 8px;
+      white-space: nowrap;
+    }
+
+    @include for-550{
+      display: none;
+    }
+  }
+
+  &__price {
+    margin-left: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    min-height: 28px;
+    flex: 1;
+
+    @include for-768 {
+      padding-left: 80px;
+      margin-left: 0; 
+      min-height: 32px;
+    }
+
+    @include for-550{
+      padding-left: 64px;
+      align-self: flex-end;
+      justify-content: start;
+      width: calc(100% - 116px);
+    }
+
+    svg{
+      width: 24px;
+      height: 24px;
+      margin-top: -4px;
+    }
+  }
+
+  &__count {
+    margin-left: 16px;
+
+    @include for-550{
+      align-self: flex-end;
+    }
+
+    :deep(.counter-input) {
+      @include for-550{
+        padding: 0;
+        border: none;
+      }
+    }
+    
+    :deep(.counter-input__content) {
+      @include for-550{
+        display: none;
+      }
+    }
+  }
+
+  &__delete {
+    margin-left: 16px;
+
+    @include for-550{
+      display: none;
+    }
+  }
+
+  &__delete-btn {
+
+  }
+
+}
+
+.square-delete-btn {
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner{
+    border: 1px solid $warning-red-border;
+    border-radius: 8px;
+    transition: .15s;
+    display: flex;
+    height: 47px;
+    width: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+
+    &:hover {
+      &:hover{
+      transform: scale(.9);
+      background: $warning-red-border;
+
+      svg {
+        transform: scale(1.1);
+      }
+      :deep(svg path){
+        stroke: $white!important;
+      }
+    }
+    }
   }
 
 }

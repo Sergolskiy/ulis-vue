@@ -26,62 +26,6 @@
           </SplideSlide>
         </Splide>
 
-        <!-- TEMPORARY WRAPPER START  -->
-        <div style="max-width: 241px; width: 100%; display: flex; margin-bottom: 16px;">
-
-          <div class="service-cook__item-card">
-            <div class="service-cook__card service-cook-card">
-              <div class="service-cook-card__photo">
-                <div class="service-cook-card__photo-img">
-                  <img src="../../../../../../../assets/img/service-img/dish02.png" alt="dish">
-                </div>
-              </div>
-              <div class="service-cook-card__date">
-                13:00 - 20:00
-              </div>
-              <div class="service-cook-card__favorite"
-                   :class="{'service-cook-card__favorite--active' : inFavor}"
-                   @click="inFavor = !inFavor"
-              >
-                <IconHeart/>
-              </div>
-              <div class="service-cook-card__name">
-                Соковита котлета по-київськи з картопляним пюре
-              </div>
-              <div class="service-cook-card__row">
-                <div class="service-cook-card__gram">
-                  300 г
-                </div>
-                <div class="service-cook-card__price">
-                  255
-                  <IconUAH/>
-                </div>
-              </div>
-              <div class="service-cook-card__footer">
-                <div class="service-cook-card__btn"
-                     v-if="!wantedFlag"
-                >
-                  <MainButton
-                      :label="'Хочу'"
-                      @click="wantedFlag = true"
-                  />
-                </div>
-                <div class="service-cook-card__counter"
-                     v-if="wantedFlag"
-                >
-                  <CounterInput
-                      :value="countDish"
-                      :minValue="0"
-                      :btnStyle="true"
-                      @update:updateCounter="(item) => countDish = item"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- TEMPORARY WRAPPER END -->
 
       </div>
 
@@ -219,27 +163,27 @@ export default {
     }
   }
 
-  &__card {
-    border-radius: 8px;
-    background: $white;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 16px;
-    border: 1px solid $border-grey;
-  }
-
-  &__photo {
-    height: 209px;
-    margin-bottom: 8px;
-  }
-
-  &__photo-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    object-fit: cover;
-  }
+  //&__card {
+  //  border-radius: 8px;
+  //  background: $white;
+  //  display: flex;
+  //  flex-direction: column;
+  //  position: relative;
+  //  padding: 16px;
+  //  border: 1px solid $border-grey;
+  //}
+  //
+  //&__photo {
+  //  height: 209px;
+  //  margin-bottom: 8px;
+  //}
+  //
+  //&__photo-img {
+  //  display: flex;
+  //  justify-content: center;
+  //  align-items: center;
+  //  object-fit: cover;
+  //}
 
 
 

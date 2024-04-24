@@ -97,6 +97,14 @@
               v-if="image.alt === 'cooking'"
           />
 
+          <PlantingTreeService
+              v-if="image.alt === 'tree'"
+          />
+
+          <CheckInOutService
+              v-if="image.alt === 'late-check-out'"
+          />
+
         </div>
 
         <div class="card-service__section">
@@ -198,6 +206,8 @@ import SaunaChanService
   from "@/components/modules/BookingModule/chunks/CardService/components/SaunaChanService/SaunaChanService.vue";
 import BicycleService from "@/components/modules/BookingModule/chunks/CardService/components/BicycleService/BicycleService.vue";
 import CookingService from "@/components/modules/BookingModule/chunks/CardService/components/CookingService/CookingService.vue";
+import PlantingTreeService from "@/components/modules/BookingModule/chunks/CardService/components/PlantingTreeService/PlantingTreeService.vue";
+import CheckInOutService from "@/components/modules/BookingModule/chunks/CardService/components/CheckInOutService/CheckInOutService.vue";
 
 
 export default {
@@ -206,6 +216,8 @@ export default {
     SaunaChanService,
     BicycleService,
     CookingService,
+    PlantingTreeService,
+    CheckInOutService,
     IconScaleButton,
     SliderPopup,
     CardSlider,
@@ -331,10 +343,11 @@ export default {
     padding: 16px;
     border: 1px solid $border-grey;
     border-radius: 8px;
+    
   }
 
   &__section {
-    margin-top: 16px;
+    // margin-top: 16px;
 
     &--cooking-bottom{
       max-width: 153px;

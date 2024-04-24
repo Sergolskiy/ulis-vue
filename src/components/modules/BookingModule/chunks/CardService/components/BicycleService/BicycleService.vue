@@ -198,4 +198,8 @@ export default {
 
 <style scoped lang="scss">
 
+  .service-content--bicycle{
+    margin-top: 16px;
+  }
+  
 </style>

@@ -9,6 +9,7 @@
           <IconBasket/>
         </div>
       </div>
+      
       <div class="service-cook__list service-cook__slider">
 
         <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
@@ -80,7 +81,9 @@
           </CounterInput>
           </div>
           <div class="service-cook-line-card__delete">
-            <div class="square-delete-btn">
+            <div class="square-delete-btn"
+                 @click="removeDish"
+            >
               <div class="square-delete-btn__inner">
                 <IconDelete/>
               </div>
@@ -92,6 +95,12 @@
 
 
   </div>
+
+  <DeleteItemPopup
+      v-if="openRemovePopup"
+      :deletePopupText="deletePopupText"
+      @closeDeletePopup="openRemovePopup = false"
+  />
 
 </template>
 
@@ -105,6 +114,7 @@ import IconBasket from '@/assets/img/icon-basket.svg?skipsvgo'
 import CookingSlider from "@/components/modules/BookingModule/chunks/CookingSlider/CookingSlider.vue";
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/vue-splide/css';
+import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteItemPopup/DeleteItemPopup.vue";
 
 export default {
   name: "CookingService",
@@ -118,6 +128,7 @@ export default {
     IconBasket,
     Splide,
     SplideSlide,
+    DeleteItemPopup,
   },
 
   data() {
@@ -137,7 +148,21 @@ export default {
         },
       ],
       countDish: 0,
+
+      openRemovePopup: false,
+      deletePopupText: {
+        title: 'Видалити будинок?',
+        txt: 'Ти впевнений, що хочеш виконати цю дію? Якщо ти видалиш цю страву, то всі обрані фільтри не збережуться.',
+        no: 'Не хочу',
+        yes: 'Видалити',
+      },
     }
+  },
+
+  methods: {
+    removeDish() {
+      this.openRemovePopup = true
+    },
   },
 
 }
@@ -220,19 +245,6 @@ export default {
   //  object-fit: cover;
   //}
 
-
-
-  &__footer {
-
-  }
-
-  &__btn {
-
-  }
-
-  &__counter {
-
-  }
 
 }
 
@@ -342,17 +354,6 @@ export default {
     }
   }
 
-  &__footer {
-
-  }
-
-  &__btn {
-
-  }
-
-  &__counter {
-
-  }
 }
 
 
@@ -545,9 +546,6 @@ export default {
     }
   }
 
-  &__delete-btn {
-
-  }
 
 }
 

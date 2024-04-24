@@ -120,15 +120,15 @@ export default {
         {
           image: {
             src: '/src/assets/img/service-img/tree.png',
-            alt: 'house',
+            alt: 'tree',
             name: 'Посади дерево в УЛІС',
           },
         },
         {
           image: {
             src: '/src/assets/img/service-img/late-check-out.png',
-            alt: 'house',
-            name: 'house',
+            alt: 'late-check-out',
+            name: 'Пізнє виселення та раннє заселення',
           },
         },
       ],
@@ -150,6 +150,10 @@ export default {
 
 
 .services {
+
+  &__list {
+    margin-top: 16px;
+  }
 
   &__price-block {
     display: flex;

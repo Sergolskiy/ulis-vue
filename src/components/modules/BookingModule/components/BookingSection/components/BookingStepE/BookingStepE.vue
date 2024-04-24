@@ -201,7 +201,10 @@ export default {
     }
   }
   &__rule-icon {
-    width: 24px;
+    max-width: 24px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     height: 24px;
     margin-right: 12px;
     display: flex;

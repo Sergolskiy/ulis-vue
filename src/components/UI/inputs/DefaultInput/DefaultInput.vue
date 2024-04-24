@@ -260,7 +260,9 @@
       transition: border-color 0.3s;
 
       &::placeholder{
-        font-size: 14px;
+        // font-size: 14px;
+        color: $grey;
+        font-size: 16px;
         vertical-align: middle;
         line-height: revert;
       }

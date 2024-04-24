@@ -343,6 +343,11 @@ input[type="number"] {
       width: 100%;
     }
   }
+  &--xs-wfc{
+    @include for-680{
+      width: fit-content;
+    }
+  }
 
   &--es-50{
     @include for-420{

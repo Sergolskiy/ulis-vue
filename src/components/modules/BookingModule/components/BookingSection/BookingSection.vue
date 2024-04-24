@@ -54,15 +54,14 @@
           </div>
           <div class="booking__btn">
             <MainButton
-                :label="'Далі'"
-                :secondary="true"
-                :ico="'arrow'"
-                :icoPosition="'right'"
-                :disabled="Booking.data.activeStep > 2"
-                @click="Booking.data.activeStep = Booking.data.activeStep + 1"
+              :label="'Далі'"
+              :secondary="true"
+              :ico="'arrow'"
+              :icoPosition="'right'"
+              @click="Booking.data.activeStep = Booking.data.activeStep + 1"
             />
+              <!-- :disabled="Booking.data.activeStep > 2" -->
           </div>
-
         </div>
 
       </div>

@@ -111,7 +111,7 @@
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
-import IconHeart from "@/assets/img/icon-heart.svg?skipsvgo";
+import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
 
 export default {
   name: "CookingSlider",

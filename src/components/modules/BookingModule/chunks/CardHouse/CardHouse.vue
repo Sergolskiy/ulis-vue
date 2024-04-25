@@ -221,9 +221,9 @@ import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
 import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
 
 import IconUAH from '../../../../../assets/img/currencies.svg?skipsvgo'
-import IconMap from '../../../../../assets/img/icon-map-16px-grey.svg?skipsvgo'
-import IconPeople from '../../../../../assets/img/icon-people-16px-grey.svg?skipsvgo'
-import IconBuildings from '../../../../../assets/img/icon-buildings-16px-grey.svg?skipsvgo'
+import IconMap from '../../../../../assets/img/icons/icon-map-16px-grey.svg?skipsvgo'
+import IconPeople from '../../../../../assets/img/icons/icon-people-16px-grey.svg?skipsvgo'
+import IconBuildings from '../../../../../assets/img/icons/icon-buildings-16px-grey.svg?skipsvgo'
 import IconBathroom from '../../../../../assets/img/card/bathroom.svg?skipsvgo'
 import IconKitchen from '../../../../../assets/img/card/kitchen.svg?skipsvgo'
 import IconBedroom from '../../../../../assets/img/card/bedroom.svg?skipsvgo'

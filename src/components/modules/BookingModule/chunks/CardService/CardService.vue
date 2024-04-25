@@ -6,54 +6,97 @@
           <div class="card-service__photo">
             <div class="card-service__photo-inner">
               <img class="card-service__photo-img"
-                   :src="image.src" :alt="image.alt">
+                   :src="item.image.src" :alt="item.image.alt">
             </div>
           </div>
           <div class="card-service__overview">
-            <div class="card-service__name"
-                 :class="{'card-service__name--active' : detailedInfo}">
-              {{image.name}}
-            </div>
-            <div class="card-service__features features"
-                :class="{'card-service__features--active' : detailedInfo}"
-            >
-              <div class="card-service__features-item features__item">
-                <div class="card-service__features-ico features__ico">
-                  <IconPeople/>
-                </div>
-                <div class="card-service__features-txt features__name">
-                  До 4-х осіб
-                </div>
+            <div>
+              <div class="card-service__name"
+                   :class="{'card-service__name--active' : detailedInfo}">
+                {{item.name}}
               </div>
-              <div class="card-service__features-item features__item">
-                <div class="card-service__features-ico features__ico">
-                <IconClock/>
-                </div>
-                <div class="card-service__features-txt features__name">
-                  2 години
-                </div>
+              <div class="card-service__features features"
+                   v-if="item.types"
+                   :class="{'card-service__features--active' : detailedInfo}"
+              >
+                <template
+                    v-for="(itemType, index) in item.types">
+                  <ServiceFeaturesItem
+                      v-if="!itemType.opened || (detailedInfo && itemType.opened)"
+                      :index="index"
+                      :itemType="itemType"
+                      :opened="detailedInfo"
+                  />
+                </template>
+
+
+                <!--              <div class="card-service__features-item features__item">-->
+                <!--                <div class="card-service__features-ico features__ico">-->
+                <!--                  <IconPeople/>-->
+                <!--                </div>-->
+                <!--                <div class="card-service__features-txt features__name">-->
+                <!--                  До 4-х осіб-->
+                <!--                </div>-->
+                <!--              </div>-->
+                <!--              <div class="card-service__features-item features__item">-->
+                <!--                <div class="card-service__features-ico features__ico">-->
+                <!--                <IconClock/>-->
+                <!--                </div>-->
+                <!--                <div class="card-service__features-txt features__name">-->
+                <!--                  2 години-->
+                <!--                </div>-->
+                <!--              </div>-->
+              </div>
+
+              <div class="card-service__description" :class="{'mw-100' : detailedInfo}">
+                <p v-html="item.description"></p>
+                <p v-if="item.descriptionOpen && detailedInfo" v-html="item.descriptionOpen"></p>
               </div>
             </div>
 
-            <div class="card-service__description">
-              <p>
-                Розслабся та насолоджуйся! У  вартість входять напої, капці та рушники – все необхідне для твого відпочинку.
-              </p>
-            </div>
+
+
 
             <div class="card-service__bottom-small">
               <div class="card-service__price-block" v-if="!detailedInfo">
-                <div class="card-service__price" v-if="image.alt === 'bicycle'">
-                  <IconUAH/>
-                  100 <span>/год</span>
-                </div>
-                <div class="card-service__price">
-                  <IconUAH/>
-                  1 600 <span>/день</span>
-                </div>
-                <div class="card-service__overview-txt" v-if="image.alt === 'sauna' || image.alt === 'chan'">
-                  На будинок
-                </div>
+                <template v-if="item.type === 'bicycle'">
+                  <div class="card-service__price" >
+                    <IconUAH/>
+                    {{item.price}} <span>/год</span>
+                  </div>
+                  <div class="card-service__price">
+                    <IconUAH/>
+                    {{item.additionalPrice}} <span>/день</span>
+                  </div>
+                </template>
+
+                <template v-if="item.type === 'sauna' || item.type === 'chan'">
+                  <div class="card-service__price">
+                    <IconUAH/>
+                    {{item.price}}
+                  </div>
+                  <div class="card-service__overview-txt">
+                    На будинок
+                  </div>
+                </template>
+
+                <template v-if="item.type === 'cooking'">
+                  <div class="card-service__overview-txt">
+                    Від
+                  </div>
+                  <div class="card-service__price">
+                    <IconUAH/>
+                    {{item.price}}
+                  </div>
+                </template>
+
+                <template v-if="item.type === 'tree' || item.type === 'late-check-out'">
+                  <div class="card-service__price">
+                    <IconUAH/>
+                    {{item.price}}
+                  </div>
+                </template>
+
               </div>
 
               <div class="card-service__more" v-if="!detailedInfo">
@@ -86,23 +129,23 @@
         <div class="card-service__section">
 
           <SaunaChanService
-              v-if="image.alt === 'sauna' || image.alt === 'chan'"
+              v-if="item.type === 'sauna' || item.type === 'chan'"
           />
 
           <BicycleService
-              v-if="image.alt === 'bicycle'"
+              v-if="item.type === 'bicycle'"
           />
 
           <CookingService
-              v-if="image.alt === 'cooking'"
+              v-if="item.type === 'cooking'"
           />
 
           <PlantingTreeService
-              v-if="image.alt === 'tree'"
+              v-if="item.type === 'tree'"
           />
 
           <CheckInOutService
-              v-if="image.alt === 'late-check-out'"
+              v-if="item.type === 'late-check-out'"
           />
 
         </div>
@@ -110,7 +153,7 @@
         <div class="card-service__section">
           <div class="card-service__price-section">
             <div class="card-service__price-row justify-content-end"
-                 :class="{'card-service__price-row--cooking' : image.alt === 'cooking'}"
+                 :class="{'card-service__price-row--cooking' : item.type === 'cooking'}"
             >
               <!--            <div class="card-service__price-col card-service__price-col&#45;&#45;left">-->
               <!--              <div class="card-service__overview-txt">-->
@@ -123,7 +166,7 @@
 
               <!-- ELEMENT FOR SERVICE COOKING START -->
               <div class="card-service__price-col card-service__price-col--left card-service__price-col--left-cooking"
-                   v-if="image.alt === 'cooking'"
+                   v-if="item.type === 'cooking'"
               >
                 <div class="card-service__section--cooking-bottom">
                   <DefaultSelect
@@ -186,63 +229,39 @@
 <script>
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 import DefaultSelect from "../../../../UI/selections/DefaultSelect/DefaultSelect.vue";
-import Highlights from "../../chunks/Highlights/Highlights.vue";
-import MainCalendar from "../../chunks/MainCalendar/MainCalendar.vue";
-import CalendarDays from "@/components/modules/BookingModule/chunks/CalendarDays/CalendarDays.vue";
-
 import IconUAH from '../../../../../assets/img/currencies.svg?skipsvgo'
-import IconClock from '../../../../../assets/img/card/time.svg?skipsvgo'
-import IconPeople from '../../../../../assets/img/icon-people-16px-grey.svg?skipsvgo'
-import IconBuildings from '../../../../../assets/img/icon-buildings-16px-grey.svg?skipsvgo'
-import IconBathroom from '../../../../../assets/img/card/bathroom.svg?skipsvgo'
-import IconKitchen from '../../../../../assets/img/card/kitchen.svg?skipsvgo'
-import IconBedroom from '../../../../../assets/img/card/bedroom.svg?skipsvgo'
-import IconLivingRoom from '../../../../../assets/img/card/living-room.svg?skipsvgo'
-import IconOutside from '../../../../../assets/img/card/outside.svg?skipsvgo'
-import CardSlider from "@/components/modules/BookingModule/chunks/CardSlider/CardSlider.vue";
-import SliderPopup from "@/components/modules/BookingModule/chunks/SliderPopup/SliderPopup.vue";
-import IconScaleButton from "@/assets/img/scale-button.svg";
 import SaunaChanService
   from "@/components/modules/BookingModule/chunks/CardService/components/SaunaChanService/SaunaChanService.vue";
 import BicycleService from "@/components/modules/BookingModule/chunks/CardService/components/BicycleService/BicycleService.vue";
 import CookingService from "@/components/modules/BookingModule/chunks/CardService/components/CookingService/CookingService.vue";
 import PlantingTreeService from "@/components/modules/BookingModule/chunks/CardService/components/PlantingTreeService/PlantingTreeService.vue";
 import CheckInOutService from "@/components/modules/BookingModule/chunks/CardService/components/CheckInOutService/CheckInOutService.vue";
+import ServiceFeaturesItem
+  from "@/components/modules/BookingModule/chunks/CardService/components/ServiceFeaturesItem/ServiceFeaturesItem.vue";
 
 
 export default {
   name: "CardService",
   components: {
+    ServiceFeaturesItem,
     SaunaChanService,
     BicycleService,
     CookingService,
     PlantingTreeService,
     CheckInOutService,
-    IconScaleButton,
-    SliderPopup,
-    CardSlider,
     MainButton,
     DefaultSelect,
-    Highlights,
-    MainCalendar,
-    CalendarDays,
     IconUAH,
-    IconClock,
-    IconPeople,
-    IconBuildings,
-    IconBathroom,
-    IconKitchen,
-    IconBedroom,
-    IconLivingRoom,
-    IconOutside
   },
-
-  emits: ['closeSliderPopup'],
 
   props: {
     Booking: {
       type: Object,
       default: null,
+    },
+
+    item: {
+      type: Object,
     },
 
     image: {
@@ -257,78 +276,12 @@ export default {
 
   data () {
     return {
-      openSliderPopup: false,
       detailedInfo: false,
-      comfortsCalendarToggle: false,
-      highlights: [
-        {
-          name: 'Ванна кімната',
-          ico: 'bathroom',
-          list: [
-            'Косметичні засоби',
-            'Комплект рушників',
-            'Фен'
-          ]
-        },
-        {
-          name: 'Кухня',
-          ico: 'kitchen',
-          list: [
-            'Питна вода',
-            'Електроплита',
-            'Холодильник',
-            'Мікрохвильова піч',
-            'Каструлі, сковорідки',
-            'Столові прибори',
-            'Рушники',
-            'Сіль, перець, цукор',
-            'Чашки, стакани, бокали',
-          ]
-        },
-        {
-          name: 'Спальня',
-          ico: 'bedroom',
-          list: [
-            'Ліжко queensize',
-            'Ортопедичний матрац',
-            'Меблі для зберігання речей',
-            'Комплект білизни',
-          ]
-        },
-        {
-          name: 'Вітальня',
-          ico: 'living-room',
-          list: [
-            'Камін',
-            'Телевізор (SmartTV)',
-            'Диван',
-            'Кондиціонер',
-            'Wi-Fi',
-            'В’язанка дров',
-            'Паливні брикети для обігріву',
-          ]
-        },
-        {
-          name: 'Надворі',
-          ico: 'outside',
-          list: [
-            'Простора тераса',
-            'Садові меблі',
-            'Мангал',
-            'Місце для багаття',
-            'Набір для гриля',
-            '2,5 кг вугілля для мангалу',
-          ]
-        },
-      ],
     }
   },
 
   methods: {
-    toggleSliderPopup(val) {
-      this.openSliderPopup = val
-      document.body.style.overflow = val ? 'hidden' : 'initial'
-    }
+
   },
 }
 </script>
@@ -447,6 +400,7 @@ export default {
     @include from-550 {
       padding-left: 20px;
       flex-direction: column;
+      justify-content: space-between;
     }
 
     @include for-550 {
@@ -492,24 +446,11 @@ export default {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -8px;
+    margin-bottom: -8px;
 
     //@include from-992 {
     //  margin-bottom: 20px;
     //}
-
-    .features__item {
-      padding: 0 8px;
-    }
-
-    &.features_ico {
-      margin-right: 4px;
-    }
-
-    .features__name {
-      padding-top: 4px;
-      color: $text-grey;
-      font-size: 14px;
-    }
   }
 
   &__bottom-small {
@@ -763,43 +704,6 @@ export default {
 
 }
 
-.features{
-
-  &__item {
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-  }
-
-  &__ico {
-    min-width: 24px;
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-
-    @include for-680 {
-      min-width: 20px;
-      width: 20px;
-      height: 20px;
-    }
-    
-    svg{
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &__name {
-    padding-top: 4px;
-    color: $text-grey;
-    font-size: 16px;
-
-    @include for-680 {
-      font-size: 14px;
-      padding-top: 2px;
-    }
-  }
-}
 
 .fade-enter-active,
 .fade-leave-active {

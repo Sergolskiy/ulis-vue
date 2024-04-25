@@ -108,9 +108,9 @@
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
-import IconHeart from "@/assets/img/icon-heart.svg?skipsvgo";
-import IconDelete from "@/assets/img/icon-delete.svg?skipsvgo";
-import IconBasket from '@/assets/img/icon-basket.svg?skipsvgo'
+import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
+import IconDelete from "@/assets/img/icons/icon-delete.svg?skipsvgo";
+import IconBasket from '@/assets/img/icons/icon-basket.svg?skipsvgo'
 import CookingSlider from "@/components/modules/BookingModule/chunks/CookingSlider/CookingSlider.vue";
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/vue-splide/css';

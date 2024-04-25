@@ -2,16 +2,17 @@
   <div class="service-content service-content--cooking">
 
     <div class="service-cook">
-      <div class="service-cook__large-title">
-        Мої страви
-        <div class="service-cook__large-title-icon">
-          <IconBasket/>
+      <template v-if="!openCookingCart">
+        <div class="service-cook__large-title">
+          Мої страви
+          <div class="service-cook__large-title-icon">
+            <IconBasket/>
+          </div>
         </div>
-      </div>
-      
-      <div class="service-cook__list service-cook__slider">
 
-        <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
+        <div class="service-cook__list service-cook__slider">
+
+          <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
         breakpoints: {
           850: {
             perPage: 2,
@@ -21,75 +22,80 @@
           },
         }
         }" aria-label="My Favorite Images">
-          <SplideSlide v-for="(item, index) in slides" :key="index">
-            <CookingSlider
-                :item="item"
-                :slides="slides"
-            />
-          </SplideSlide>
-        </Splide>
+            <SplideSlide v-for="(item, index) in slides" :key="index">
+              <CookingSlider
+                  :item="item"
+                  :slides="slides"
+              />
+            </SplideSlide>
+          </Splide>
 
 
-      </div>
-
-
-      <div class="service-cook__large-title">
-        Твій кошик
-        <div class="service-cook__large-title-icon">
-          <IconBasket/>
         </div>
-      </div>
+      </template>
 
-      <div class="service-cook__list-basket">
 
-        <div class="service-cook-line-card service-cook__item-line-card">
-          <div class="service-cook-line-card__photo">
-            <div class="service-cook-line-card__photo-img">
-              <img src="../../../../../../../assets/img/service-img/dish02.png" alt="dish">
-            </div>
+
+      <template v-if="openCookingCart">
+        <div class="service-cook__large-title">
+          Твій кошик
+          <div class="service-cook__large-title-icon">
+            <IconBasket/>
           </div>
-          <div class="service-cook-line-card__info">
-            <div class="service-cook-line-card__name">
-              <span class="service-cook-line-card__name-count nowrap">
-                1 x
-              </span>
-              <span class="service-cook-line-card__name-txt">
+        </div>
+
+        <div class="service-cook__list-basket">
+
+          <div class="service-cook-line-card service-cook__item-line-card">
+            <div class="service-cook-line-card__photo">
+              <div class="service-cook-line-card__photo-img">
+                <img src="../../../../../../../assets/img/service-img/dish02.png" alt="dish">
+              </div>
+            </div>
+            <div class="service-cook-line-card__info">
+              <div class="service-cook-line-card__name">
+<!--              <span class="service-cook-line-card__name-count nowrap">-->
+<!--                1 x-->
+<!--              </span>-->
+                <span class="service-cook-line-card__name-txt">
                 Соковита котлета по-київськи з картопляним пюре
               </span>
-            </div>
-            <div class="service-cook-line-card__gram">
-              300 г
-            </div>
-          </div>
-          <div class="service-cook-line-card__price">
-            255
-            <IconUAH/>
-          </div>
-          <div class="service-cook-line-card__count">
-            <CounterInput
-              :border="true"
-              :value="countDish"
-              :minValue="0"
-              @update:updateCounter="(item) => countDish = item"
-          >
-            <template #content>
-              <div class="d-flex align-items-center">
-                <span class="ml-2">днів</span>
               </div>
-            </template>
-          </CounterInput>
-          </div>
-          <div class="service-cook-line-card__delete">
-            <div class="square-delete-btn"
-                 @click="removeDish"
-            >
-              <div class="square-delete-btn__inner">
-                <IconDelete/>
+              <div class="service-cook-line-card__gram">
+                300 г
+              </div>
+            </div>
+            <div class="service-cook-line-card__price">
+              255
+              <IconUAH/>
+            </div>
+            <div class="service-cook-line-card__count">
+              <CounterInput
+                  :border="true"
+                  :value="countDish"
+                  :minValue="0"
+                  @update:updateCounter="(item) => countDish = item"
+              >
+<!--                <template #content>-->
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <span class="ml-2">днів</span>-->
+<!--                  </div>-->
+<!--                </template>-->
+              </CounterInput>
+            </div>
+            <div class="service-cook-line-card__delete">
+              <div class="square-delete-btn"
+                   @click="removeDish"
+              >
+                <div class="square-delete-btn__inner">
+                  <IconDelete/>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </template>
+
     </div>
 
 
@@ -128,6 +134,10 @@ export default {
     Splide,
     SplideSlide,
     DeleteItemPopup,
+  },
+
+  props: {
+    openCookingCart: Boolean,
   },
 
   data() {

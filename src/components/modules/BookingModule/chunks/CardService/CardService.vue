@@ -140,6 +140,7 @@
 
           <CookingService
               v-if="item.type === 'cooking'"
+              :openCookingCart="openCookingCart"
           />
 
           <PlantingTreeService
@@ -206,17 +207,18 @@
               <MainButton
                   :label="'Закрити'"
                   :secondary="true"
-                  @click="detailedInfo = false"
+                  @click="detailedInfo = false; openCookingCart = false"
               />
             </div>
             <div class="card-service__bottom-btn"
-                 v-if="openCookingCart"
+                 v-if="!openCookingCart && detailedInfo && item.type === 'cooking'"
             >
               <MainButton
                   :label="'Далі'"
+                  @click="openCookingCart = true"
               />
             </div>
-            <div class="card-service__bottom-btn">
+            <div v-else class="card-service__bottom-btn">
               <MainButton
                   :label="'Забронювати'"
               />

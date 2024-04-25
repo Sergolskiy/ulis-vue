@@ -3,7 +3,8 @@
        :class="{
           'default-checkbox--bordered' : bordered,
           'empty-label' : !label,
-          'default-checkbox__big-checkbox-style' : bigCheckboxStyle
+          'default-checkbox__big-checkbox-style' : bigCheckboxStyle,
+          'default-checkbox--center-box' : centerBox
         }"
   >
     <input type="checkbox"
@@ -79,6 +80,10 @@
       helpText: {
         type: String,
         default: '',
+      },
+      centerBox: {
+        type: Boolean,
+        default: false,
       },
     },
 
@@ -162,6 +167,15 @@
         &:after {
           top: 11px;
         }
+      }
+    }
+
+    &--center-box .default-checkbox__label{
+
+      &:before, 
+      &:after {
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 

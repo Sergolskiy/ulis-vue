@@ -438,12 +438,15 @@ export default {
 
     @include for-768 {
       padding-left: 80px;
-      flex-direction: row;
-      justify-content: space-between;
+      min-height: 70px;
+      width: calc(100% - 36px);
+      order: 2;
+      margin-bottom: 16px;
     }
 
     @include for-550 {
       padding-left: 64px;
+      min-height: 56px;
     }
   }
 
@@ -455,6 +458,13 @@ export default {
     @include for-550 {
       font-size: 12px;
       margin-bottom: 4px;
+
+      font-size: 12px;
+      font-weight: 400;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 
@@ -462,9 +472,9 @@ export default {
     min-width: 25px;
     margin-right: 4px;
 
-    @include for-550 {
-      display: none;
-    }
+    // @include for-550 {
+    //   display: none;
+    // }
   }
 
   &__gram {
@@ -479,14 +489,16 @@ export default {
     width: fit-content;
 
     @include for-768 {
-      margin-left: 16px;
-      margin-bottom: 8px;
-      white-space: nowrap;
+      min-height: 21px;
+      font-size: 12px;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-top: auto;
     }
 
-    @include for-550{
-      display: none;
-    }
+    // @include for-550{
+    //   display: none;
+    // }
   }
 
   &__price {
@@ -500,18 +512,11 @@ export default {
     flex: 1;
 
     @include for-768 {
-      padding-left: 80px;
       margin-left: 0;
       min-height: 32px;
+      order: 5;
     }
 
-    @include for-550{
-      padding-left: 64px;
-      align-self: flex-end;
-      justify-content: start;
-      width: calc(100% - 116px);
-      font-size: 16px;
-    }
 
     svg{
       width: 24px;
@@ -528,6 +533,11 @@ export default {
   &__count {
     margin-left: 16px;
 
+    @include for-768{
+      order: 4;
+      margin-left: 0;
+    }
+
     @include for-550{
       align-self: flex-end;
       margin-left: 4px;
@@ -541,7 +551,7 @@ export default {
     }
 
     :deep(.counter-input__content) {
-      @include for-550{
+      @include for-768{
         display: none;
       }
     }
@@ -550,8 +560,25 @@ export default {
   &__delete {
     margin-left: 16px;
 
-    @include for-550{
-      display: none;
+    @include for-768{
+      order: 3;
+      margin-left: 4px;
+
+      .square-delete-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+
+        &__inner {
+          width: 32px;
+          height: 32px;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 

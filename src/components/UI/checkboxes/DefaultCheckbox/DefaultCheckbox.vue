@@ -135,6 +135,37 @@
       padding: 12px;
     }
 
+    &.label-weight-medium {
+      .default-checkbox__label{
+        font-weight: 500;
+      }
+    }
+
+    &.lable-pl-38{
+      .default-checkbox__label{
+        padding-left: 38px;
+        padding-right: 16px;
+      }
+
+      .default-checkbox__help-text{
+        top: calc(100% - 16px);
+        left: 38px;
+      }
+    }
+
+    &.mh-42{
+      min-height: 42px;
+
+      .default-checkbox__label{
+
+        &:before,
+        &:after {
+          top: 11px;
+        }
+      }
+    }
+
+
     &__input{
       display: none;
     }
@@ -240,7 +271,7 @@
       pointer-events: none;
 
       &:before{
-        opacity: 0.4;
+        background: rgb(191, 198, 204, 0.4);
       }
     }
 
@@ -249,8 +280,7 @@
       top: 100%;
       left: 24px;
       font-size: 12px;
-      line-height: 18px;
-      color: #8F7A61;
+      color: $text-grey;
     }
 
     &__error{
@@ -286,5 +316,7 @@
   .empty-label{
     min-height: 16px;
   }
+
+
 
 </style>

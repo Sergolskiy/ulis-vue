@@ -40,6 +40,7 @@
             class="lable-pl-38"
             :label="'Я погоджуюсь з правилами проживання в УЛІС'"
             :required="'required'"
+            :centerBox="true"
         />
       </div>
 
@@ -50,7 +51,7 @@
         Оплата
       </div>
 
-      <div class="payment-block__section">
+      <div class="payment-block__section payment-block__section--after-pay">
         <div class="payment-block__title">
           Що буде після оплати?
         </div>
@@ -99,7 +100,7 @@
 
         <div class="payment-block__promo">
           <FormLabel
-              class="mt-4"
+              class="mt-4 mb-1"
               :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
           />
 
@@ -328,6 +329,12 @@ export default {
     border-radius: 8px;
     border: 1px solid $border-grey;
     padding: 16px;
+
+    &--after-pay{
+      @include for-768 {
+        margin-bottom: 24px;
+      }
+    }
   }
   &__rules {
     display: flex;
@@ -355,6 +362,10 @@ export default {
   }
   &__rules-agree-block {
     margin-bottom: 48px;
+
+    @include for-768 {
+      margin-bottom: 32px;
+    }
   }
   &__checkbox{
     padding-left: 16px;
@@ -363,6 +374,9 @@ export default {
   ul {
     padding-left: 22px;
   }
+  li {
+    list-style: disc;
+  }
   &__promo{
     margin-bottom: 24px;
   }
@@ -370,8 +384,10 @@ export default {
     margin-bottom: 24px;
   }
   &__confirm-btn{
-    width: fit-content;
-    margin-left: auto;
+    @include from-550 {
+      width: fit-content;
+      margin-left: auto;
+    }
   }
 }
 
@@ -385,10 +401,20 @@ export default {
     justify-content: space-between;
     border-radius: 8px;
     background: $grey-hover;
+
+    @include for-550 {
+      padding: 16px;
+      flex-direction: column;
+    }
   }
 
   &__info {
     margin-right: 12px;
+
+    @include for-550 {
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
 
     :deep(.info-block__txt){
       font-size: 16px;
@@ -396,7 +422,9 @@ export default {
   }
 
   &__btn {
-
+    @include for-550 {
+      width: 100%;
+    }
   }
 }
 

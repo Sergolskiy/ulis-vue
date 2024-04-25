@@ -1,5 +1,4 @@
 <template>
-
   <div class="service-content service-content--cooking">
 
     <div class="service-cook">

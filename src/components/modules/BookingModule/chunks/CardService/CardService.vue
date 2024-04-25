@@ -1,7 +1,9 @@
 <template>
   <div class="card-service">
     <div class="card-service__inner">
-      <div class="card-service__section">
+      <div class="card-service__section"
+           v-if="!(detailedInfo && item.type === 'cooking')"
+      >
         <div class="card-service__section-head">
           <div class="card-service__photo">
             <div class="card-service__photo-inner">
@@ -207,6 +209,13 @@
                   @click="detailedInfo = false"
               />
             </div>
+            <div class="card-service__bottom-btn"
+                 v-if="openCookingCart"
+            >
+              <MainButton
+                  :label="'Далі'"
+              />
+            </div>
             <div class="card-service__bottom-btn">
               <MainButton
                   :label="'Забронювати'"
@@ -277,6 +286,7 @@ export default {
   data () {
     return {
       detailedInfo: false,
+      openCookingCart: false,
     }
   },
 

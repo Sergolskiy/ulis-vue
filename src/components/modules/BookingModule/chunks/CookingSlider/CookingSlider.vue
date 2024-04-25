@@ -10,12 +10,12 @@
       <div class="service-cook-card__date">
         13:00 - 20:00
       </div>
-      <div class="service-cook-card__favorite"
-           :class="{'service-cook-card__favorite--active' : inFavor}"
-           @click="inFavor = !inFavor"
-      >
-        <IconHeart/>
-      </div>
+<!--      <div class="service-cook-card__favorite"-->
+<!--           :class="{'service-cook-card__favorite&#45;&#45;active' : inFavor}"-->
+<!--           @click="inFavor = !inFavor"-->
+<!--      >-->
+<!--        <IconHeart/>-->
+<!--      </div>-->
       <div class="service-cook-card__name">
         Соковита котлета по-київськи з картопляним пюре
       </div>
@@ -111,12 +111,12 @@
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
-import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
+// import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
 
 export default {
   name: "CookingSlider",
   components: {
-    IconHeart,
+    // IconHeart,
     MainButton,
     CounterInput,
     IconUAH,

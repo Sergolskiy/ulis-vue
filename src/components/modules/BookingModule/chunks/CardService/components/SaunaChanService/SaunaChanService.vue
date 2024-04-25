@@ -82,6 +82,16 @@
       </div>
     </div>
 
+    <FormLabel
+        :label="'Час'"
+        :type="'required'"
+    />
+    <InfoBlock
+        class="mb-3 mt-1"
+        v-if="item.error2"
+        :text="item.error2"
+        :type="'error'"
+    />
 
     <div class="service-content__item">
 
@@ -142,15 +152,21 @@ import RadioDefault from "@/components/UI/radiobuttons/RadioDefault/RadioDefault
 import CounterInput from "@/components/UI/inputs/CounterInput/CounterInput.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import IconPlus from "@/assets/img/plus-gray.svg?skipsvgo";
+import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 
 export default {
   name: "SaunaChanService",
   components: {
+    InfoBlock,
     IconPlus,
     IconUAH,
     CounterInput,
     RadioDefault,
     FormLabel
+  },
+
+  props: {
+    item: Object,
   },
 
   data() {

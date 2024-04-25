@@ -73,10 +73,10 @@ export default {
   }
 
   &__txt {
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 20px;
   }
 
   &--error {
@@ -86,6 +86,7 @@ export default {
     border-radius: 8px;
 
     .info-block__right {
+      padding-top: 2px;
       margin-left: 16px;
 
       @include for-550 {
@@ -101,6 +102,7 @@ export default {
     border-radius: 8px;
 
     .info-block__right {
+      padding-top: 2px;
       margin-left: 16px;
 
       @include for-550 {

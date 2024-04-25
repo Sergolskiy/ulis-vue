@@ -114,6 +114,7 @@
                       :label="'Детальніше'"
                       :ico="'plus'"
                       :icoPosition="'right'"
+                      :disabled="item.error"
                       @click="detailedInfo = true"
                   />
                 </div>
@@ -122,7 +123,16 @@
             </div>
 
           </div>
+
         </div>
+
+        <InfoBlock
+            v-if="item.error"
+            class="mt-3"
+            :text="item.error"
+            :type="'error'"
+        />
+
       </div>
 
 
@@ -132,6 +142,7 @@
 
           <SaunaChanService
               v-if="item.type === 'sauna' || item.type === 'chan'"
+              :item="item"
           />
 
           <BicycleService
@@ -249,11 +260,13 @@ import PlantingTreeService from "@/components/modules/BookingModule/chunks/CardS
 import CheckInOutService from "@/components/modules/BookingModule/chunks/CardService/components/CheckInOutService/CheckInOutService.vue";
 import ServiceFeaturesItem
   from "@/components/modules/BookingModule/chunks/CardService/components/ServiceFeaturesItem/ServiceFeaturesItem.vue";
+import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 
 
 export default {
   name: "CardService",
   components: {
+    InfoBlock,
     ServiceFeaturesItem,
     SaunaChanService,
     BicycleService,

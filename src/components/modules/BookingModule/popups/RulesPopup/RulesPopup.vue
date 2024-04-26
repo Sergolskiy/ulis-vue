@@ -212,7 +212,7 @@ export default {
 
     @include for-550 {
       min-height: 86px;
-      width: 100vw;
+      width: calc(100% + 32px);
       transform: translateX(-16px);
       overflow: hidden;
       display: flex;
@@ -242,7 +242,8 @@ export default {
 
     @include for-550 {
       padding: 0;
-      margin: 0;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   :deep(.modal-component__inner) {

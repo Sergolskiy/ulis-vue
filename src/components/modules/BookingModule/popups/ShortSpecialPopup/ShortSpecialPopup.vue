@@ -13,8 +13,20 @@
           <p v-html="shortSpecialPopupText.txt"></p>
         </template>
 
-        <div class="short-special-popup__image">
-          <img :src="shortSpecialPopupText.imgSrc" :alt="shortSpecialPopupText.imgAlt">
+        <div class="short-special-popup__image"
+          v-if="shortSpecialPopupText.img"
+        >
+          <template v-if="shortSpecialPopupText.imgType === 'ico'">
+            <SVGSignIn v-if="shortSpecialPopupText.imgName == 'signInPopup'" />
+          </template>
+
+          <template v-else>
+            <img 
+              v-if="shortSpecialPopupText.imgName == 'specialOfferPopup'"
+              src="../../../../../assets/img/special-offer-artboard.png" 
+              alt="special-offer"
+            >
+          </template>
         </div>
       </div>
     </template>
@@ -42,11 +54,15 @@
 import Modal from "@/components/coreComponents/Modal/Modal.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
+import SVGSignIn from '../../../../../../src/assets/img/sign-in-artboard.svg?skipsvgo'
+
 export default {
   name: "ShortSpecialPopup",
   components: {
     MainButton,
     Modal,
+
+    SVGSignIn,
   },
 
   props: {
@@ -75,7 +91,7 @@ export default {
     justify-content: space-between;
 
     @include for-550 {
-      gap: 2px;
+      gap: 8px;
     }
   }
 
@@ -84,8 +100,8 @@ export default {
     // max-width: 215px;
 
     .main-button {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: 13px;
+      padding-right: 13px;
     }
 
     // @include for-550 {
@@ -114,9 +130,11 @@ export default {
 
   &__image{
     margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
 
     @include for-550 {
-      width: 100vw;
+      width: calc(100% + 32px);
       transform: translateX(-16px);
       overflow: hidden;
       margin-bottom: 32px;
@@ -134,9 +152,14 @@ export default {
   :deep(.modal-component__wrapper) {
     max-width: 446px;
 
+    @media (max-width: 650px){
+      margin: 40px auto;
+    }
+
     @include for-550 {
       padding: 0;
-      margin: 0;
+      margin-left: 0 auto;
+      margin-right: 0 auto;
     }
   }
   :deep(.modal-component__inner) {

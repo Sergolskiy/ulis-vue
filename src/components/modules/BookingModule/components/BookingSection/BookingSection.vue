@@ -134,8 +134,8 @@ export default {
       specialOfferPopupText: {
         title: 'Спеціальна пропозиція для тебе',
         txt: 'Продовжи проживання в УЛІС до 3-х днів та отримай знижку у розмірі Х% від загальної вартості бронювання.',
-        imgSrc: 'src/assets/img/special-offer-artboard.png',
-        imgAlt: 'alt',
+        img: true,
+        imgName: 'specialOfferPopup',
         no: 'Ні, дякую',
         yes: 'Отримати знижку',
       },

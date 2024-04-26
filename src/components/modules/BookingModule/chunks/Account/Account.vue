@@ -15,15 +15,25 @@
       <div class="account__btn">
         <MainButton
             :label="'Авторизуватися'"
+            @click="openSignInPopup = true"
         />
       </div>
     </div>
   </div>
+
+  <ShortSpecialPopup
+      v-if="openSignInPopup"
+      :shortSpecialPopupText="signInPopupText"
+      @closeShortSpecialPopup="openSignInPopup = false"
+  />
+
 </template>
 
 <script>
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
+
+import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
 
 export default {
   name: "Account",
@@ -31,6 +41,23 @@ export default {
   components: {
     MainButton,
     InfoBlock,
+
+    ShortSpecialPopup,
+  },
+
+  data() {
+    return {
+      openSignInPopup: false,
+      signInPopupText: {
+        title: 'Авторизуйся в системі',
+        txt: 'Авторизуйся в системі, щоб першим дізнаватися про вигідні пропозиції, накопичувати бонуси та вести профіль, додаючи у wishlist та waitlist',
+        img: true,
+        imgType: 'ico',
+        imgName: 'signInPopup',
+        no: 'Іншим разом',
+        yes: 'Авторизуватися',
+      },
+    }
   }
 
 }

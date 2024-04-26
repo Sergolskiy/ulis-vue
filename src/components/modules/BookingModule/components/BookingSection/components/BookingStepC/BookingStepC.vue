@@ -13,11 +13,11 @@
         />
       </div>
       <div class="booking__btn services__btn">
-        <!--                :disabled="true"-->
         <MainButton
             :label="'Не цікаво'"
             :ico="'arrow'"
             :icoPosition="'right'"
+            :disabled="true"
             @click="$emit('goToNextStepEmit')"
         />
       </div>
@@ -213,50 +213,132 @@ export default {
 
       ],
 
-      serviceImg: [
+
+      itemsTest: [
         {
           image: {
-            src: '/src/assets/img/service-img/sauna.png',
-            alt: 'sauna',
-            name: 'Сауна',
+            src: '/assets/sauna.png',
+            alt: 'alt',
           },
+          name: 'Сауна',
+          description: 'Розслабся та насолоджуйся! У  вартість входять напої, капці та рушники – все необхідне для твого відпочинку.',
+          types: [
+            {
+              mans: 'До 4-х осіб',
+            },
+            {
+              time: '2 години',
+            },
+          ],
+          type: 'sauna',
+          price: '1 600',
         },
         {
           image: {
-            src: '/src/assets/img/service-img/chan.png',
-            alt: 'chan',
-            name: 'Чан',
+            src: '/assets/sauna.png',
+            alt: 'alt',
           },
+          name: 'Сауна',
+          description: 'Розслабся та насолоджуйся! У  вартість входять напої, капці та рушники – все необхідне для твого відпочинку.',
+          types: [
+            {
+              mans: 'До 4-х осіб',
+            },
+            {
+              time: '2 години',
+            },
+          ],
+          type: 'sauna',
+          price: '1 600',
+          error: 'Все заброньовано на твої дати. Додай у вішліст, і я повідомлю, якщо будуть вільні місця!',
         },
         {
           image: {
-            src: '/src/assets/img/service-img/bicycle.png',
-            alt: 'bicycle',
-            name: 'Велосипеди',
+            src: '/assets/chan.png',
+            alt: 'alt',
           },
+          name: 'Чан',
+          description: 'Розслабся та насолоджуйся! У  вартість входять напої, капці та рушники – все необхідне для твого відпочинку.',
+          types: [
+            {
+              mans: 'До 4-х осіб',
+            },
+            {
+              time: '2,5 години',
+            },
+          ],
+          type: 'sauna',
+          price: '2 400',
+          error2: 'Все заброньовано на твої дати. Додай у вішліст, і я повідомлю, якщо будуть вільні місця!',
         },
+
         {
           image: {
-            src: '/src/assets/img/service-img/cook.png',
-            alt: 'cooking',
-            name: 'Кухня',
+            src: '/assets/bicycle.png',
+            alt: 'alt',
           },
+          name: 'Велосипеди',
+          description: 'Орендуй велосипеди, включаючи дитячі варіанти та крісла. Зручне розташування та екологічний відпочинок гарантовані!',
+          types: [
+            {
+              opened: true,
+              mans: 'Необмежена к-ть осіб',
+            },
+            {
+              time: 'Погодинно та подобово',
+            },
+            {
+              opened: true,
+              children: 'Дитячий велосипед та крісло',
+            },
+          ],
+          type: 'bicycle',
+          price: '100',
+          additionalPrice: '1000',
         },
+
         {
           image: {
-            src: '/src/assets/img/service-img/tree.png',
-            alt: 'tree',
-            name: 'Посади дерево в УЛІС',
+            src: '/assets/cook.png',
+            alt: 'alt',
           },
+          name: 'Кухня',
+          description: 'Замовляй страви собі на вечерю в день заселення і забирай у моєму пункті видачі.',
+          types: [
+            {
+              cooking: 'Вечеря (13:00 - 20:00)',
+            }
+          ],
+          type: 'cooking',
+          price: '135',
         },
+
         {
           image: {
-            src: '/src/assets/img/service-img/late-check-out.png',
-            alt: 'late-check-out',
-            name: 'Пізнє виселення та раннє заселення',
+            src: '/assets/tree.png',
+            alt: 'alt',
           },
+          name: 'Посади дерево в УЛІС',
+          description: 'Збережи мій ліс та посади у мене дерево. Внеси свій екологічний вклад в УЛІС.',
+          type: 'tree',
+          price: '200',
         },
+
+        {
+          image: {
+            src: '/assets/late-check-out.png',
+            alt: 'alt',
+          },
+          name: 'Пізнє виселення та раннє заселення',
+          description: 'Обери зручний час для початку та закінчення твого відпочинку, а я підлаштуйсь, щоб ти отримав найбільше задоволення.',
+          descriptionOpen: 'Загалом заїзд у мої будинки проходить з 15:00, а виїзд до 11:00. Але за додаткову плату, ти можеш залишитися у мене на довше.',
+          type: 'late-check-out',
+          price: '200',
+        },
+
       ],
+
+
     }
   },
 

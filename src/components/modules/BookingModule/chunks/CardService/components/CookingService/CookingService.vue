@@ -18,16 +18,7 @@
 
         <div class="service-cook__list service-cook__slider">
 
-          <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
-        breakpoints: {
-          850: {
-            perPage: 2,
-          },
-          640: {
-            perPage: 1,
-          },
-        }
-        }" aria-label="My Favorite Images">
+          <Splide class="cocking-slider" :options="optionsSlider" aria-label="My Favorite Images">
             <SplideSlide v-for="(item, index) in slides" :key="index">
               <CookingSlide
                   :item="item"
@@ -170,6 +161,37 @@ export default {
           img: '/src/assets/img/service-img/dish02.png',
         },
       ],
+
+      slidesTest: [
+        {
+          img: '/assets/dish02.png',
+        },
+        {
+          img: '/assets/dish02.png',
+        },
+        {
+          img: '/assets/dish02.png',
+        },
+        {
+          img: '/assets/dish02.png',
+        },
+      ],
+
+      optionsSlider: {
+        rewind: false,
+        autoWidth: true,
+        gap: 24,
+        perPage: 3,
+        breakpoints: {
+          850: {
+            perPage: 2,
+          },
+          640: {
+            perPage: 1,
+          },
+        }
+      },
+
       countDish: 0,
 
       openRemovePopup: false,

@@ -132,7 +132,7 @@ export default {
   }
 
   :deep(.modal-component__wrapper) {
-    max-width: 686px;
+    max-width: 446px;
 
     @include for-550 {
       padding: 0;

@@ -58,8 +58,11 @@
               :secondary="true"
               :ico="'arrow'"
               :icoPosition="'right'"
-              @click="Booking.data.activeStep = Booking.data.activeStep + 1"
-            />
+              @click="Booking.data.activeStep == 1
+              ? openRulesPopup = true
+              : Booking.data.activeStep = Booking.data.activeStep + 1"
+              />
+              <!-- @click="Booking.data.activeStep = Booking.data.activeStep + 1" -->
               <!-- :disabled="Booking.data.activeStep > 2" -->
           </div>
         </div>
@@ -71,6 +74,18 @@
 
   </div>
 
+  <RulesPopup
+      v-if="openRulesPopup"
+      @closeRulesPopup="openRulesPopup = false"
+      @confirm="closeRulesPopup"
+  />
+
+  <ShortSpecialPopup
+      v-if="openShortSpecialPopup"
+      :shortSpecialPopupText="specialOfferPopupText"
+      @closeShortSpecialPopup="openShortSpecialPopup = false"
+      @confirm="closeShortSpecialPopup"
+  />
 
 </template>
 
@@ -85,6 +100,9 @@ import BookingStepE from "@/components/modules/BookingModule/components/BookingS
 import BookingTop from "@/components/modules/BookingModule/components/BookingSection/components/BookingTop/BookingTop.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 
+import RulesPopup from "@/components/modules/BookingModule/popups/RulesPopup/RulesPopup.vue";
+import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
+
 export default {
   name: "BookingSection",
 
@@ -97,6 +115,9 @@ export default {
     BookingStepC,
     BookingStepD,
     BookingStepE,
+
+    RulesPopup,
+    ShortSpecialPopup,
   },
 
   props: {
@@ -104,6 +125,33 @@ export default {
       type: Object,
       default: null,
     }
+  },
+
+  data() {
+    return {
+      openRulesPopup: false,
+      openShortSpecialPopup: false,
+      specialOfferPopupText: {
+        title: 'Спеціальна пропозиція для тебе',
+        txt: 'Продовжи проживання в УЛІС до 3-х днів та отримай знижку у розмірі Х% від загальної вартості бронювання.',
+        imgSrc: 'src/assets/img/special-offer-artboard.png',
+        imgAlt: 'alt',
+        no: 'Ні, дякую',
+        yes: 'Отримати знижку',
+      },
+    }
+  },
+
+  methods: {
+    closeRulesPopup() {
+      this.openRulesPopup = false;
+      this.openShortSpecialPopup = true;
+    },
+
+    closeShortSpecialPopup() {
+      this.openShortSpecialPopup = false;
+      this.Booking.data.activeStep = this.Booking.data.activeStep + 1;
+    },
   },
 
 }

@@ -60,7 +60,7 @@
               :secondary="true"
               :ico="'arrow'"
               :icoPosition="'right'"
-              @click="goToNextStep"
+              @click="checkFirstPopup"
             />
               <!-- :disabled="Booking.data.activeStep > 2" -->
           </div>
@@ -73,6 +73,18 @@
 
   </div>
 
+  <RulesPopup
+      v-if="openRulesPopup"
+      @closeRulesPopup="openRulesPopup = false"
+      @confirm="closeRulesPopup"
+  />
+
+  <ShortSpecialPopup
+      v-if="openShortSpecialPopup"
+      :shortSpecialPopupText="specialOfferPopupText"
+      @closeShortSpecialPopup="openShortSpecialPopup = false"
+      @confirm="closeShortSpecialPopup"
+  />
 
 </template>
 
@@ -87,6 +99,9 @@ import BookingStepE from "@/components/modules/BookingModule/components/BookingS
 import BookingTop from "@/components/modules/BookingModule/components/BookingSection/components/BookingTop/BookingTop.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 
+import RulesPopup from "@/components/modules/BookingModule/popups/RulesPopup/RulesPopup.vue";
+import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
+
 export default {
   name: "BookingSection",
 
@@ -99,6 +114,9 @@ export default {
     BookingStepC,
     BookingStepD,
     BookingStepE,
+
+    RulesPopup,
+    ShortSpecialPopup,
   },
 
 
@@ -109,18 +127,51 @@ export default {
     }
   },
 
+  data() {
+    return {
+      openRulesPopup: false,
+      openShortSpecialPopup: false,
+      specialOfferPopupText: {
+        title: 'Спеціальна пропозиція для тебе',
+        txt: 'Продовжи проживання в УЛІС до 3-х днів та отримай знижку у розмірі Х% від загальної вартості бронювання.',
+        imgSrc: 'src/assets/img/special-offer-artboard.png',
+        imgAlt: 'alt',
+        no: 'Ні, дякую',
+        yes: 'Отримати знижку',
+      },
+    }
+  },
+
   methods: {
+    closeRulesPopup() {
+      this.openRulesPopup = false;
+      this.openShortSpecialPopup = true;
+    },
+
+    closeShortSpecialPopup() {
+      this.openShortSpecialPopup = false;
+      this.goToNextStep()
+    },
+
     goToBackStep() {
       this.Booking.data.activeStep = this.Booking.data.activeStep - 1
       window.scrollTo(0, 0)
+    },
+
+    checkFirstPopup() {
+      if(this.Booking.data.activeStep === 1) {
+        this.openRulesPopup = true
+        return
+      }
+
+      this.goToNextStep()
     },
 
     goToNextStep() {
       this.Booking.data.activeStep = this.Booking.data.activeStep + 1
       window.scrollTo(0, 0)
     },
-
-  }
+  },
 
 }
 </script>

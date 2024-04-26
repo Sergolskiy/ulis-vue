@@ -58,25 +58,25 @@
         <div class="custom-col custom-col--p4 wfc">
           <RadioDefault
               :label="'10:00 - 12:00'"
-              :modelValue="day === 1"
-              :name="'day'"
-              @update:modelValue="day = 1"
+              :modelValue="time === 1"
+              :name="'time'"
+              @update:modelValue="time = 1"
           />
         </div>
         <div class="custom-col custom-col--p4 wfc">
           <RadioDefault
               :label="'14:00 - 16:00'"
-              :modelValue="day === 2"
-              :name="'day'"
-              @update:modelValue="day = 2"
+              :modelValue="time === 2"
+              :name="'time'"
+              @update:modelValue="time = 2"
           />
         </div>
         <div class="custom-col custom-col--p4 wfc">
           <RadioDefault
               :label="'18:00 - 20:00'"
-              :modelValue="day === 3"
-              :name="'day'"
-              @update:modelValue="day = 3"
+              :modelValue="time === 3"
+              :name="'time'"
+              @update:modelValue="time = 3"
           />
         </div>
       </div>
@@ -172,6 +172,7 @@ export default {
   data() {
     return {
       day: 1,
+      time: 1,
       countPeople: 0,
       countBrooms: 0,
     }

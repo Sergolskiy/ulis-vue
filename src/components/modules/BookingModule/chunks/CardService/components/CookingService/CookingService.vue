@@ -10,6 +10,12 @@
           </div>
         </div>
 
+        <InfoBlock
+            class="mt-3 mb-3"
+            :text="'Обери страви, які тобі до вподоби, і я приготую їх тобі на вечерю в день заселення!'"
+            :type="'success'"
+        />
+
         <div class="service-cook__list service-cook__slider">
 
           <Splide class="cocking-slider" :options="{ rewind: false, autoWidth: true, gap: 24, perPage: 3,
@@ -23,7 +29,7 @@
         }
         }" aria-label="My Favorite Images">
             <SplideSlide v-for="(item, index) in slides" :key="index">
-              <CookingSlider
+              <CookingSlide
                   :item="item"
                   :slides="slides"
               />
@@ -43,6 +49,12 @@
             <IconBasket/>
           </div>
         </div>
+
+        <InfoBlock
+            class="mt-3 mb-3"
+            :text="'Ці страви я приготую для тебе на вечерю в день заселення! Тобі залишилось обрати час, на який їх приготувати та будинок!'"
+            :type="'success'"
+        />
 
         <div class="service-cook__list-basket">
 
@@ -116,15 +128,17 @@ import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
 import IconDelete from "@/assets/img/icons/icon-delete.svg?skipsvgo";
 import IconBasket from '@/assets/img/icons/icon-basket.svg?skipsvgo'
-import CookingSlider from "@/components/modules/BookingModule/chunks/CookingSlider/CookingSlider.vue";
+import CookingSlide from "@/components/modules/BookingModule/chunks/CookingSlide/CookingSlide.vue";
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/vue-splide/css';
 import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteItemPopup/DeleteItemPopup.vue";
+import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 
 export default {
   name: "CookingService",
   components: {
-    CookingSlider,
+    InfoBlock,
+    CookingSlide,
     MainButton,
     CounterInput,
     IconUAH,
@@ -258,13 +272,13 @@ export default {
 }
 
 .service-cook-card {
-  border-radius: 8px;
-  border: 1px solid $border-grey;
-  background: $white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding: 16px;
+  //border-radius: 8px;
+  //border: 1px solid $border-grey;
+  //background: $white;
+  //display: flex;
+  //flex-direction: column;
+  //position: relative;
+  //padding: 16px;
 
 
 
@@ -489,6 +503,8 @@ export default {
     width: fit-content;
 
     @include for-768 {
+      padding-top: 4px;
+      border-radius: 4px;
       min-height: 21px;
       font-size: 12px;
       padding-left: 8px;
@@ -623,6 +639,12 @@ export default {
 }
 .cocking-slider {
   margin-bottom: 50px;
+
+  @include for-420 {
+    &:deep(.splide__slide) {
+      width: 100%;
+    }
+  }
 
   &:deep(.splide__pagination) {
     display: none;

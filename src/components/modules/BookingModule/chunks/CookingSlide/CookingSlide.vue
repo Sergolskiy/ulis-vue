@@ -114,7 +114,7 @@ import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 // import IconHeart from "@/assets/img/icons/icon-heart.svg?skipsvgo";
 
 export default {
-  name: "CookingSlider",
+  name: "CookingSlide",
   components: {
     // IconHeart,
     MainButton,
@@ -265,6 +265,10 @@ export default {
   padding: 16px;
   max-width: 241px;
   width: 100%;
+
+  @include for-420 {
+    max-width: 100%;
+  }
 
 
   &__photo {

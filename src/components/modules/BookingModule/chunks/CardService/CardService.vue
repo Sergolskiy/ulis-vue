@@ -180,7 +180,7 @@
 
               <!-- ELEMENT FOR SERVICE COOKING START -->
               <div class="card-service__price-col card-service__price-col--left card-service__price-col--left-cooking"
-                   v-if="item.type === 'cooking'"
+                   v-if="item.type === 'cooking' && openCookingCart"
               >
                 <div class="card-service__section--cooking-bottom">
                   <DefaultSelect
@@ -202,7 +202,7 @@
                     <IconUAH/>
                     0
                   </div>
-                  <div class="card-service__price-txt">
+                  <div v-if="item.type !== 'cooking'" class="card-service__price-txt">
                     Враховуючи додаткові послуги
                   </div>
                 </div>
@@ -227,6 +227,14 @@
               <MainButton
                   :label="'Далі'"
                   @click="openCookingCart = true"
+              />
+            </div>
+            <div class="card-service__bottom-btn"
+                 v-else-if="openCookingCart && detailedInfo && item.type === 'cooking'"
+            >
+              <MainButton
+                  :label="'Додати'"
+                  :disabled="true"
               />
             </div>
             <div v-else class="card-service__bottom-btn">
@@ -680,12 +688,12 @@ export default {
 
       @include for-550 {
         align-items: flex-start;
-        margin-bottom: 0;
+        //margin-bottom: 0;
       }
     }
     &--left-cooking + &--right {
       @include for-550 {
-        margin-bottom: 0;
+        //margin-bottom: 0;
         width: fit-content;
       }
     }
@@ -713,6 +721,7 @@ export default {
 
     @include for-550 {
       padding: 0 4px;
+      width: 50%;
     }
 
     .main-button{
@@ -722,7 +731,8 @@ export default {
 
     .main-button.secondary {
       @include for-550 {
-        max-width: 96px;
+        //max-width: 96px;
+        max-width: 100%;
       }
     }
   }

@@ -9,7 +9,7 @@
             :ico="'arrow'"
             :icoPosition="'left'"
             :disabled="Booking.data.activeStep === 1"
-            @click="Booking.data.activeStep = Booking.data.activeStep - 1"
+            @click="$emit('goToBackStepEmit')"
         />
       </div>
       <div class="booking__btn services__btn">
@@ -18,7 +18,7 @@
             :label="'Не цікаво'"
             :ico="'arrow'"
             :icoPosition="'right'"
-            @click="Booking.data.activeStep = Booking.data.activeStep + 1"
+            @click="$emit('goToNextStepEmit')"
         />
       </div>
     </div>
@@ -55,7 +55,6 @@
               :Booking="Booking"
               :item="item"
               :removeHouseBtn="index === 2"
-              @removeService="removeService"
           />
         </div>
       </div>
@@ -84,7 +83,8 @@ export default {
     }
   },
 
-  emits: ['removeService'],
+  emits: ['goToBackStepEmit' ,'goToNextStepEmit'],
+  // emits: ['removeService'],
 
   data() {
     return {

@@ -28,6 +28,8 @@
         <BookingStepC
             v-if="Booking.data.activeStep === 3"
             :Booking="Booking"
+            @goToBackStepEmit="goToBackStep"
+            @goToNextStepEmit="goToNextStep"
         />
 
         <BookingStepD
@@ -49,7 +51,7 @@
                 :ico="'arrow'"
                 :icoPosition="'left'"
                 :disabled="Booking.data.activeStep === 1"
-                @click="Booking.data.activeStep = Booking.data.activeStep - 1"
+                @click="goToBackStep"
             />
           </div>
           <div class="booking__btn">
@@ -58,7 +60,7 @@
               :secondary="true"
               :ico="'arrow'"
               :icoPosition="'right'"
-              @click="Booking.data.activeStep = Booking.data.activeStep + 1"
+              @click="goToNextStep"
             />
               <!-- :disabled="Booking.data.activeStep > 2" -->
           </div>
@@ -99,12 +101,26 @@ export default {
     BookingStepE,
   },
 
+
   props: {
     Booking: {
       type: Object,
       default: null,
     }
   },
+
+  methods: {
+    goToBackStep() {
+      this.Booking.data.activeStep = this.Booking.data.activeStep - 1
+      window.scrollTo(0, 0)
+    },
+
+    goToNextStep() {
+      this.Booking.data.activeStep = this.Booking.data.activeStep + 1
+      window.scrollTo(0, 0)
+    },
+
+  }
 
 }
 </script>

@@ -25,6 +25,7 @@
       v-if="openSignInPopup"
       :shortSpecialPopupText="signInPopupText"
       @closeShortSpecialPopup="openSignInPopup = false"
+      @confirm="goToLogin"
   />
 
 </template>
@@ -58,6 +59,16 @@ export default {
         yes: 'Авторизуватися',
       },
     }
+  },
+
+  methods: {
+    goToLogin() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.set('page', 'login');
+
+      window.location.search = urlParams;
+    },
   }
 
 }

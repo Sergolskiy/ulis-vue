@@ -1,9 +1,15 @@
 <template>
 
-  <Header/>
+  <Header
+
+  />
 
   <BookingModule
+      v-if="page === 'main'"
+  />
 
+  <LoginModule
+      v-if="page === 'login'"
   />
 
 </template>
@@ -12,22 +18,36 @@
 
 import Header from "./components/templates/Header/Header.vue";
 import BookingModule from "./components/modules/BookingModule/BookingModule.vue";
+import LoginModule from "@/components/modules/LoginModule/LoginModule.vue";
 
 export default {
   name: 'App',
 
   components: {
+    LoginModule,
     Header,
     BookingModule,
   },
 
   data() {
-    return {}
+    return {
+      page: null,
+    }
   },
 
   mounted() {
-
+    this.setPage()
   },
+
+  methods: {
+    setPage() {
+      this.page = new URL(location.href).searchParams.get('page')
+
+      if(!this.page) {
+        this.page = 'main'
+      }
+    },
+  }
 
 }
 

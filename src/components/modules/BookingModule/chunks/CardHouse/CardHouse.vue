@@ -256,7 +256,7 @@ export default {
     IconOutside
   },
 
-  emits: ['closeSliderPopup'],
+  emits: ['removeHouse'],
 
   props: {
     Booking: {

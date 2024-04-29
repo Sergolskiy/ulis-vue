@@ -201,7 +201,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: false,
+      default: null,
     },
     innerSelect: {
       type: Boolean,

@@ -114,7 +114,7 @@
                       :label="'Детальніше'"
                       :ico="'plus'"
                       :icoPosition="'right'"
-                      :disabled="item.error"
+                      :disabled="item.error && item.error.length > 0"
                       @click="detailedInfo = true"
                   />
                 </div>

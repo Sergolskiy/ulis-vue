@@ -20,6 +20,8 @@ export default {
   name: "SliderPopup",
   components: {CardSlider},
 
+  emits: ['closeSliderPopup'],
+
   props: {
     images: {
       type: Array,

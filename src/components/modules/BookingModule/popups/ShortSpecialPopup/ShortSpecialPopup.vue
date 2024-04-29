@@ -65,6 +65,11 @@ export default {
     SVGSignIn,
   },
 
+  emits: [
+    'closeShortSpecialPopup',
+    'confirm',
+  ],
+
   props: {
     shortSpecialPopupText: {
       type: Object,

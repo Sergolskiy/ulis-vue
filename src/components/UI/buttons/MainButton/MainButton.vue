@@ -192,7 +192,7 @@
         order: 2;
         margin-left: 2px;
         margin-right: 0;
-        color: $red;
+        color: $warning-red-border;
       }
     }
 

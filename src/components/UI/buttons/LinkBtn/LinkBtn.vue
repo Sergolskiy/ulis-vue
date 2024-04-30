@@ -130,12 +130,12 @@ export default {
   }
 
   &.delete &__txt {
-    color: $red;
+    color: $warning-red-border;
   }
 
   &.delete &__ico svg path {
-    fill: $red;
-    stroke: $red;
+    fill: $warning-red-border;
+    stroke: $warning-red-border;
   }
 
 }

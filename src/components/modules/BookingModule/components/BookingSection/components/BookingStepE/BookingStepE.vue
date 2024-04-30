@@ -41,6 +41,9 @@
             :label="'Я погоджуюсь з правилами проживання в УЛІС'"
             :required="'required'"
             :centerBox="true"
+            :error="Booking.validation.agreeWithRules"
+            :errorTxt="Booking.validationTranslate.agreeWithRules"
+            v-model="Booking.data.agreeWithRules"
         />
       </div>
 
@@ -104,16 +107,24 @@
               :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
           />
 
-          <div class="promo-field">
+          <InfoBlock
+              v-if="pomocodeConfirm"
+              :text="'Подарунковий сертифікат на 10 000 грн. Буде застосовано на екрані оплати.'"
+              :type="'success'"
+          />
+
+          <div class="promo-field" v-else>
             <div class="promo-field__inner">
               <DefaultInput
                   :label="''"
                   :placeholder="'Ввести'"
+                  v-model="pomocode"
               />
               <MainButton
                   class="promo-field__btn h-40"
                   :label="'Застосувати'"
-                  :disabled="true"
+                  :disabled="pomocode.length === 0"
+                  @click="pomocodeConfirm = true"
               />
             </div>
           </div>
@@ -140,7 +151,9 @@
                 </div>
               </div>
 
-              <div class="price-summary__item price-summary__item--green">
+              <div class="price-summary__item price-summary__item--green"
+                   v-if="pomocodeConfirm"
+              >
                 <div class="price-summary__item-name price-summary__col">
                   Знижка за промокодом
                 </div>
@@ -167,6 +180,7 @@
         <div class="payment-block__confirm-btn">
           <MainButton
               :label="'Підтвердити бронювання'"
+              @click="$emit('confirmBooking')"
           />
         </div>
       </div>
@@ -212,6 +226,9 @@ export default {
     DefaultInput,
     FormLabel
   },
+
+  emits: ['confirmBooking'],
+
   props: {
     Booking: {
       type: Object,
@@ -222,6 +239,8 @@ export default {
   data () {
     return {
       checked: false,
+      pomocode: '',
+      pomocodeConfirm: '',
       rules: [
         {
           name: 'media',

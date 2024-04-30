@@ -303,8 +303,8 @@
       left: 0;
       font-size: 12px;
       line-height: 13px;
-      font-weight: 500;
-      color: $red;
+      //font-weight: 500;
+      color: $warning-red-border;
       white-space: nowrap;
     }
 

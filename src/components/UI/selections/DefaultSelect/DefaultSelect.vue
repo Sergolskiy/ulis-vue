@@ -327,6 +327,7 @@ export default {
     min-height: 48px;
     box-sizing: border-box;
     padding: 0;
+    transition: border-color 0.3s;
 
     .vs__actions{
       padding: 0;
@@ -364,7 +365,7 @@ export default {
 
 
   &.ui-no-valid .v-select .vs__dropdown-toggle{
-    border: 1px solid $red;
+    border: 1px solid $warning-red-border;
   }
   
 
@@ -374,7 +375,7 @@ export default {
     right: 0;
     font-size: 11px;
     line-height: 13px;
-    color: $red;
+    color: $warning-red-border;
     z-index: 1;
   }
 

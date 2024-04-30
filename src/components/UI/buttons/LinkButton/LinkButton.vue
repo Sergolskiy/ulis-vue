@@ -177,10 +177,10 @@ export default {
 
     &.red {
       .link-btn__icon svg path {
-        stroke: $red;
+        stroke: $warning-red-border;
       }
       .link-btn__label {
-        color: $red;
+        color: $warning-red-border;
       }
     }
   }

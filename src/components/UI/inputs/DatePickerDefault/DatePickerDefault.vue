@@ -12,7 +12,7 @@
       <FormLabel
           v-if="label || labelIcon"
           class="mb-2"
-          :type="'black'"
+          :type="labelType"
           :label="label"
           :labelIcon="labelIcon"
           :bigIco="bigIco"
@@ -34,6 +34,10 @@
     components: {FormLabel},
     props: {
       label: {
+        type: String,
+        default: '',
+      },
+      labelType: {
         type: String,
         default: '',
       },
@@ -106,7 +110,7 @@
     }
 
     &.ui-no-valid input[name='date']{
-      border: 1px solid $red;
+      border: 1px solid $warning-red-border;
     }
 
     input[name='date']{
@@ -114,7 +118,7 @@
       padding-left: 20px;
       height: 44px;
       background: $white;
-      border: 1px solid $middle-gre;
+      //border: 1px solid $middle-gre;
       box-sizing: border-box;
       border-radius: 12px;
       font-size: 14px;
@@ -126,7 +130,6 @@
         font-size: 14px;
         line-height: 16px;
         color: #7BA4EC;
-        line-height: revert;
       }
     }
 
@@ -154,7 +157,6 @@
         text-overflow: ellipsis;
         max-width: calc(100% - 15px);
         overflow: hidden;
-        cursor: text;
         cursor: pointer;
       }
 
@@ -176,8 +178,8 @@
 
         .mx-input{
           background: $darker-blue;
-          color: $middle-grey;
-          border-color: $middle-gre;
+          color: $grey;
+          border-color: $grey;
         }
       }
 

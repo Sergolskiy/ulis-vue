@@ -294,7 +294,7 @@
     }
 
     &.ui-no-valid input {
-      border-color: $red;
+      border-color: $warning-red-border;
     }
 
     &__label{
@@ -445,9 +445,9 @@
       right: 0;
       font-size: 12px;
       font-style: normal;
-      font-weight: 500;
+      //font-weight: 500;
       line-height: normal;
-      color: $red;
+      color: $warning-red-border;
       white-space: nowrap;
       z-index: 1;
 

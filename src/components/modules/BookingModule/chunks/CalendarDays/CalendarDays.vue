@@ -1,6 +1,8 @@
 <template>
   <div class="calendar-days__calendar-top">
-    <div class="calendar-days__calendar-between">
+    <div class="calendar-days__calendar-between"
+         :class="{'days-error' : Booking.validation.date}"
+    >
       <div class="calendar-days__calendar-between-first">
         <div class="calendar-days__calendar-between-name">
           Заїзд
@@ -92,6 +94,11 @@ export default {
     padding: 8px;
     display: flex;
     width: 100%;
+    transition: .3s;
+
+    &.days-error {
+      border: 1px solid $warning-red-border;
+    }
   }
 
   &__calendar-between-first {

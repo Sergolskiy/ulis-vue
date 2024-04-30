@@ -18,6 +18,10 @@
           :inner-icon="'location'"
           :placeholder="'Обери локацію'"
           :required="'required'"
+          :error="Booking.validation.locationUlis"
+          :errorTxt="Booking.validationTranslate.locationUlis"
+          :selected="Booking.data.locationUlis"
+          @update:modelValue="(item) => Booking.data.locationUlis = item"
       />
 
       <FormLabel
@@ -60,6 +64,10 @@
               :inner-icon="'people'"
               :required="'required'"
               :placeholder="'0 дорослих'"
+              :error="Booking.validation.adults"
+              :errorTxt="Booking.validationTranslate.adults"
+              :selected="Booking.data.adults"
+              @update:modelValue="(item) => Booking.data.adults = item"
           />
         </div>
         <div class="custom-col custom-col--33 custom-col--xs-50">

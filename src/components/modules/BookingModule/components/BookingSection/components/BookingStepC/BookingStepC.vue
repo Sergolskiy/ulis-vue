@@ -8,7 +8,6 @@
             :secondary="true"
             :ico="'arrow'"
             :icoPosition="'left'"
-            :disabled="Booking.data.activeStep === 1"
             @click="$emit('goToBackStepEmit')"
         />
       </div>
@@ -17,7 +16,6 @@
             :label="'Не цікаво'"
             :ico="'arrow'"
             :icoPosition="'right'"
-            :disabled="true"
             @click="$emit('goToNextStepEmit')"
         />
       </div>

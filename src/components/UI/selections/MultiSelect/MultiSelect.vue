@@ -243,7 +243,7 @@
 
 
     &.ui-no-valid .v-select .vs__dropdown-toggle{
-      border: 1px solid $red;
+      border: 1px solid $warning-red-border;
     }
 
 
@@ -253,7 +253,7 @@
       right: 0;
       font-size: 11px;
       line-height: 13px;
-      color: $red;
+      color: $warning-red-border;
     }
 
     &__caption{

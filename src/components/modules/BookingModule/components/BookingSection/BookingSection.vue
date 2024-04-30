@@ -40,6 +40,7 @@
         <BookingStepE
             v-if="Booking.data.activeStep === 5"
             :Booking="Booking"
+            @confirmBooking="confirmBooking"
         />
 
         <div class="booking__buttons" v-if="Booking.data.activeStep !== 3">
@@ -56,6 +57,7 @@
           </div>
           <div class="booking__btn">
             <MainButton
+                v-if="Booking.data.activeStep < 5"
               :label="'Далі'"
               :secondary="true"
               :ico="'arrow'"
@@ -63,6 +65,14 @@
               @click="checkFirstPopup"
             />
               <!-- :disabled="Booking.data.activeStep > 2" -->
+
+            <MainButton
+                v-if="Booking.data.activeStep === 5"
+                :label="'Оплатити'"
+                :icoPosition="'right'"
+                :disabled="!canPay"
+                @click="successPayBookingPopup = true"
+            />
           </div>
         </div>
 
@@ -84,6 +94,13 @@
       :shortSpecialPopupText="specialOfferPopupText"
       @closeShortSpecialPopup="openShortSpecialPopup = false"
       @confirm="closeShortSpecialPopup"
+  />
+
+  <ShortSpecialPopup
+      v-if="successPayBookingPopup"
+      :shortSpecialPopupText="successPayBookingPopupText"
+      @closeShortSpecialPopup="successPayBookingPopup = false"
+      @confirm="successPayBookingPopup = false"
   />
 
 </template>
@@ -129,6 +146,17 @@ export default {
 
   data() {
     return {
+      successPayBookingPopup: false,
+      successPayBookingPopupText: {
+        title: 'Оплата пройшла успішно!',
+        txt: 'Твоє бронювання успішно завершено! Я вже чекаю тебе у гості та готуюсь до твого приїзду!',
+        img: true,
+        imgName: 'specialOfferPopup',
+        yes: 'На головну сторінку',
+      },
+
+      canPay: false,
+
       openRulesPopup: false,
       openShortSpecialPopup: false,
       specialOfferPopupText: {
@@ -177,8 +205,25 @@ export default {
     },
 
     goToNextStep() {
+
+      if(this.Booking.data.activeStep === 1 && !this.Booking.stepAValidation()) {
+        return false
+      }
+
+      if(this.Booking.data.activeStep === 4 && !this.Booking.stepDValidation()) {
+        return false
+      }
+
       this.Booking.data.activeStep = this.Booking.data.activeStep + 1
       window.scrollTo(0, 0)
+    },
+
+    confirmBooking() {
+      if(!this.Booking.stepEValidation()) {
+        return false
+      }
+
+      this.canPay = true
     },
   },
 

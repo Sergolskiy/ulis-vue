@@ -274,6 +274,10 @@ export default {
     background: white;
   }
 
+  .vs__dropdown-toggle{
+    transition: border-color 0.3s;
+  }
+
   &__option-ico{
     margin-right: 10px;
     display: inline-flex;
@@ -302,7 +306,7 @@ export default {
 
 
   &.ui-no-valid .v-select .vs__dropdown-toggle{
-    border: 1px solid $red;
+    border: 1px solid $warning-red-border;
   }
 
 
@@ -312,7 +316,7 @@ export default {
     right: 0;
     font-size: 11px;
     line-height: 13px;
-    color: $red;
+    color: $warning-red-border;
   }
 
   &__caption{

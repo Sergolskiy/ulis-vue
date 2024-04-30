@@ -19,11 +19,13 @@
           <template v-if="shortSpecialPopupText.imgType === 'ico'">
             <SVGSignIn v-if="shortSpecialPopupText.imgName == 'signInPopup'" />
           </template>
+          <template v-if="shortSpecialPopupText.imgType === 'ico'">
+            <SuccessBooking v-if="shortSpecialPopupText.imgName == 'specialSuccessBookingPopup'" />
+          </template>
 
-          <template v-else>
-            <img 
-              v-if="shortSpecialPopupText.imgName == 'specialOfferPopup'"
-              src="../../../../../assets/img/special-offer-artboard.png" 
+          <template v-if="shortSpecialPopupText.imgName == 'specialOfferPopup'">
+            <img
+              src="../../../../../assets/img/popup-img/special-offer-artboard.png"
               alt="special-offer"
             >
           </template>
@@ -54,7 +56,8 @@
 import Modal from "@/components/coreComponents/Modal/Modal.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
-import SVGSignIn from '../../../../../../src/assets/img/sign-in-artboard.svg?skipsvgo'
+import SVGSignIn from '@/assets/img/popup-img/sign-in-artboard.svg?skipsvgo'
+import SuccessBooking from '@/assets/img/popup-img/sucess-booking.svg?skipsvgo'
 
 export default {
   name: "ShortSpecialPopup",
@@ -63,6 +66,7 @@ export default {
     Modal,
 
     SVGSignIn,
+    SuccessBooking,
   },
 
   emits: [
@@ -78,7 +82,7 @@ export default {
 
   data() {
     return {
- 
+
     }
   }
 

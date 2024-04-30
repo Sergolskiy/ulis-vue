@@ -151,7 +151,8 @@ export default {
         title: 'Оплата пройшла успішно!',
         txt: 'Твоє бронювання успішно завершено! Я вже чекаю тебе у гості та готуюсь до твого приїзду!',
         img: true,
-        imgName: 'specialOfferPopup',
+        imgType: 'ico',
+        imgName: 'specialSuccessBookingPopup',
         yes: 'На головну сторінку',
       },
 

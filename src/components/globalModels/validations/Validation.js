@@ -170,7 +170,7 @@ export class Validation {
 }
 
 export const ERROR_NAMES = {
-  error_required: 'Заповни поле, щоб продовжити',
+  error_required: 'Заповніть поле, щоб продовжити',
   error_email: 'Email не валідний',
   error_phone: 'Телефон не валідний',
   error_password: 'Не підходящий пароль',

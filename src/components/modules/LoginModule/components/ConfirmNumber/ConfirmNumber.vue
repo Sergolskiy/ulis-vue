@@ -26,6 +26,7 @@
           ref="field2"
           type="text"
           maxlength="1"
+          :disabled="value1 === ''"
           v-model="value2"
           @input="nextField(3)"
           @keydown="(e) => backKey(e, 2, value2)"
@@ -39,6 +40,7 @@
           type="text"
           maxlength="1"
           v-model="value3"
+          :disabled="value2 === ''"
           @input="nextField(4)"
           @keydown="(e) => backKey(e, 3, value3)"
         >
@@ -50,6 +52,7 @@
           ref="field4"
           type="text"
           maxlength="1"
+          :disabled="value3 === ''"
           v-model="value4"
           @keydown="(e) => backKey(e, 4, value4)"
         >

@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__inner">
       <div class="header__logo" @click="goToHome">
-        <a href="#"><Logo/></a>
+        <a href="javascript:void(0)"><Logo/></a>
       </div>
 
       <div class="header__menu">
@@ -161,11 +161,7 @@ export default {
     },
 
     goToHome() {
-      const urlParams = new URLSearchParams(window.location.search);
-
-      urlParams.delete('page');
-
-      window.location.search = urlParams;
+      window.location = window.location.origin;
     }
   }
 

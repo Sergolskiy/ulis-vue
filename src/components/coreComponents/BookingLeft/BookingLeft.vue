@@ -13,8 +13,8 @@
               :label="'Перейти до бронювання'"
               :ico="'arrow'"
               :icoPosition="'right'"
-          >
-          </MainButton>
+              @click="goToHome"
+          />
         </div>
       </div>
 
@@ -118,13 +118,12 @@ export default {
     },
 
     exitProfile() {
-      const urlParams = new URLSearchParams(window.location.search);
-
-      urlParams.delete('page');
-
       localStorage.removeItem('logged')
+      this.goToHome()
+    },
 
-      window.location.search = urlParams;
+    goToHome() {
+      window.location = window.location.origin;
     },
   }
 

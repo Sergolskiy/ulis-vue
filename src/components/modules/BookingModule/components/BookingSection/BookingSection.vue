@@ -197,6 +197,10 @@ export default {
     },
 
     checkFirstPopup() {
+      if(this.Booking.data.activeStep === 1 && !this.Booking.stepAValidation()) {
+        return false
+      }
+
       if(this.Booking.data.activeStep === 1) {
         this.openRulesPopup = true
         return

@@ -67,6 +67,22 @@
   }
 }
 
+.personal-info {
+
+  &__inner {
+    padding: 16px;
+    border: 1px solid $border-grey;
+    border-radius: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px
+  }
+
+
+}
+
 .calendar-style {
 
   //&:not(.only-calendar) .dp--menu-wrapper .dp__instance_calendar{

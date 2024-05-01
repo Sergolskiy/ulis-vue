@@ -3,6 +3,19 @@
     <div class="left-side__inner">
       <div class="left-side__account">
         <Account/>
+
+        <div class="left-side__account-exit" v-if="isLogged">
+          <a href="javascript:void(0)" class="left-side__account-exit-btn" @click="exitProfile">Вийти</a>
+        </div>
+
+        <div class="mt-4" v-if="isLogged && isTypeProfile">
+          <MainButton
+              :label="'Перейти до бронювання'"
+              :ico="'arrow'"
+              :icoPosition="'right'"
+          >
+          </MainButton>
+        </div>
       </div>
 
       <div class="left-side__mobile">
@@ -23,7 +36,7 @@
         />
       </div>
 
-      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 3">
+      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 3 && !isTypeProfile">
         <MainButton
             :label="'Додати ще один будинок'"
             :ico="'plus'"
@@ -69,7 +82,21 @@ export default {
     Booking: {
       type: Object,
       default: null,
-    }
+    },
+    type: {
+      type: String,
+      default: null,
+    },
+  },
+
+  computed: {
+    isTypeProfile() {
+      return this.type === 'profile'
+    },
+
+    isLogged() {
+      return localStorage.getItem('logged')
+    },
   },
 
   data() {
@@ -88,6 +115,16 @@ export default {
     closePopup() {
       document.body.style.overflow = 'initial'
       this.openDetailPopup = false
+    },
+
+    exitProfile() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.delete('page');
+
+      localStorage.removeItem('logged')
+
+      window.location.search = urlParams;
     },
   }
 
@@ -128,6 +165,30 @@ export default {
 
     @include for-768 {
       width: 100%;
+    }
+  }
+
+  &__account-exit-btn {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    background: $warning-red;
+    color: $warning-red-border;
+    border-radius: 8px;
+    margin-top: 8px;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      background: url("../../../assets/img/exit-btn.svg") center center no-repeat;
     }
   }
 

@@ -26,6 +26,7 @@
         v-if="label || labelIcon"
         class="mb-2"
         :label="label"
+        :type="labelType"
     />
     <span class="default-input-wrapper">
       <input
@@ -84,6 +85,10 @@
 
     props: {
       type: {
+        type: String,
+        default: 'text',
+      },
+      labelType: {
         type: String,
         default: 'text',
       },

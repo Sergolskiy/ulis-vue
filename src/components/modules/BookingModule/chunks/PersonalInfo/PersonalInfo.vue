@@ -49,21 +49,4 @@ export default {
 @import "../../../../../scss/colors";
 @import "../../../../../scss/mixins/mixins";
 
-
-.personal-info {
-
-  &__inner {
-    padding: 16px;
-    border: 1px solid $border-grey;
-    border-radius: 8px;
-  }
-  
-  &__title {
-    font-weight: 600;
-    font-size: 20px
-  }
-
-
-}
-
 </style>

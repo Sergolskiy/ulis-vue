@@ -7,13 +7,9 @@
 
   <div class="custom-row">
     <div class="custom-col">
-      <FormLabel
-          class="mb-1"
-          :label="'Ім’я та прізвище'"
-          :type="'required'"
-      />
-
       <DefaultInput
+          :label="'Ім’я та прізвище'"
+          :labelType="'required'"
           :placeholder="'Ввести'"
           :error="Personal.validation.name"
           :errorTxt="Personal.validationTranslate.name"
@@ -69,12 +65,6 @@
   <div class="custom-row">
     <div class="custom-col">
 
-      <!--          <FormLabel-->
-      <!--            class="mb-1"-->
-      <!--            :label="'Дата народження'"-->
-      <!--            :type="'required'"-->
-      <!--          />-->
-
       <div class="personal-info__field">
         <DatePickerDefault
             :label="'Дата народження'"
@@ -112,14 +102,10 @@
   <div class="custom-row">
     <div class="custom-col">
 
-      <FormLabel
-          class="mb-1"
-          :label="'Національність (місто)'"
-          :type="'required'"
-      />
-
       <div class="personal-info__field">
         <DefaultSelect
+            :label="'Ім’я та прізвище'"
+            :type="'required'"
             :options="['Українець']"
             :inner-icon="'location'"
             :placeholder="'Обери національність'"
@@ -135,14 +121,10 @@
 
   <div class="custom-row">
     <div class="custom-col custom-col--50 custom-col--xs-100">
-      <FormLabel
-          class="mb-1"
-          :label="'Номер телефону'"
-          :type="'required'"
-      />
-
       <div class="personal-info__field">
         <DefaultInput
+            :label="'Номер телефону'"
+            :labelType="'required'"
             :placeholder="'+380'"
             :error="Personal.validation.phone"
             :errorTxt="Personal.validationTranslate.phone"
@@ -151,14 +133,10 @@
       </div>
     </div>
     <div class="custom-col custom-col--50 custom-col--xs-100">
-      <FormLabel
-          class="mb-1"
-          :label="'Email'"
-          :type="'required'"
-      />
-
       <div class="personal-info__field">
         <DefaultInput
+            :label="'Email'"
+            :labelType="'required'"
             :placeholder="'example@gmail.com'"
             :error="Personal.validation.email"
             :errorTxt="Personal.validationTranslate.email"

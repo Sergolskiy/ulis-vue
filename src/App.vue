@@ -16,6 +16,10 @@
       v-if="page === 'registration'"
   />
 
+  <ProfileModule
+      v-if="page === 'profile'"
+  />
+
 </template>
 
 <script>
@@ -24,11 +28,13 @@ import Header from "./components/templates/Header/Header.vue";
 import BookingModule from "./components/modules/BookingModule/BookingModule.vue";
 import LoginModule from "@/components/modules/LoginModule/LoginModule.vue";
 import RegistrationModule from "@/components/modules/RegistrationModule/RegistrationModule.vue";
+import ProfileModule from "@/components/modules/ProfileModule/ProfileModule.vue";
 
 export default {
   name: 'App',
 
   components: {
+    ProfileModule,
     RegistrationModule,
     LoginModule,
     Header,

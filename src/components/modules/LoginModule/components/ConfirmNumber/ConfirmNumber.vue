@@ -67,6 +67,7 @@
       <MainButton
           :label="'Продовжити'"
           :disabled="value1 === '' || value2 === '' || value3 === '' || value4 === ''"
+          @click="goToProfile"
       />
     </div>
   </div>
@@ -103,7 +104,17 @@ export default {
         this['value' + (currentNum - 1)] = ''
         this.$refs['field' + (currentNum - 1)].focus()
       }
-    }
+    },
+
+    goToProfile() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.set('page', 'profile');
+
+      localStorage.setItem('logged', 'true')
+
+      window.location.search = urlParams;
+    },
   }
 
 }

@@ -6,7 +6,7 @@ export class Booking extends BaseModel{
     super()
 
     this.data = {
-      activeStep: 5,
+      activeStep: 1,
 
       activeHouse: 1,
 

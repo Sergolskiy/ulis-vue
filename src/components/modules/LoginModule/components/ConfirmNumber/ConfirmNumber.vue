@@ -12,8 +12,10 @@
         <input 
           class="big-input"
           :class="{'big-input--empty' : value1 == ''}"
+          ref="field1"
           type="text"
           maxlength="1"
+          @input="nextField(2)"
           v-model="value1"
         >
       </div>
@@ -21,27 +23,35 @@
         <input 
           class="big-input"
           :class="{'big-input--empty' : value2 == ''}"
+          ref="field2"
           type="text"
           maxlength="1"
           v-model="value2"
+          @input="nextField(3)"
+          @keydown="(e) => backKey(e, 2, value2)"
         >
       </div>
       <div class="numb-conf__field">
         <input 
           class="big-input"
           :class="{'big-input--empty' : value3 == ''}"
+          ref="field3"
           type="text"
           maxlength="1"
           v-model="value3"
+          @input="nextField(4)"
+          @keydown="(e) => backKey(e, 3, value3)"
         >
       </div>
       <div class="numb-conf__field">
         <input 
           class="big-input"
           :class="{'big-input--empty' : value4 == ''}"
+          ref="field4"
           type="text"
           maxlength="1"
           v-model="value4"
+          @keydown="(e) => backKey(e, 4, value4)"
         >
       </div>
     </div>
@@ -65,7 +75,7 @@
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 
 export default {
-  name: "numb-conf", 
+  name: "ConfirmNumber",
   components: {
     MainButton,
   },
@@ -77,14 +87,30 @@ export default {
       value3: '',
       value4: '',
     }
+  },
+
+  methods: {
+    nextField(nextNum) {
+      this.$refs['field' + nextNum].focus()
+    },
+
+    backKey(e, currentNum, val) {
+      if(val !== '') {
+        return
+      }
+      if(e.key === 'Backspace') {
+        this['value' + (currentNum - 1)] = ''
+        this.$refs['field' + (currentNum - 1)].focus()
+      }
+    }
   }
 
 }
 </script>
 
 <style scoped lang="scss">
-  @import "../../../../scss/mixins/mixins";
-  @import "../../../../scss/colors";
+  @import "../../../../../scss/mixins/mixins";
+  @import "../../../../../scss/colors";
 
   .numb-conf{
  

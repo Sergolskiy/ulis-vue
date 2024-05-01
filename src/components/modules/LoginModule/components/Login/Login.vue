@@ -17,11 +17,13 @@
 
         <DefaultInput
             :placeholder="'+380'"
+            v-model="phone"
         />
       </div>
       <div class="login__btn">
         <MainButton
             :label="'Продовжити'"
+            :disabled="phone.length === 0"
             @click="$emit('confirm')"
         />
       </div>
@@ -87,7 +89,7 @@ export default {
   
   data() {
     return {
-      
+      phone: '',
     }
   }
 
@@ -95,8 +97,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../../../../scss/mixins/mixins";
-  @import "../../../../scss/colors";
+  @import "../../../../../scss/mixins/mixins";
+  @import "../../../../../scss/colors";
 
   .login{
  

@@ -4,7 +4,8 @@
           'default-checkbox--bordered' : bordered,
           'empty-label' : !label,
           'default-checkbox__big-checkbox-style' : bigCheckboxStyle,
-          'default-checkbox--center-box' : centerBox
+          'default-checkbox--center-box' : centerBox,
+          'default-checkbox--error' : error
         }"
   >
     <input type="checkbox"
@@ -28,7 +29,7 @@
       {{ helpText }}
     </div>
 
-    <span class="default-checkbox__error error-field" v-if="error && errorTxt">{{errorTxt}}</span>
+<!--    <span class="default-checkbox__error error-field" v-if="error && errorTxt">{{errorTxt}}</span>-->
   </div>
 </template>
 
@@ -138,6 +139,15 @@
       border: 1px solid $border-grey;
       border-radius: 8px;
       padding: 12px;
+    }
+
+    &--error {
+      .default-checkbox__label {
+        color: $warning-red-border;
+      }
+      .default-checkbox__label:before {
+        border: 1px solid $warning-red-border;
+      }
     }
 
     &.label-weight-medium {

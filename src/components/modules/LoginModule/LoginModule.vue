@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import Login from "@/components/modules/LoginModule/components/Login.vue";
-import NumberConfirm from "@/components/modules/LoginModule/components/NumberConfirm.vue";
+import Login from "@/components/modules/LoginModule/components/Login/Login.vue";
+import NumberConfirm from "@/components/modules/LoginModule/components/ConfirmNumber/ConfirmNumber.vue";
 
 export default {
   name: "LoginModule",

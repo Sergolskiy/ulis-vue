@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header__inner">
-      <div class="header__logo">
+      <div class="header__logo" @click="goToHome">
         <a href="#"><Logo/></a>
       </div>
 
@@ -159,6 +159,14 @@ export default {
       window.scrollTo(0, 0);
       document.body.style.overflow = this.openMenu ? 'hidden' : 'initial'
     },
+
+    goToHome() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.delete('page');
+
+      window.location.search = urlParams;
+    }
   }
 
 }

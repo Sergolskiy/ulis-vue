@@ -11,7 +11,7 @@
       <div class="numb-conf__field">
         <input 
           class="big-input"
-          :class="{'big-input--empty' : value1 == ''}"
+          :class="{'big-input--empty' : value1 === ''}"
           ref="field1"
           type="text"
           maxlength="1"
@@ -22,7 +22,7 @@
       <div class="numb-conf__field">
         <input 
           class="big-input"
-          :class="{'big-input--empty' : value2 == ''}"
+          :class="{'big-input--empty' : value2 === ''}"
           ref="field2"
           type="text"
           maxlength="1"
@@ -34,7 +34,7 @@
       <div class="numb-conf__field">
         <input 
           class="big-input"
-          :class="{'big-input--empty' : value3 == ''}"
+          :class="{'big-input--empty' : value3 === ''}"
           ref="field3"
           type="text"
           maxlength="1"
@@ -46,7 +46,7 @@
       <div class="numb-conf__field">
         <input 
           class="big-input"
-          :class="{'big-input--empty' : value4 == ''}"
+          :class="{'big-input--empty' : value4 === ''}"
           ref="field4"
           type="text"
           maxlength="1"
@@ -66,6 +66,7 @@
     <div class="numb-conf__btn">
       <MainButton
           :label="'Продовжити'"
+          :disabled="value1 === '' || value2 === '' || value3 === '' || value4 === ''"
       />
     </div>
   </div>

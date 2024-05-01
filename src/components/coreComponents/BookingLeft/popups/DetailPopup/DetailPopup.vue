@@ -37,9 +37,9 @@
 
 <script>
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
-import ChoiceBooking from "@/components/modules/BookingModule/chunks/ChoiceBooking/ChoiceBooking.vue";
-import ChosenHouse from "@/components/modules/BookingModule/chunks/ChosenHouse/ChosenHouse.vue";
-import BackTo from '../../../../../../src/assets/img/back-to.svg?skipsvgo'
+import ChoiceBooking from "@/components/coreComponents/BookingLeft/components/ChoiceBooking/ChoiceBooking.vue";
+import ChosenHouse from "@/components/coreComponents/BookingLeft/components/ChosenHouse/ChosenHouse.vue";
+import BackTo from '../../../../../assets/img/back-to.svg?skipsvgo'
 
 export default {
   name: "DetailPopup",

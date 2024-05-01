@@ -60,7 +60,7 @@
 
     <div class="login__register">
       Немає акаунту?
-      <span class="login__register-link">
+      <span class="login__register-link" @click="goToRegistration">
         Зареєструватися
       </span>
     </div>
@@ -91,6 +91,16 @@ export default {
     return {
       phone: '',
     }
+  },
+
+  methods: {
+    goToRegistration() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.set('page', 'registration');
+
+      window.location.search = urlParams;
+    },
   }
 
 }

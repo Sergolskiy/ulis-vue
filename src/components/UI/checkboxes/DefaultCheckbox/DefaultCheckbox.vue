@@ -18,7 +18,7 @@
            :data-order-id="dataOrderId ? dataOrderId : false"
     >
     <label :for="'default-checkbox-' + id" class="default-checkbox__label">
-      {{ label }}
+      <span v-html="label"></span>
 
       <slot name="content">
 

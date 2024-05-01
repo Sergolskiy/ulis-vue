@@ -107,7 +107,7 @@
 
 <script>
 
-import BookingLeft from "@/components/modules/BookingModule/components/BookingSection/components/BookingLeft/BookingLeft.vue";
+import BookingLeft from "@/components/coreComponents/BookingLeft/BookingLeft.vue";
 import BookingStepA from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepA/BookingStepA.vue";
 import BookingStepB from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepB/BookingStepB.vue";
 import BookingStepC from "@/components/modules/BookingModule/components/BookingSection/components/BookingStepC/BookingStepC.vue";

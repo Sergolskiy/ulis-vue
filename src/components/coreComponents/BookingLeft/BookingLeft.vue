@@ -44,12 +44,12 @@
 </template>
 
 <script>
-import Account from "../../../../chunks/Account/Account.vue";
-import ChoiceBooking from "../../../../chunks/ChoiceBooking/ChoiceBooking.vue";
-import ChosenHouse from "../../../../chunks/ChosenHouse/ChosenHouse.vue";
-import MainButton from "../../../../../../UI/buttons/MainButton/MainButton.vue";
-import MobileDetailBooking from "@/components/modules/BookingModule/chunks/MobileDetailBooking/MobileDetailBooking.vue";
-import DetailPopup from "@/components/modules/BookingModule/chunks/DetailPopup/DetailPopup.vue";
+import Account from "@/components/coreComponents/BookingLeft/components/Account/Account.vue";
+import ChoiceBooking from "@/components/coreComponents/BookingLeft/components/ChoiceBooking/ChoiceBooking.vue";
+import ChosenHouse from "@/components/coreComponents/BookingLeft/components/ChosenHouse/ChosenHouse.vue";
+import MainButton from "../../UI/buttons/MainButton/MainButton.vue";
+import MobileDetailBooking from "@/components/coreComponents/BookingLeft/components/MobileDetailBooking/MobileDetailBooking.vue";
+import DetailPopup from "@/components/coreComponents/BookingLeft/popups/DetailPopup/DetailPopup.vue";
 
 export default {
   name: "BookingLeft",
@@ -95,8 +95,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../../../../scss/colors";
-@import "../../../../../../../scss/mixins/mixins";
+@import "../../../scss/colors";
+@import "../../../scss/mixins/mixins";
 
 .mobile-detail-popup {
   transition: 0.3s;

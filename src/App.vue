@@ -12,6 +12,10 @@
       v-if="page === 'login'"
   />
 
+  <RegistrationModule
+      v-if="page === 'registration'"
+  />
+
 </template>
 
 <script>
@@ -19,11 +23,13 @@
 import Header from "./components/templates/Header/Header.vue";
 import BookingModule from "./components/modules/BookingModule/BookingModule.vue";
 import LoginModule from "@/components/modules/LoginModule/LoginModule.vue";
+import RegistrationModule from "@/components/modules/RegistrationModule/RegistrationModule.vue";
 
 export default {
   name: 'App',
 
   components: {
+    RegistrationModule,
     LoginModule,
     Header,
     BookingModule,

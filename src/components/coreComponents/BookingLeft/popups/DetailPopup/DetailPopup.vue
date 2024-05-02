@@ -20,15 +20,18 @@
             :Booking="Booking"
         />
 
+        
         <div class="left-side__btn mb-3">
           <MainButton
-              :label="'Додати ще один будинок'"
-              :ico="'plus'"
-              :icoPosition="'right'"
+          :label="'Додати ще один будинок'"
+          :ico="'plus'"
+          :icoPosition="'right'"
           >
-          </MainButton>
-        </div>
-
+        </MainButton>
+      </div>
+      
+      <PersonalDetails class="mb-3"/>
+      
       </div>
 
     </div>
@@ -39,11 +42,13 @@
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import ChoiceBooking from "@/components/coreComponents/BookingLeft/components/ChoiceBooking/ChoiceBooking.vue";
 import ChosenHouse from "@/components/coreComponents/BookingLeft/components/ChosenHouse/ChosenHouse.vue";
+import PersonalDetails from "@/components/coreComponents/BookingLeft/components/PersonalDetails/PersonalDetails.vue";
 import BackTo from '../../../../../assets/img/back-to.svg?skipsvgo'
 
 export default {
   name: "DetailPopup",
   components: {
+    PersonalDetails,
     ChosenHouse,
     ChoiceBooking,
     MainButton,

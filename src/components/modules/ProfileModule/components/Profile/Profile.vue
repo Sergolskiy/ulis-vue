@@ -127,12 +127,16 @@
         <DefaultInput
             class="w-100"
             :placeholder="'Твій промокод буде тут'"
-            v-model="promo"
+            :icoType="'copy'"
+            :disabled="promo.length === 0"
+            :model-value="promo"
+            @update:icoClick="copyToClipboard"
         />
 
         <MainButton
             class="wfc nowrap"
             :label="'Згенерувати промокод'"
+            @click="generateCode"
         />
       </div>
 
@@ -161,6 +165,7 @@
         <DefaultInput
             class="w-100"
             :placeholder="'Вкажи суму'"
+            :icoType="'currency'"
             v-model="certificate"
         />
 
@@ -192,7 +197,8 @@ export default {
   components: {
     DefaultInput,
     StatusInfoGreen,
-    IconUAH, InfoBlock, SocialMediaBtn, FormLabel, MainButton, PersonalInfoFields},
+    IconUAH, InfoBlock, SocialMediaBtn, FormLabel, MainButton, PersonalInfoFields
+  },
 
   props: {
     Booking: {
@@ -215,8 +221,16 @@ export default {
       urlParams.set('page', 'certificate');
 
       window.location.search = urlParams;
-    }
-  }
+    },
+
+    generateCode() {
+      this.promo = 'SfdsSADF&*%^'
+    },
+
+    copyToClipboard() {
+      navigator.clipboard.writeText(this.promo)
+    },
+  },
 
 }
 </script>

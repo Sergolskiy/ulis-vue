@@ -121,19 +121,22 @@
                 <div class="price-summary__price">
                   <div>
                     <IconUAH/>
-                    5 000
+                    179
                   </div>
-                  <FormLabel
-                      class="mt-1"
-                      :label="'255'"
-                  />
+                  <div>
+                    <IconUAH class="small-currency"/>
+                    <FormLabel
+                        class="mt-1"
+                        :label="'255'"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="payment-block__confirm-btn">
               <MainButton
-                  :label="'Підтвердити бронювання'"
+                  :label="'Підтвердити замовлення'"
                   @click="$emit('confirmBooking')"
               />
             </div>
@@ -178,7 +181,7 @@ import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
 import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
 import FormLabel from "@/components/UI/labels/FormLabel/FormLabel.vue";
-import IconUAH from "@/assets/img/currencies.svg";
+import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 
 export default {
   name: "CertificateModule",
@@ -235,6 +238,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../../scss/colors";
 
 .certificate-payment {
   margin-top: 50px;
@@ -242,6 +246,14 @@ export default {
 
 .certificate-fields:deep(.info-block) {
   display: none;
+}
+
+.small-currency {
+  width: 17px;
+  margin-right: 0;
+  &:deep(path) {
+    stroke: $text-grey;
+  }
 }
 
 </style>

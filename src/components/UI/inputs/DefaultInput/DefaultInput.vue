@@ -3,7 +3,7 @@
          :class="{
           active: activeInput || ((modelValue || typeof modelValue === 'number') && modelValue.toString().length > 0),
           'active-placeholder' : (placeholder && placeholder.length > 0),
-          'disabled' : disabled == true,
+          'disabled' : disabled === true,
           'default-input-wrap--text-security' : textSecurity && !showSecurity,
           'ui-no-valid': error
          }"
@@ -50,7 +50,9 @@
       >
       <span class="default-input-wrap__pass" @click="showPass" v-if="type === 'password'"></span>
       <span class="default-input-wrap__pass" @click="showSecurityFunc" v-if="textSecurity"></span>
-      <span :class="'default-input-wrap__ico ' + icoType"></span>
+      <span :class="'default-input-wrap__ico ' + icoType"
+            @click="icoClick"
+      ></span>
 
 <!--      <span v-if="passwordValidate && activeInput"-->
 <!--            class="default-input-wrap__popup"-->
@@ -222,6 +224,10 @@
         this.$emit('update:onEnter')
       },
 
+      icoClick() {
+        this.$emit('update:icoClick')
+      },
+
     }
   }
 </script>
@@ -273,9 +279,9 @@
       }
 
       &:disabled{
-        background: $darker-blue;
-        color: $border-grey;
-        border-color: $border-grey;
+        background: $white;
+        //color: $border-grey;
+        //border-color: $border-grey;
         opacity: 1;
       }
 
@@ -322,103 +328,26 @@
       }
     }
 
-    &__icon {
-      width: 16px;
-      height: 16px;
+    &__ico {
+      width: 24px;
+      height: 24px;
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50%;
+      margin-top: -12px;
+      right: 12px;
 
-      &.name-icon {
-        background: url("../../../../assets/img/common/label-ico/fname.svg") center center no-repeat;
+      &.copy {
+        background: url("../../../../assets/img/copy-text.svg") center center no-repeat;
+        cursor: pointer;
       }
-      &.lname-icon {
-        background: url("../../../../assets/img/common/label-ico/lname.svg") center center no-repeat;
+
+      &.currency {
+        background: url("../../../../assets/img/currencies.svg") center center no-repeat;
       }
-      &.email-icon {
-        background: url("../../../../assets/img/common/label-ico/email.svg") center center no-repeat;
-      }
-      &.phone-icon {
-        background: url("../../../../assets/img/common/label-ico/phone.svg") center center no-repeat;
-      }
-      &.pass-icon {
-        background: url("../../../../assets/img/common/label-ico/lock.svg") center center no-repeat;
-      }
-      &.customer-icon {
-        background: url("../../../../assets/img/common/label-ico/customer.svg") center center no-repeat;
-      }
-      &.address-icon {
-        background: url("../../../../assets/img/common/label-ico/address.svg") center center no-repeat;
-      }
-      &.city-icon {
-        background: url("../../../../assets/img/common/label-ico/city.svg") center center no-repeat;
-      }
-      &.country-icon {
-        background: url("../../../../assets/img/common/label-ico/country.svg") center center no-repeat;
-      }
-      &.state-icon {
-        background: url("../../../../assets/img/common/label-ico/state.svg") center center no-repeat;
-      }
-      &.zip-icon {
-        background: url("../../../../assets/img/common/label-ico/zip.svg") center center no-repeat;
-      }
-      &.discount-icon {
-        background: url("../../../../assets/img/common/label-ico/discount.svg") center center no-repeat;
-      }
-      &.payments-icon {
-        background: url("../../../../assets/img/common/label-ico/payments.svg") center center no-repeat;
-      }
-      &.checklist-icon {
-        background: url("../../../../assets/img/common/label-ico/checklist.svg") center center no-repeat;
-      }
-      &.list-icon {
-        background: url("../../../../assets/img/common/label-ico/list.svg") center center no-repeat;
-      }
-      &.sales-icon {
-        background: url("../../../../assets/img/common/label-ico/sales.svg") center center no-repeat;
-      }
-      &.roles-icon {
-        background: url("../../../../assets/img/common/label-ico/roles.svg") center center no-repeat;
-      }
-      &.customer-2-icon {
-        background: url("../../../../assets/img/common/label-ico/customer-2.svg") center center no-repeat;
-      }
-      &.status-icon {
-        background: url("../../../../assets/img/common/label-ico/status.svg") center center no-repeat;
-      }
-      &.company-icon {
-        background: url("../../../../assets/img/common/label-ico/company.svg") center center no-repeat;
-      }
-      &.dollar-icon {
-        background: url("../../../../assets/img/common/label-ico/dollar.svg") center center no-repeat;
-      }
-      &.count-icon {
-        background: url("../../../../assets/img/common/label-ico/count.svg") center center no-repeat;
-      }
-      &.inventory-icon {
-        background: url("../../../../assets/img/common/label-ico/inventory.svg") center center no-repeat;
-      }
-      &.retail-price-icon {
-        background: url("../../../../assets/img/common/label-ico/retail-price.svg") center center no-repeat;
-      }
-      &.controller-icon {
-        background: url("../../../../assets/img/common/label-ico/controller.svg") center center no-repeat;
-      }
-      &.profit-icon {
-        background: url("../../../../assets/img/common/label-ico/profit.svg") center center no-repeat;
-      }
-      &.structure-icon {
-        background: url("../../../../assets/img/common/label-ico/structure.svg") center center no-repeat;
-      }
-      &.crown-icon {
-        background: url("../../../../assets/img/common/label-ico/crown.svg") center center no-repeat;
-      }
-      &.refresh-mirr-icon {
-        background: url("../../../../assets/img/common/refresh-mirrored.svg") center center no-repeat;
-      }
-      &.dimensions-icon {
-        background: url("../../../../assets/img/common/label-ico/dimensions.svg") center center no-repeat;
-      }
+    }
+
+    &.disabled .default-input-wrap__ico {
+      opacity: 0.25;
     }
 
     //&.big-ico
@@ -474,39 +403,6 @@
       margin-top: 3px;
       margin-bottom: -10px;
     }
-
-    //&__popup {
-    //  position: absolute;
-    //  display: block;
-    //  width: 100%;
-    //  padding: 16px 16px 20px;
-    //  background-color: $white;
-    //  border-radius: 12px;
-    //  border: 1px solid $darker-blue;
-    //  left: 0;
-    //  top: calc(100% + 4px);
-    //  z-index: 3;
-    //}
-
-    &.scan-ico{
-      &:before{
-        content: '';
-        position: absolute;
-        left: 16px;
-        top: 14px;
-        width: 12px;
-        height: 12px;
-        //background: url("../../../../assets/img/UI-group/scan-ico.svg") center/contain no-repeat;
-      }
-    }
-    &.scan-ico .default-input{
-      padding-left: 32px;
-    }
-    &.scan-ico:not(.active) &__label{
-      padding-left: 20px;
-    }
-
-
     &__ico {
 
       &.scale-ico {

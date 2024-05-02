@@ -438,7 +438,7 @@
 
 
   .dp__cell_disabled {
-    color: $warning-red-border;
+    color: $warning-red-border !important;
     text-decoration: line-through;
 
     .calendar-price {

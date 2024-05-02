@@ -106,10 +106,10 @@ export default {
       let today = new Date();
 
       let tomorrow = new Date(today)
-      tomorrow.setDate(tomorrow.getDate() + 2)
+      tomorrow.setDate(tomorrow.getDate() + 4)
 
       let afterTomorrow = new Date(tomorrow);
-      afterTomorrow.setDate(tomorrow.getDate() + 3);
+      afterTomorrow.setDate(tomorrow.getDate() + 9);
 
       return [tomorrow, afterTomorrow]
     },

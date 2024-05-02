@@ -47,7 +47,7 @@
         </div>
       </template>
 
-
+      <PersonalDetails/>
     </div>
 
     <DetailPopup
@@ -62,6 +62,7 @@
 
 <script>
 import Account from "@/components/coreComponents/BookingLeft/components/Account/Account.vue";
+import PersonalDetails from "@/components/coreComponents/BookingLeft/components/PersonalDetails/PersonalDetails.vue";
 import ChoiceBooking from "@/components/coreComponents/BookingLeft/components/ChoiceBooking/ChoiceBooking.vue";
 import ChosenHouse from "@/components/coreComponents/BookingLeft/components/ChosenHouse/ChosenHouse.vue";
 import MainButton from "../../UI/buttons/MainButton/MainButton.vue";
@@ -77,7 +78,8 @@ export default {
     Account,
     ChoiceBooking,
     ChosenHouse,
-    MainButton
+    MainButton,
+    PersonalDetails
   },
 
   emits: ['openPopup', 'close'],

@@ -49,7 +49,11 @@
         </div>
       </template>
 
-      <PersonalDetails/>
+      <PersonalDetails
+          v-if="Booking.data.isAuth"
+          class="mb-3"
+          :Booking="Booking"
+      />
     </div>
 
     <DetailPopup

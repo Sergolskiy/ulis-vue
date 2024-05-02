@@ -30,7 +30,11 @@
         </MainButton>
       </div>
       
-      <PersonalDetails class="mb-3"/>
+      <PersonalDetails
+          v-if="Booking.data.isAuth"
+          class="mb-3"
+          :Booking="Booking"
+      />
       
       </div>
 

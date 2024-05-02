@@ -8,7 +8,7 @@
       <div class="header__menu">
         <div class="header__menu-items">
           <div class="header__item">
-            <a href="#" class="header__link">Будинки</a>
+            <a href="/?page=404" class="header__link">Будинки</a>
           </div>
           <div class="header__item">
             <a href="#" class="header__link">Карпати</a>

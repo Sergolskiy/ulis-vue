@@ -121,7 +121,7 @@ export default {
   border: 1px solid $border-grey;
   border-radius: 8px;
   margin-top: 9px;
-  margin-bottom: 16px;
+  //margin-bottom: 16px;
   height: 100%;
 
   @include for-992 {

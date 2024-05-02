@@ -24,6 +24,10 @@
       v-if="page === 'certificate'"
   />
 
+  <NotFoundModule
+      v-if="page === '404'"
+  />
+
 </template>
 
 <script>
@@ -34,11 +38,13 @@ import LoginModule from "@/components/modules/LoginModule/LoginModule.vue";
 import RegistrationModule from "@/components/modules/RegistrationModule/RegistrationModule.vue";
 import ProfileModule from "@/components/modules/ProfileModule/ProfileModule.vue";
 import CertificateModule from "@/components/modules/CertificateModule/CertificateModule.vue";
+import NotFoundModule from "@/components/modules/NotFoundModule/NotFoundModule.vue";
 
 export default {
   name: 'App',
 
   components: {
+    NotFoundModule,
     CertificateModule,
     ProfileModule,
     RegistrationModule,

@@ -6,7 +6,7 @@
         Особиста інформація
       </div>
 
-      <template v-if="!isLogged">
+      <template v-if="false">
         <div class="personal-details__info">
           <InfoBlock
               :text="'Ти поки не ввів жодної особистої інформації. Як тільки ти введеш її на цьому етапі, вони з’являться тут.'"
@@ -118,13 +118,16 @@ export default {
     IconMail,
   },
 
-  computed: {
-
+  props: {
+    Booking: {
+      type: Object,
+      default: null,
+    }
   },
 
   data() {
     return {
-      isLogged: false
+
     }
   },
 
@@ -141,6 +144,7 @@ export default {
 .personal-details {
   border: 1px solid $border-grey;
   border-radius: 8px;
+  margin-top: 16px;
 
   &__inner {
     padding: 16px;

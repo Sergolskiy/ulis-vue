@@ -19,10 +19,10 @@
         <div class="service-cook__list service-cook__slider">
 
           <Splide class="cocking-slider" :options="optionsSlider" aria-label="My Favorite Images">
-            <SplideSlide v-for="(item, index) in slides" :key="index">
+            <SplideSlide v-for="(item, index) in slidesTest" :key="index">
               <CookingSlide
                   :item="item"
-                  :slides="slides"
+                  :slides="slidesTest"
               />
             </SplideSlide>
           </Splide>

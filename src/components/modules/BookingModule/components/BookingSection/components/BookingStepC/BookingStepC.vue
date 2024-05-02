@@ -48,7 +48,7 @@
 
     <div class="services__list">
       <div class="custom-row">
-        <div class="custom-col mb-4" v-for="(item, index) in items" :key="index">
+        <div class="custom-col mb-4" v-for="(item, index) in itemsTest" :key="index">
           <CardService
               :Booking="Booking"
               :item="item"

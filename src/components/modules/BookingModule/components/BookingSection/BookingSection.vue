@@ -169,14 +169,14 @@ export default {
         yes: 'Отримати знижку',
       },
 
-      specialOfferPopupTextTest: {
-        title: 'Спеціальна пропозиція для тебе',
-        txt: 'Продовжи проживання в УЛІС до 3-х днів та отримай знижку у розмірі Х% від загальної вартості бронювання.',
-        imgSrc: '/assets/special-offer-artboard.png',
-        imgAlt: 'alt',
-        no: 'Ні, дякую',
-        yes: 'Отримати знижку',
-      },
+      // specialOfferPopupTextTest: {
+      //   title: 'Спеціальна пропозиція для тебе',
+      //   txt: 'Продовжи проживання в УЛІС до 3-х днів та отримай знижку у розмірі Х% від загальної вартості бронювання.',
+      //   imgSrc: '/assets/special-offer-artboard.png',
+      //   imgAlt: 'alt',
+      //   no: 'Ні, дякую',
+      //   yes: 'Отримати знижку',
+      // },
     }
   },
 

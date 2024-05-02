@@ -30,6 +30,24 @@
           :type="'required'"
       />
 
+      <WasHouseSelected
+          :type="'info'"
+          :name="'Будинок на 1 спальню у лісі'"
+          @openCalendar="openCalendar"
+      />
+
+      <WasHouseSelected
+          :type="'error'"
+          :name="'Будинок на 1 спальню у лісі'"
+          @openCalendar="openCalendar"
+      />
+
+      <WasHouseSelected
+          :type="'success'"
+          :name="'Будинок на 1 спальню у лісі'"
+          @openCalendar="openCalendar"
+      />
+
       <div class="your-choice__calendar-wrap">
 
         <CalendarDays
@@ -116,6 +134,13 @@
       </div>
 
     </div>
+
+
+    <CalendarPopup
+        v-if="openCalendarPopup"
+        :Booking="Booking"
+        @close="openCalendarPopup = false"
+    />
   </div>
 </template>
 
@@ -129,15 +154,20 @@ import DefaultInput from "@/components/UI/inputs/DefaultInput/DefaultInput.vue";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
 import CustomSelect from "@/components/UI/selections/CustomSelect/CustomSelect.vue";
+import WasHouseSelected from "@/components/modules/BookingModule/chunks/WasHouseSelected/WasHouseSelected.vue";
+import CalendarPopup from "@/components/modules/BookingModule/popups/CalendarPopup/CalendarPopup.vue";
 
 
 export default {
   name: "BookingStepA",
 
   components: {
+    CalendarPopup,
+    WasHouseSelected,
     CustomSelect,
     DefaultCheckbox,
-    MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect},
+    MainButton, DefaultInput, CalendarDays, MainCalendar, FormLabel, InfoBlock, DefaultSelect
+  },
 
   props: {
     Booking: {
@@ -152,20 +182,33 @@ export default {
     return {
       checked: false,
 
+      openCalendarPopup: false,
+
       defaultSelect: {
         options: [
-          {id: 1, years: 1,},  {
-            id: 2,    years: 2,  },  {
-            id: 3,    years: 3,  },  {
-            id: 4,    years: 4,  },  {
-            id: 5,    years: 5,  },  {
-            id: 6,    years: 6,  },  {
-            id: 7,    years: 7,  },  {
-            id: 8,    years: 8,  },  {
-            id: 9,    years: 9,  },  {
-            id: 10,    years: 10,  },  {
-            id: 11,    years: 11,  },  {
-            id: 12,    years: 12,  },
+          {id: 1, years: 1,}, {
+            id: 2, years: 2,
+          }, {
+            id: 3, years: 3,
+          }, {
+            id: 4, years: 4,
+          }, {
+            id: 5, years: 5,
+          }, {
+            id: 6, years: 6,
+          }, {
+            id: 7, years: 7,
+          }, {
+            id: 8, years: 8,
+          }, {
+            id: 9, years: 9,
+          }, {
+            id: 10, years: 10,
+          }, {
+            id: 11, years: 11,
+          }, {
+            id: 12, years: 12,
+          },
         ],
         selected: {id: 1, years: 1,},
       },
@@ -188,15 +231,15 @@ export default {
 
   methods: {
     changeCounter(item) {
-      if(this.optionsChild[0].count < item) {
+      if (this.optionsChild[0].count < item) {
         this.optionsChild[0].selections.push(this.$_.cloneDeep(this.defaultSelect))
       }
 
-      if(this.optionsChild[0].count > item) {
+      if (this.optionsChild[0].count > item) {
         this.optionsChild[0].selections.splice(this.optionsChild[0].selections.length - 1, 1)
       }
 
-      if(item > 0) {
+      if (item > 0) {
         this.optionsChild[0].selected = item + ' ' + this.getNoun(item, 'дитина', 'дитини', 'дітей')
       } else {
         this.optionsChild[0].selected = null
@@ -204,6 +247,10 @@ export default {
 
       this.optionsChild[0].count = item
     },
+
+    openCalendar() {
+      this.openCalendarPopup = true
+    }
   },
 
 }

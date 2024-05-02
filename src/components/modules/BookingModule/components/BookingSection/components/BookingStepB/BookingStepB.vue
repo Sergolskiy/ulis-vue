@@ -1,7 +1,7 @@
 <template>
 
   <div class="custom-row">
-    <div class="custom-col" v-for="(item, index) in houseImg" :key="index">
+    <div class="custom-col" v-for="(item, index) in houseImgTest" :key="index">
       <CardHouse
         :Booking="Booking"
         :images="item.images"

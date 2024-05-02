@@ -104,7 +104,7 @@
 
       <div class="personal-info__field">
         <DefaultSelect
-            :label="'Ім’я та прізвище'"
+            :label="'Національність (місто)'"
             :type="'required'"
             :options="['Українець']"
             :inner-icon="'location'"

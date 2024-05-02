@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="custom-row">
+  <div class="custom-row" v-if="withGender">
     <div class="custom-col mb-0">
 
       <FormLabel
@@ -175,6 +175,11 @@ export default {
       type: Object,
       default: null,
     },
+
+    withGender: {
+      type: Boolean,
+      default: true,
+    }
   },
 
 }

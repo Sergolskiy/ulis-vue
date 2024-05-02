@@ -161,13 +161,14 @@
         <DefaultInput
             class="w-100"
             :placeholder="'Вкажи суму'"
-            v-model="promo"
+            v-model="certificate"
         />
 
         <MainButton
             class="wfc nowrap"
-            :disabled="true"
+            :disabled="certificate.length === 0"
             :label="'Купити сертифікат'"
+            @click="goToCertificate"
         />
       </div>
 
@@ -203,8 +204,19 @@ export default {
   data() {
     return {
       promo: '',
+      certificate: '',
     }
   },
+
+  methods: {
+    goToCertificate() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.set('page', 'certificate');
+
+      window.location.search = urlParams;
+    }
+  }
 
 }
 </script>

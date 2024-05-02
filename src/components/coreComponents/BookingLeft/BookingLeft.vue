@@ -18,32 +18,36 @@
         </div>
       </div>
 
-      <div class="left-side__mobile">
-        <MobileDetailBooking
-            @openPopup="openPopup"
-        />
-      </div>
+      <template v-if="!isTypeCertificate">
+        <div class="left-side__mobile">
+          <MobileDetailBooking
+              @openPopup="openPopup"
+          />
+        </div>
 
-      <div class="left-side__choice">
-        <ChoiceBooking
-            :Booking="Booking"
-        />
-      </div>
+        <div class="left-side__choice">
+          <ChoiceBooking
+              :Booking="Booking"
+          />
+        </div>
 
-      <div class="left-side__chosen-house" v-if="Booking.data.activeStep >= 2">
-        <ChosenHouse
-            :Booking="Booking"
-        />
-      </div>
+        <div class="left-side__chosen-house" v-if="Booking.data.activeStep >= 2">
+          <ChosenHouse
+              :Booking="Booking"
+          />
+        </div>
 
-      <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 3 && !isTypeProfile">
-        <MainButton
-            :label="'Додати ще один будинок'"
-            :ico="'plus'"
-            :icoPosition="'right'"
+        <div class="left-side__btn mb-3" v-if="Booking.data.activeStep >= 3 && !isTypeProfile">
+          <MainButton
+              :label="'Додати ще один будинок'"
+              :ico="'plus'"
+              :icoPosition="'right'"
           >
           </MainButton>
-      </div>
+        </div>
+      </template>
+
+
     </div>
 
     <DetailPopup
@@ -92,6 +96,10 @@ export default {
   computed: {
     isTypeProfile() {
       return this.type === 'profile'
+    },
+
+    isTypeCertificate() {
+      return this.type === 'certificate'
     },
 
     isLogged() {

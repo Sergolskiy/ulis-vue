@@ -20,6 +20,10 @@
       v-if="page === 'profile'"
   />
 
+  <CertificateModule
+      v-if="page === 'certificate'"
+  />
+
 </template>
 
 <script>
@@ -29,11 +33,13 @@ import BookingModule from "./components/modules/BookingModule/BookingModule.vue"
 import LoginModule from "@/components/modules/LoginModule/LoginModule.vue";
 import RegistrationModule from "@/components/modules/RegistrationModule/RegistrationModule.vue";
 import ProfileModule from "@/components/modules/ProfileModule/ProfileModule.vue";
+import CertificateModule from "@/components/modules/CertificateModule/CertificateModule.vue";
 
 export default {
   name: 'App',
 
   components: {
+    CertificateModule,
     ProfileModule,
     RegistrationModule,
     LoginModule,

@@ -35,7 +35,12 @@ export default {
     return {
       Booking: new Booking(),
     }
-  }
+  },
+
+  created() {
+    this.Booking.data.isAuth = localStorage.getItem('logged')
+  },
+
 }
 </script>
 

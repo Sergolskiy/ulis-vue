@@ -113,5 +113,26 @@ export class Booking extends BaseModel{
     return this.checkValidation()
   }
 
+  certificateValidation() {
+    let validationItems = {
+      name: this.data.name,
+      birthday: this.data.birthday,
+      nationality: this.data.nationality,
+      phone: this.data.phone,
+      email: this.data.email,
+    }
+
+    let validationOptions = {
+      name: {type: ['empty']},
+      birthday: {type: ['empty']},
+      nationality: {type: ['empty']},
+      phone: {type: ['phone', 'empty']},
+      email: {type: ['email', 'empty']},
+    }
+
+    this.setValidationData(validationItems, validationOptions)
+    return this.checkValidation()
+  }
+
 
 }

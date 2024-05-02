@@ -84,7 +84,7 @@
           />
         </div>
 
-        <div class="please-login">
+        <div class="please-login" v-if="!Booking.data.isAuth">
           <div class="please-login__inner">
             <div class="please-login__info">
               <InfoBlock
@@ -101,7 +101,7 @@
         </div>
 
 
-        <div class="payment-block__promo">
+        <div class="payment-block__promo" v-if="Booking.data.isAuth">
           <FormLabel
               class="mt-4 mb-1"
               :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
@@ -173,6 +173,33 @@
                 <div>
                   <IconUAH/>
                   17 900
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="price-summary price-summary--green mt-4 mb-4" v-if="Booking.data.isAuth">
+            <div class="price-summary__total">
+              <div class="price-summary__total-txt">
+                <div class="payment-block__title mb-0">
+                  Буде нараховано бонусів:
+                </div>
+                <FormLabel
+                    class="mt-2"
+                    :label="'Всього бонусів:'"
+                />
+              </div>
+              <div class="price-summary__price">
+                <div>
+                  <IconUAH/>
+                  179
+                </div>
+                <div>
+                  <IconUAH class="small-currency"/>
+                  <FormLabel
+                      class="mt-1"
+                      :label="'255'"
+                  />
                 </div>
               </div>
             </div>

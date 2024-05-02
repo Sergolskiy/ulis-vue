@@ -2,13 +2,15 @@
   <div class="left-side">
     <div class="left-side__inner">
       <div class="left-side__account">
-        <Account/>
+        <Account
+            :Booking="Booking"
+        />
 
-        <div class="left-side__account-exit" v-if="isLogged">
+        <div class="left-side__account-exit" v-if="Booking.data.isAuth">
           <a href="javascript:void(0)" class="left-side__account-exit-btn" @click="exitProfile">Вийти</a>
         </div>
 
-        <div class="mt-4" v-if="isLogged && isTypeProfile">
+        <div class="mt-4" v-if="Booking.data.isAuth && isTypeProfile">
           <MainButton
               :label="'Перейти до бронювання'"
               :ico="'arrow'"
@@ -100,10 +102,6 @@ export default {
 
     isTypeCertificate() {
       return this.type === 'certificate'
-    },
-
-    isLogged() {
-      return localStorage.getItem('logged')
     },
   },
 

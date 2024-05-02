@@ -6,7 +6,7 @@
         Твій акаунт
       </div>
 
-      <template v-if="!isLogged">
+      <template v-if="!Booking.data.isAuth">
         <div class="account__info">
           <InfoBlock
               :text="'Авторизуйся в системі або створи обліковий запис, щоб дізнаватися про спеціальні пропозиції і більше.'"
@@ -73,9 +73,10 @@ export default {
     ShortSpecialPopup,
   },
 
-  computed: {
-    isLogged() {
-      return localStorage.getItem('logged')
+  props: {
+    Booking: {
+      type: Object,
+      default: null,
     },
   },
 

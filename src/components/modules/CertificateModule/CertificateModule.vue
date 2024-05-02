@@ -107,7 +107,7 @@
               </div>
             </div>
 
-            <div class="price-summary price-summary--green mt-4 mb-4">
+            <div class="price-summary price-summary--green mt-4 mb-4" v-if="Booking.data.isAuth">
               <div class="price-summary__total">
                 <div class="price-summary__total-txt">
                   <div class="payment-block__title mb-0">
@@ -137,7 +137,7 @@
             <div class="payment-block__confirm-btn">
               <MainButton
                   :label="'Підтвердити замовлення'"
-                  @click="$emit('confirmBooking')"
+                  @click="createCertificate"
               />
             </div>
           </div>
@@ -159,7 +159,8 @@
             <MainButton
                 :label="'Оплатити'"
                 :icoPosition="'right'"
-                :disabled="false"
+                :disabled="!canPay"
+                @click="successPayBookingPopup = true"
             />
           </div>
         </div>
@@ -168,7 +169,12 @@
 
     </div>
 
-
+    <ShortSpecialPopup
+        v-if="successPayBookingPopup"
+        :shortSpecialPopupText="successPayBookingPopupText"
+        @closeShortSpecialPopup="successPayBookingPopup = false"
+        @confirm="successPayBookingPopup = false"
+    />
   </div>
 </template>
 
@@ -182,16 +188,31 @@ import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
 import FormLabel from "@/components/UI/labels/FormLabel/FormLabel.vue";
 import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
+import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
 
 export default {
   name: "CertificateModule",
-  components: {IconUAH, FormLabel, DefaultCheckbox, InfoBlock, DefaultInput, MainButton, PersonalInfoFields, BookingLeft},
+  components: {
+    ShortSpecialPopup,
+    IconUAH, FormLabel, DefaultCheckbox, InfoBlock, DefaultInput, MainButton, PersonalInfoFields, BookingLeft},
 
   data() {
     return {
       Booking: new Booking(),
 
       checked: false,
+
+      canPay: false,
+
+      successPayBookingPopup: false,
+      successPayBookingPopupText: {
+        title: 'Оплата пройшла успішно!',
+        txt: '',
+        img: true,
+        imgType: 'ico',
+        imgName: 'specialSuccessBookingPopup',
+        yes: 'На головну сторінку',
+      },
 
       priceSummary: [
         {
@@ -222,6 +243,10 @@ export default {
     }
   },
 
+  created() {
+    this.Booking.data.isAuth = localStorage.getItem('logged')
+  },
+
   methods: {
     goToProfile() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -231,6 +256,13 @@ export default {
       localStorage.setItem('logged', 'true')
 
       window.location.search = urlParams;
+    },
+
+    createCertificate() {
+      if(!this.Booking.certificateValidation()) {
+        return
+      }
+      this.canPay = true
     },
   }
 

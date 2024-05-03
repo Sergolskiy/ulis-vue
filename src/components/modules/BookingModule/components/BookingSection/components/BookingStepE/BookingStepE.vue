@@ -104,7 +104,7 @@
         <div class="payment-block__promo" v-if="Booking.data.isAuth">
           <FormLabel
               class="mt-4 mb-1"
-              :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
+              :label="'Вкажи кодове слово для сертифікату'"
           />
 
           <InfoBlock

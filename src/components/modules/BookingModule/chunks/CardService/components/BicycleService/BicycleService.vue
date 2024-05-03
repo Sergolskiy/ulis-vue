@@ -80,16 +80,16 @@
           />
         </div>
 
-        <div class="custom-col custom-col--50 custom-col--sm-100"
-            v-if="rentalType == 'daily'"
-        >
-          <DefaultSelect
-              :label="'Кількість діб'"
-              :placeholder="'Обери к-ть діб'"
-              :required="'required'"
-              :options="['1', '2']"
-          />
-        </div>
+<!--        <div class="custom-col custom-col&#45;&#45;50 custom-col&#45;&#45;sm-100"-->
+<!--            v-if="rentalType == 'daily'"-->
+<!--        >-->
+<!--          <DefaultSelect-->
+<!--              :label="'Кількість діб'"-->
+<!--              :placeholder="'Обери к-ть діб'"-->
+<!--              :required="'required'"-->
+<!--              :options="['1', '2']"-->
+<!--          />-->
+<!--        </div>-->
       </div>
     </div>
 

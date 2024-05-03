@@ -118,10 +118,10 @@
 
       <FormLabel
           class="mt-4"
-          :label="'Вкажіть промокод або кодове слово для подарункового сертифікату'"
+          :label="'Вкажіть промокод'"
       />
 
-      <div class="promo-field">
+      <div class="promo-field" v-if="!isSetPromoCode">
         <div class="promo-field__inner">
           <DefaultInput
               :label="''"
@@ -129,9 +129,17 @@
           <MainButton
               class="promo-field__btn h-40"
               :label="'Застосувати'"
+              @click="confirmPromoCode"
           />
         </div>
       </div>
+
+      <InfoBlock
+          v-else
+          class="mt-1"
+          :text="'Промокод успішно застосовано'"
+          :type="'success'"
+      />
 
     </div>
 
@@ -184,6 +192,8 @@ export default {
 
       openCalendarPopup: false,
 
+      isSetPromoCode: false,
+
       defaultSelect: {
         options: [
           {id: 1, years: 1,}, {
@@ -230,6 +240,12 @@ export default {
   },
 
   methods: {
+
+
+    confirmPromoCode() {
+      this.isSetPromoCode = true
+    },
+
     changeCounter(item) {
       if (this.optionsChild[0].count < item) {
         this.optionsChild[0].selections.push(this.$_.cloneDeep(this.defaultSelect))

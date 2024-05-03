@@ -17,7 +17,7 @@
         <div class="account__btn">
           <MainButton
               :label="'Авторизуватися'"
-              @click="openSignInPopup = true"
+              @click="goToLogin"
           />
         </div>
       </template>
@@ -48,12 +48,7 @@
     </div>
   </div>
 
-  <ShortSpecialPopup
-      v-if="openSignInPopup"
-      :shortSpecialPopupText="signInPopupText"
-      @closeShortSpecialPopup="openSignInPopup = false"
-      @confirm="goToLogin"
-  />
+
 
 </template>
 
@@ -61,7 +56,6 @@
 import InfoBlock from "../../../../UI/labels/InfoBlock/InfoBlock.vue";
 import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 import UserIco from '../../../../../assets/img/user.svg?skipsvgo'
-import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
 
 export default {
   name: "Account",
@@ -70,7 +64,6 @@ export default {
     MainButton,
     InfoBlock,
     UserIco,
-    ShortSpecialPopup,
   },
 
   props: {
@@ -82,16 +75,7 @@ export default {
 
   data() {
     return {
-      openSignInPopup: false,
-      signInPopupText: {
-        title: 'Авторизуйся в системі',
-        txt: 'Авторизуйся в системі, щоб першим дізнаватися про вигідні пропозиції, накопичувати бонуси та вести профіль, додаючи у wishlist та waitlist',
-        img: true,
-        imgType: 'ico',
-        imgName: 'signInPopup',
-        no: 'Іншим разом',
-        yes: 'Авторизуватися',
-      },
+
     }
   },
 

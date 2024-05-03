@@ -29,7 +29,7 @@
             v-if="Booking.data.activeStep === 3"
             :Booking="Booking"
             @goToBackStepEmit="goToBackStep"
-            @goToNextStepEmit="goToNextStep"
+            @goToNextStepEmit="afterNextStep"
         />
 
         <BookingStepD
@@ -62,7 +62,7 @@
               :secondary="true"
               :ico="'arrow'"
               :icoPosition="'right'"
-              @click="checkFirstPopup"
+              @click="afterNextStep"
             />
               <!-- :disabled="Booking.data.activeStep > 2" -->
 
@@ -101,6 +101,13 @@
       :shortSpecialPopupText="successPayBookingPopupText"
       @closeShortSpecialPopup="successPayBookingPopup = false"
       @confirm="successPayBookingPopup = false"
+  />
+
+  <ShortSpecialPopup
+      v-if="openSignInPopup"
+      :shortSpecialPopupText="signInPopupText"
+      @closeShortSpecialPopup="openSignInPopup = false"
+      @confirm="openSignInPopup = false; goToNextStep()"
   />
 
 </template>
@@ -146,6 +153,17 @@ export default {
 
   data() {
     return {
+      openSignInPopup: false,
+      signInPopupText: {
+        title: 'Авторизуйся в системі',
+        txt: 'Авторизуйся в системі, щоб першим дізнаватися про вигідні пропозиції, накопичувати бонуси та вести профіль, додаючи у wishlist та waitlist',
+        img: true,
+        imgType: 'ico',
+        imgName: 'signInPopup',
+        no: 'Іншим разом',
+        yes: 'Авторизуватися',
+      },
+
       successPayBookingPopup: false,
       successPayBookingPopupText: {
         title: 'Оплата пройшла успішно!',
@@ -180,10 +198,15 @@ export default {
     }
   },
 
+  mounted() {
+    if(this.Booking.data.activeStep === 1) {
+      this.openRulesPopup = true
+    }
+  },
+
   methods: {
     closeRulesPopup() {
       this.openRulesPopup = false;
-      this.openShortSpecialPopup = true;
     },
 
     closeShortSpecialPopup() {
@@ -196,13 +219,18 @@ export default {
       window.scrollTo(0, 0)
     },
 
-    checkFirstPopup() {
+    afterNextStep() {
       if(this.Booking.data.activeStep === 1 && !this.Booking.stepAValidation()) {
         return false
       }
 
-      if(this.Booking.data.activeStep === 1) {
-        this.openRulesPopup = true
+      // if(this.Booking.data.activeStep === 1) {
+      //   this.openRulesPopup = true
+      //   return
+      // }
+
+      if(this.Booking.data.activeStep === 3) {
+        this.openSignInPopup = true;
         return
       }
 

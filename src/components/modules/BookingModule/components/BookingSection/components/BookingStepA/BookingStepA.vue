@@ -93,7 +93,7 @@
               :label="'Кількість дітей'"
               :options="optionsChild"
               :innerSelect="true"
-              :inner-icon="'people'"
+              :inner-icon="'man'"
               :placeholder="'0 дітей'"
               @updateCounter="changeCounter"
           />
@@ -125,6 +125,7 @@
         <div class="promo-field__inner">
           <DefaultInput
               :label="''"
+              :placeholder="'Ввести'"
           />
           <MainButton
               class="promo-field__btn h-40"

@@ -202,7 +202,7 @@
                     <IconUAH/>
                     0
                   </div>
-                  <div v-if="item.type !== 'cooking'" class="card-service__price-txt">
+                  <div v-if="item.type !== 'cooking' && item.type !== 'tree' && item.type !== 'late-check-out'" class="card-service__price-txt">
                     Враховуючи додаткові послуги
                   </div>
                 </div>
@@ -225,6 +225,7 @@
                  v-if="!openCookingCart && detailedInfo && item.type === 'cooking'"
             >
               <MainButton
+                  style="min-width: 106px;"
                   :label="'Далі'"
                   @click="openCookingCart = true"
               />
@@ -239,6 +240,11 @@
             </div>
             <div v-else class="card-service__bottom-btn">
               <MainButton
+                  v-if="item.type === 'tree'"
+                  :label="'Додати'"
+              />
+              <MainButton
+                  v-else
                   :label="'Забронювати'"
               />
             </div>

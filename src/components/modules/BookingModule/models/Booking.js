@@ -6,7 +6,7 @@ export class Booking extends BaseModel{
     super()
 
     this.data = {
-      activeStep: 1,
+      activeStep: 2,
 
       activeHouse: 1,
 
@@ -90,7 +90,7 @@ export class Booking extends BaseModel{
     let validationOptions = {
       name: {type: ['empty']},
       gender: {type: ['empty']},
-      birthday: {type: ['empty']},
+      // birthday: {type: ['empty']},
       nationality: {type: ['empty']},
       phone: {type: ['phone', 'empty']},
       email: {type: ['email', 'empty']},

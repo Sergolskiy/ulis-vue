@@ -314,6 +314,10 @@ export default {
     &.people {
       background: url("../../../../assets/img/people.svg") center center no-repeat;
     }
+
+    &.man {
+      background: url("../../../../assets/img/man.svg") center center no-repeat;
+    }
   }
   
 }

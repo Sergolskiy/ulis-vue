@@ -26,7 +26,7 @@ import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteIte
 export default {
   name: "BookingStepB",
 
-  emits: ['removeHouse', 'closeDeletePopup'],
+  emits: ['closeDeletePopup'],
 
   components: {
     DeleteItemPopup,

@@ -68,7 +68,6 @@
       <div class="personal-info__field">
         <DatePickerDefault
             :label="'Дата народження'"
-            :labelType="'required'"
             :error="Personal.validation.birthday"
             :errorTxt="Personal.validationTranslate.birthday"
         >

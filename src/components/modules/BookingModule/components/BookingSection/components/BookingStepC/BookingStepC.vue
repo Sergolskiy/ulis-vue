@@ -356,6 +356,10 @@ export default {
 
 .services {
 
+  &__buttons {
+    margin-top: 0;
+  }
+
   &__list {
     margin-top: 16px;
   }

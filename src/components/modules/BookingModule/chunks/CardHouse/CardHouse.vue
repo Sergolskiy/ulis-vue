@@ -79,12 +79,19 @@
             >
               <div class="card-house__more-btn mr-3" v-if="removeHouseBtn">
                 <MainButton
-                    :label="'Видалити дім'"
+                    class="pl-0 pr-0"
+                    :label="'Видалити будинок'"
                     :secondary="true"
                     @click="$emit('removeHouse')"
                 />
               </div>
-              <div class="card-house__more-btn">
+              <div class="card-house__more-btn" v-if="removeHouseBtn">
+                <MainButton
+                  :label="'Редагувати'"
+                  @click="detailedInfo = true"
+                />
+              </div>
+              <div class="card-house__more-btn" v-else>
                 <MainButton
                   :label="'Детальніше'"
                   :ico="'plus'"

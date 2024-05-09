@@ -53,11 +53,18 @@
               :Booking="Booking"
               :item="item"
               :removeHouseBtn="index === 2"
+              @removeService="removeService"
           />
         </div>
       </div>
     </div>
 
+
+    <DeleteItemPopup
+        v-if="openRemovePopup"
+        :deletePopupText="deletePopupText"
+        @closeDeletePopup="openRemovePopup = false"
+    />
 
   </div>
 
@@ -69,10 +76,11 @@ import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
 import IconUAH from "@/assets/img/currencies.svg";
 import CardHouse from "@/components/modules/BookingModule/chunks/CardHouse/CardHouse.vue";
 import CardService from "@/components/modules/BookingModule/chunks/CardService/CardService.vue";
+import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteItemPopup/DeleteItemPopup.vue";
 
 export default {
   name: "BookingStepC",
-  components: {CardService, CardHouse, IconUAH, MainButton},
+  components: {DeleteItemPopup, CardService, CardHouse, IconUAH, MainButton},
 
   props: {
     Booking: {
@@ -82,10 +90,17 @@ export default {
   },
 
   emits: ['goToBackStepEmit' ,'goToNextStepEmit'],
-  // emits: ['removeService'],
 
   data() {
     return {
+      openRemovePopup: false,
+
+      deletePopupText: {
+        title: 'Видалити сервіс?',
+        txt: 'Ти впевнений, що хочеш виконати цю дію?',
+        no: 'Не хочу',
+        yes: 'Видалити',
+      },
 
       items: [
         {
@@ -342,7 +357,7 @@ export default {
 
   methods: {
     removeService() {
-
+      this.openRemovePopup = true
     },
   }
 
@@ -358,6 +373,14 @@ export default {
 
   &__buttons {
     margin-top: 0;
+  }
+
+  &__btn {
+    &:deep(.main-button) {
+      @include for-768 {
+        width: auto;
+      }
+    }
   }
 
   &__list {
@@ -407,6 +430,11 @@ export default {
     background: #F4F4F4;
     padding: 4px;
     width: fit-content;
+
+    @include for-550 {
+      width: 100%;
+      overflow: auto;
+    }
   }
 
   &__house-tab {
@@ -421,6 +449,10 @@ export default {
     color: $black;
     border-radius: 8px;
     transition: 0.3s;
+
+    @include for-550 {
+      min-width: 160px;
+    }
 
     &:first-child {
       margin-left: 0;

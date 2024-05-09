@@ -3,9 +3,11 @@
     <div class="modal-component__wrapper">
       <div class="modal-component__inner">
         <div class="modal-component__content">
-<!--          <div class="modal-component__close" @click="close">-->
-<!--            <CloseIcon/>-->
-<!--          </div>-->
+          <div class="modal-component__close" @click="close">
+            <CloseBtn
+                style="cursor: pointer;"
+            />
+          </div>
 
           <div class="modal-component__header">
             <slot name="header"></slot>
@@ -24,9 +26,12 @@
 
 <script>
 // import CloseIcon from '../../../../src/assets/img/UI-group/close-ico.svg?skipsvgo'
+import CloseBtn from "@/assets/img/close-btn.svg?skipsvgo";
+
 export default {
   name: "Modal",
   components: {
+    CloseBtn
     // CloseIcon
   },
   data() {
@@ -116,6 +121,7 @@ export default {
       line-height: 29px;
       font-weight: 800;
       margin-bottom: 16px;
+      padding-right: 32px;
     }
 
     &.small-popup {

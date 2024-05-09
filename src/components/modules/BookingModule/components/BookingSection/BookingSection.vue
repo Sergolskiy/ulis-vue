@@ -59,7 +59,6 @@
             <MainButton
                 v-if="Booking.data.activeStep < 5"
               :label="'Далі'"
-              :secondary="true"
               :ico="'arrow'"
               :icoPosition="'right'"
               @click="afterNextStep"

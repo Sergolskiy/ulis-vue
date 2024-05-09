@@ -7,11 +7,6 @@
 
       <div class="d-flex justify-content-between align-items-center">
         Календар доступності будинку
-
-        <CloseBtn
-            style="cursor: pointer;"
-            @click="$emit('close')"
-        />
       </div>
 
     </template>
@@ -41,7 +36,6 @@
 <script>
 import Modal from "@/components/coreComponents/Modal/Modal.vue";
 import MainCalendar from "@/components/modules/BookingModule/chunks/MainCalendar/MainCalendar.vue";
-import CloseBtn from '../../../../../assets/img/close-btn.svg?skipsvgo'
 import InfoBlock from "@/components/UI/labels/InfoBlock/InfoBlock.vue";
 
 export default {
@@ -49,7 +43,6 @@ export default {
   components: {
     InfoBlock,
     MainCalendar,
-    CloseBtn,
     Modal
   },
 

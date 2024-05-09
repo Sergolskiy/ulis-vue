@@ -1,6 +1,11 @@
 <template>
   <div class="slider-popup">
     <div class="slider-popup__inner">
+      <div class="slider-popup__close">
+        <CloseBtn
+            @click="$emit('closeSliderPopup')"
+        />
+      </div>
       <div class="slider-popup__content">
 <!--            :detailedInfo="detailedInfo"-->
         <CardSlider
@@ -15,10 +20,11 @@
 
 <script>
 import CardSlider from "@/components/modules/BookingModule/chunks/CardSlider/CardSlider.vue";
+import CloseBtn from "@/assets/img/close-btn.svg";
 
 export default {
   name: "SliderPopup",
-  components: {CardSlider},
+  components: {CloseBtn, CardSlider},
 
   emits: ['closeSliderPopup'],
 
@@ -64,6 +70,7 @@ export default {
   z-index: 100;
 
   &__inner {
+    position: relative;
     max-width: 954px;
     margin: 100px auto 100px;
     width: 100%;
@@ -72,6 +79,14 @@ export default {
     @include for-768 {
       margin-top: 188px;
     }
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 1000;
   }
 
   &__content {

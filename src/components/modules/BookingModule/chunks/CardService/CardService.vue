@@ -106,7 +106,7 @@
                   <MainButton
                       :label="'Видалити сервіс'"
                       :secondary="true"
-                      @click="$emit('removeHouse')"
+                      @click="$emit('removeService')"
                   />
                 </div>
                 <div class="card-service__more-btn">
@@ -291,6 +291,8 @@ export default {
     DefaultSelect,
     IconUAH,
   },
+
+  emits: ['removeService'],
 
   props: {
     Booking: {

@@ -82,6 +82,8 @@ export default {
   }
 
   &__icon {
+    display: flex;
+    align-items: center;
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -89,7 +91,7 @@ export default {
 
   &__name {
     font-weight: 500;
-    padding-top: 4px;
+    padding-top: 2px;
   }
 
   &__row {

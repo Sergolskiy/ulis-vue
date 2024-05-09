@@ -84,7 +84,7 @@
           />
         </div>
 
-        <div class="please-login" v-if="!Booking.data.isAuth">
+        <div class="please-login mb-3" v-if="!Booking.data.isAuth">
           <div class="please-login__inner">
             <div class="please-login__info">
               <InfoBlock
@@ -109,7 +109,7 @@
 
           <InfoBlock
               v-if="pomocodeConfirm"
-              :text="'Подарунковий сертифікат на 10 000 грн. Буде застосовано на екрані оплати.'"
+              :text="'Подарунковий сертифікат на 10 000 грн. Буде застосовано при оплаті.'"
               :type="'success'"
           />
 

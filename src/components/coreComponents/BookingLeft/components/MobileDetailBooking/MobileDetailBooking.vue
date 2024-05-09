@@ -29,6 +29,14 @@
             4 груд. - 5 груд.
           </div>
         </div>
+        <div class="mob-detail-booking__overview-item mt-2">
+          <div class="mob-detail-booking__overview-txt">
+            Всього:
+          </div>
+          <div class="mob-detail-booking__overview-price">
+            4600 <IconUAH/>
+          </div>
+        </div>
       </div>
 
       <MainButton
@@ -49,10 +57,11 @@ import IconMap from "@/assets/img/icons/icon-map-16px-grey.svg?skipsvgo";
 import IconBuildings from "@/assets/img/icons/icon-buildings-16px-grey.svg?skipsvgo";
 import IconDeport from "@/assets/img/icons/icon-deport-16px-grey.svg?skipsvgo";
 import MainButton from "@/components/UI/buttons/MainButton/MainButton.vue";
+import IconUAH from "@/assets/img/currencies.svg?skipsvgo";
 
 export default {
   name: "MobileDetailBooking",
-  components: {MainButton, IconDeport, IconBuildings, IconMap, IconPeople}
+  components: {IconUAH, MainButton, IconDeport, IconBuildings, IconMap, IconPeople}
 }
 </script>
 
@@ -102,6 +111,20 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     padding-top: 2px;
+  }
+
+  &__overview-price {
+    display: flex;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin-left: auto;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
   }
 
   &__btn {

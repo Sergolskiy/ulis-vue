@@ -82,10 +82,6 @@
       </div>
     </div>
 
-    <FormLabel
-        :label="'Час'"
-        :type="'required'"
-    />
     <InfoBlock
         class="mb-3 mt-1"
         v-if="item.error2"

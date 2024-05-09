@@ -149,6 +149,11 @@ export default {
     &__field {
       //width: 58px;
       flex-shrink: 0;
+
+      @include for-550 {
+        width: calc(100% - 64px);
+        text-align: center;
+      }
     }
 
     &__control {
@@ -180,6 +185,12 @@ export default {
         svg {
           width: 15px;
         }
+      }
+    }
+
+    &--select &__field {
+      @include for-768 {
+        width: auto;
       }
     }
 

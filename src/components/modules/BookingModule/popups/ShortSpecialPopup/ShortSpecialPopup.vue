@@ -15,6 +15,7 @@
 
         <div class="short-special-popup__image"
           v-if="shortSpecialPopupText.img"
+             :class="{'mb--30': shortSpecialPopupText.imgName == 'specialSuccessBookingPopup'}"
         >
           <template v-if="shortSpecialPopupText.imgType === 'ico'">
             <SVGSignIn v-if="shortSpecialPopupText.imgName == 'signInPopup'" />
@@ -92,6 +93,10 @@ export default {
 <style scoped lang="scss">
 @import "../../../../../scss/mixins/mixins";
 
+.mb--30 {
+  margin-bottom: -30px !important;
+}
+
 .custom-popup {
 
   &__btns {
@@ -167,8 +172,8 @@ export default {
 
     @include for-550 {
       padding: 0;
-      margin-left: 0 auto;
-      margin-right: 0 auto;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   :deep(.modal-component__inner) {

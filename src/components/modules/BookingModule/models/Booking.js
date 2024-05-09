@@ -6,7 +6,7 @@ export class Booking extends BaseModel{
     super()
 
     this.data = {
-      activeStep: 2,
+      activeStep: 1,
 
       activeHouse: 1,
 
@@ -64,13 +64,13 @@ export class Booking extends BaseModel{
     let validationItems = {
       locationUlis: this.data.locationUlis,
       date: this.data.date,
-      adults: this.data.adults,
+      // adults: this.data.adults,
     }
 
     let validationOptions = {
       locationUlis: {type: ['empty']},
       date: {type: ['empty']},
-      adults: {type: ['empty']},
+      // adults: {type: ['empty']},
     }
 
     this.setValidationData(validationItems, validationOptions)

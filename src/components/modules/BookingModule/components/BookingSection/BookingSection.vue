@@ -11,6 +11,7 @@
       <div class="booking__left">
         <BookingLeft
             :Booking="Booking"
+            @removeHouse="removeHouse"
         />
       </div>
 
@@ -109,6 +110,12 @@
       @confirm="openSignInPopup = false; goToNextStep()"
   />
 
+  <DeleteItemPopup
+      v-if="openRemovePopup"
+      :deletePopupText="deletePopupText"
+      @closeDeletePopup="openRemovePopup = false"
+  />
+
 </template>
 
 <script>
@@ -124,11 +131,13 @@ import MainButton from "../../../../UI/buttons/MainButton/MainButton.vue";
 
 import RulesPopup from "@/components/modules/BookingModule/popups/RulesPopup/RulesPopup.vue";
 import ShortSpecialPopup from "@/components/modules/BookingModule/popups/ShortSpecialPopup/ShortSpecialPopup.vue";
+import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteItemPopup/DeleteItemPopup.vue";
 
 export default {
   name: "BookingSection",
 
   components: {
+    DeleteItemPopup,
     MainButton,
     BookingTop,
     BookingLeft,
@@ -152,6 +161,15 @@ export default {
 
   data() {
     return {
+      openRemovePopup: false,
+      deletePopupText: {
+        title: 'Видалити будинок?',
+        txt: 'Ти впевнений, що хочеш виконати цю дію? Якщо ти видалиш будинок, то всі обрані фільтри та сервіси не збережуться.',
+        no: 'Не хочу',
+        yes: 'Видалити',
+      },
+
+
       openSignInPopup: false,
       signInPopupText: {
         title: 'Авторизуйся в системі',
@@ -256,6 +274,12 @@ export default {
       }
 
       this.canPay = true
+    },
+
+
+    removeHouse() {
+      this.$emit('removeHouse')
+      this.openRemovePopup = true
     },
   },
 

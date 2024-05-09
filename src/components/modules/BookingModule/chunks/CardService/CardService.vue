@@ -152,6 +152,7 @@
           <CookingService
               v-if="item.type === 'cooking'"
               :openCookingCart="openCookingCart"
+              @goBackCooking="openCookingCart = false"
           />
 
           <PlantingTreeService

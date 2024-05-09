@@ -11,11 +11,7 @@
     </div>
   </div>
 
-  <DeleteItemPopup
-      v-if="openRemovePopup"
-      :deletePopupText="deletePopupText"
-      @closeDeletePopup="openRemovePopup = false"
-  />
+
 
 </template>
 
@@ -26,7 +22,7 @@ import DeleteItemPopup from "@/components/modules/BookingModule/popups/DeleteIte
 export default {
   name: "BookingStepB",
 
-  emits: ['closeDeletePopup'],
+  emits: ['closeDeletePopup', 'removeHouse'],
 
   components: {
     DeleteItemPopup,
@@ -42,14 +38,6 @@ export default {
 
   data() {
     return {
-      openRemovePopup: false,
-
-      deletePopupText: {
-        title: 'Видалити будинок?',
-        txt: 'Ти впевнений, що хочеш виконати цю дію? Якщо ти видалиш будинок, то всі обрані фільтри та сервіси не збережуться.',
-        no: 'Не хочу',
-        yes: 'Видалити',
-      },
 
       houseImg: [
         {
@@ -158,7 +146,7 @@ export default {
 
   methods: {
     removeHouse() {
-      this.openRemovePopup = true
+      this.$emit('removeHouse')
     },
   },
 

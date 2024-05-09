@@ -18,6 +18,7 @@
 
         <ChosenHouse
             :Booking="Booking"
+            @removeHouse="$emit('removeHouse')"
         />
 
         
@@ -58,6 +59,8 @@ export default {
     MainButton,
     BackTo
   },
+
+  emits: ['removeHouse'],
 
   props: {
     Booking: {

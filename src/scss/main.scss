@@ -574,7 +574,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 12px;
-  color: $grey;
+  color: $text-grey;
 
   @include for-420 {
     bottom: -1px;
@@ -583,6 +583,9 @@
   svg {
     margin-right: -1px;
     margin-left: -1px;
+    path {
+      stroke: $text-grey;
+    }
   }
 }
 

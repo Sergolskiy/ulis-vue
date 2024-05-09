@@ -2,6 +2,12 @@
   <div class="chosen-house">
     <div class="chosen-house__inner">
 
+      <div class="chosen-house__info-delete"
+           @click="$emit('removeHouse')"
+      >
+        <IconDelete/>
+      </div>
+
       <div class="chosen-house__info-block"
            v-if="Booking.data.activeStep === 2">
         <div class="chosen-house__block-title">
@@ -57,6 +63,39 @@
                 <div class="chosen-house__overview-txt">
                   36 м <sup>2</sup>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-row">
+          <div class="chosen-house__listing-col custom-col custom-col--50">
+            <div class="chosen-house__listing-item">
+              <div class="chosen-house__listing-ico">
+                <IconPeopleBig/>
+              </div>
+              <div class="chosen-house__listing-txt">
+                2 дорослих
+              </div>
+            </div>
+          </div>
+          <div class="chosen-house__listing-col custom-col custom-col--50">
+            <div class="chosen-house__listing-item">
+              <div class="chosen-house__listing-ico">
+                <IconMan/>
+              </div>
+              <div class="chosen-house__listing-txt">
+                1 дитина
+              </div>
+            </div>
+          </div>
+          <div class="chosen-house__listing-col custom-col custom-col--50">
+            <div class="chosen-house__listing-item">
+              <div class="chosen-house__listing-ico">
+                <IconAnimal/>
+              </div>
+              <div class="chosen-house__listing-txt">
+                1 тварина
               </div>
             </div>
           </div>
@@ -228,10 +267,16 @@ import IconBed from '../../../../../assets/img/icons/icon-bed-16px-grey.svg?skip
 import IconFood from '../../../../../assets/img/icons/icon-food-16px-grey.svg?skipsvgo'
 import IconSettle from '../../../../../assets/img/icons/icon-settle-16px-grey.svg?skipsvgo'
 import IconDeport from '../../../../../assets/img/icons/icon-deport-16px-grey.svg?skipsvgo'
+import IconMan from "@/assets/img/man.svg?skipsvgo";
+import IconAnimal from "@/assets/img/animal.svg?skipsvgo";
+import IconPeopleBig from '../../../../../assets/img/people.svg?skipsvgo'
+import IconDelete from "@/assets/img/icons/icon-delete.svg?skipsvgo";
 
 export default {
   name: "ChosenHouse",
   components: {
+    IconDelete,
+    IconAnimal, IconMan,
     InfoBlock, 
     MainButton,
     IconUAH,
@@ -244,7 +289,8 @@ export default {
     IconBed,
     IconFood,
     IconSettle,
-    IconDeport
+    IconDeport,
+    IconPeopleBig,
   },
 
   props: {
@@ -268,7 +314,28 @@ export default {
   margin-top: 16px;
 
   &__inner{
-   padding: 16px;
+    position: relative;
+    padding: 16px;
+  }
+
+  &__info-delete {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 16px;
+    right: 16px;
+    border: 1px solid #EB5757;
+    border-radius: 8px;
+    transition: 0.15s;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__info-block {
@@ -279,6 +346,8 @@ export default {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   &__content{
@@ -359,8 +428,43 @@ export default {
     padding-top: 2px;
   }
 
-  &__service{
+  &__listing-col {
+    margin-bottom: 8px;
+    padding: 0 8px;
 
+    &:last-child {
+      margin: 0;
+    }
+
+    @include for-768 {
+      padding: 0 4px;
+    }
+  }
+
+  &__listing-item {
+    display: flex;
+    align-items: flex-end;
+    border-radius: 8px;
+    min-height: 40px;
+    border: 1px solid $border-grey;
+    padding: 0 8px 8px;
+  }
+
+  &__listing-ico {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__listing-txt {
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__service{
+    margin-top: 16px;
   }
   
   &__service-img{

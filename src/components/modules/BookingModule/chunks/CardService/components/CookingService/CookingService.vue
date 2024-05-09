@@ -34,6 +34,9 @@
 
 
       <template v-if="openCookingCart">
+
+        <div class="service-cook__large-back" @click="$emit('goBackCooking')"></div>
+
         <div class="service-cook__large-title">
           Твій кошик
           <div class="service-cook__large-title-icon">
@@ -141,6 +144,8 @@ export default {
     DeleteItemPopup,
   },
 
+  emits: ['goBackCooking'],
+
   props: {
     openCookingCart: Boolean,
   },
@@ -219,16 +224,29 @@ export default {
 
 .service-cook{
 
+  &__large-back {
+    width: 32px;
+    height: 32px;
+    background: #000000 url('../../../../../../../assets/img/arrow-white.svg') center center no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: rotate(-180deg);
+    margin-bottom: 24px;
+
+    @include for-768 {
+      margin-bottom: 16px;
+    }
+  }
+
   &__large-title {
+    display: flex;
+    align-items: center;
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 16px;
 
     @include for-768 {
       font-size: 28px;
-
-      display: flex;
-      align-items: center;
     }
   }
 
@@ -242,9 +260,9 @@ export default {
     justify-content: center;
     margin-left: auto;
 
-    @include from-768 {
-      display: none;
-    }
+    //@include from-768 {
+    //  display: none;
+    //}
 
     svg {
       width: 24px;

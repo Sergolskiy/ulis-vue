@@ -57,6 +57,7 @@ export default {
 @import "../../../../../scss/mixins/mixins";
 
 .custom-popup {
+  z-index: 1000;
 
   &__content {
 

@@ -36,6 +36,7 @@
         <div class="left-side__chosen-house" v-if="Booking.data.activeStep >= 2">
           <ChosenHouse
               :Booking="Booking"
+              @removeHouse="$emit('removeHouse')"
           />
         </div>
 
@@ -61,6 +62,7 @@
         :class="{'active': openDetailPopup}"
         :Booking="Booking"
         @close="closePopup"
+        @removeHouse="$emit('removeHouse')"
     />
 
   </div>
@@ -88,7 +90,7 @@ export default {
     PersonalDetails
   },
 
-  emits: ['openPopup', 'close'],
+  emits: ['openPopup', 'close', 'removeHouse'],
 
   props: {
     Booking: {

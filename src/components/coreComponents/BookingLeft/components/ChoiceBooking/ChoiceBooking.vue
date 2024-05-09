@@ -20,24 +20,6 @@
               :Booking="Booking"
               :duration="false"
           />
-<!--          <div class="choice-booking__listing-date">-->
-<!--            <div class="choice-booking__listing-date-col">-->
-<!--              <div class="choice-booking__listing-date-label">-->
-<!--                Заїзд-->
-<!--              </div>-->
-<!--              <div class="choice-booking__listing-date-field">-->
-<!--                пн, 4 груд. 2023-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="choice-booking__listing-date-col">-->
-<!--              <div class="choice-booking__listing-date-label">-->
-<!--                Виїзд-->
-<!--              </div>-->
-<!--              <div class="choice-booking__listing-date-field">-->
-<!--                чт, 5 груд. 2023-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
         <div class="choice-booking__listing-col custom-col">
           <div class="choice-booking__listing-item">
@@ -46,36 +28,6 @@
             </div>
             <div class="choice-booking__listing-txt">
               Київ, Дудки
-            </div>
-          </div>
-        </div>
-        <div class="choice-booking__listing-col custom-col custom-col--50">
-          <div class="choice-booking__listing-item">
-            <div class="choice-booking__listing-ico">
-              <IconPeople/>
-            </div>
-            <div class="choice-booking__listing-txt">
-              2 дорослих
-            </div>
-          </div>
-        </div>
-        <div class="choice-booking__listing-col custom-col custom-col--50">
-          <div class="choice-booking__listing-item">
-            <div class="choice-booking__listing-ico">
-              <IconMan/>
-            </div>
-            <div class="choice-booking__listing-txt">
-              1 дитина
-            </div>
-          </div>
-        </div>
-        <div class="choice-booking__listing-col custom-col custom-col--50">
-          <div class="choice-booking__listing-item">
-            <div class="choice-booking__listing-ico">
-              <IconAnimal/>
-            </div>
-            <div class="choice-booking__listing-txt">
-              1 тварина
             </div>
           </div>
         </div>
@@ -195,8 +147,12 @@ export default {
   }
 
   &__listing-col {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     padding: 0 8px;
+
+    &:last-child {
+      margin: 0;
+    }
 
     @include for-768 {
       padding: 0 4px;
@@ -206,7 +162,7 @@ export default {
   &__listing-item {
     display: flex;
     align-items: flex-end;
-    border-radius: 4px;
+    border-radius: 8px;
     min-height: 40px;
     border: 1px solid $border-grey;
     padding: 0 8px 8px;

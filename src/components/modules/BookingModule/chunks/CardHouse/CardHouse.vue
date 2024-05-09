@@ -154,6 +154,52 @@
       <div class="card-house__section"
            v-if="detailedInfo"
       >
+        <div class="custom-row mt-3">
+          <div class="custom-col custom-col--33 custom-col--xs-50">
+            <DefaultSelect
+                :label="'Кількість дорослих'"
+                :options="['1 дорослий', '2 дорослих', '3 дорослих']"
+                :inner-icon="'people'"
+                :required="'required'"
+                :placeholder="'0 дорослих'"
+                :error="Booking.validation.adults"
+                :errorTxt="Booking.validationTranslate.adults"
+                :selected="Booking.data.adults"
+                @update:modelValue="(item) => Booking.data.adults = item"
+            />
+          </div>
+          <div class="custom-col custom-col--33 custom-col--xs-50">
+            <CustomSelect
+                :label="'Кількість дітей'"
+                :options="optionsChild"
+                :innerSelect="true"
+                :inner-icon="'man'"
+                :placeholder="'0 дітей'"
+                @updateCounter="changeCounter"
+            />
+          </div>
+          <div class="custom-col custom-col--33 custom-col--xs-100">
+
+            <FormLabel
+                class="mb-1"
+                :label="'Наявність тварин'"
+                :type="'required'"
+            />
+
+            <DefaultCheckbox
+                class="w-100"
+                :label="'Я візьму тваринку з собою'"
+                :required="'required'"
+                :bordered="true"
+                v-model="checked"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="card-house__section"
+           v-if="detailedInfo"
+      >
         <div class="card-house__price-section">
           <div class="card-house__price-row">
             <div class="card-house__price-col card-house__price-col--left">
@@ -239,11 +285,15 @@ import IconOutside from '../../../../../assets/img/card/outside.svg?skipsvgo'
 import CardSlider from "@/components/modules/BookingModule/chunks/CardSlider/CardSlider.vue";
 import SliderPopup from "@/components/modules/BookingModule/chunks/SliderPopup/SliderPopup.vue";
 import IconScaleButton from "@/assets/img/scale-button.svg";
+import DefaultCheckbox from "@/components/UI/checkboxes/DefaultCheckbox/DefaultCheckbox.vue";
+import FormLabel from "@/components/UI/labels/FormLabel/FormLabel.vue";
+import CustomSelect from "@/components/UI/selections/CustomSelect/CustomSelect.vue";
 
 
 export default {
   name: "CardHouse",
   components: {
+    CustomSelect, FormLabel, DefaultCheckbox,
     IconScaleButton,
     SliderPopup,
     CardSlider,
@@ -283,6 +333,46 @@ export default {
 
   data () {
     return {
+
+      checked: false,
+      defaultSelect: {
+        options: [
+          {id: 1, years: 1,}, {
+            id: 2, years: 2,
+          }, {
+            id: 3, years: 3,
+          }, {
+            id: 4, years: 4,
+          }, {
+            id: 5, years: 5,
+          }, {
+            id: 6, years: 6,
+          }, {
+            id: 7, years: 7,
+          }, {
+            id: 8, years: 8,
+          }, {
+            id: 9, years: 9,
+          }, {
+            id: 10, years: 10,
+          }, {
+            id: 11, years: 11,
+          }, {
+            id: 12, years: 12,
+          },
+        ],
+        selected: {id: 1, years: 1,},
+      },
+
+      optionsChild: [
+        {
+          id: 1,
+          count: 0,
+          selections: [],
+          selected: null,
+        }
+      ],
+
       openSliderPopup: false,
       detailedInfo: false,
       comfortsCalendarToggle: false,
@@ -354,7 +444,25 @@ export default {
     toggleSliderPopup(val) {
       this.openSliderPopup = val
       document.body.style.overflow = val ? 'hidden' : 'initial'
-    }
+    },
+
+    changeCounter(item) {
+      if (this.optionsChild[0].count < item) {
+        this.optionsChild[0].selections.push(this.$_.cloneDeep(this.defaultSelect))
+      }
+
+      if (this.optionsChild[0].count > item) {
+        this.optionsChild[0].selections.splice(this.optionsChild[0].selections.length - 1, 1)
+      }
+
+      if (item > 0) {
+        this.optionsChild[0].selected = item + ' ' + this.getNoun(item, 'дитина', 'дитини', 'дітей')
+      } else {
+        this.optionsChild[0].selected = null
+      }
+
+      this.optionsChild[0].count = item
+    },
   },
 }
 </script>

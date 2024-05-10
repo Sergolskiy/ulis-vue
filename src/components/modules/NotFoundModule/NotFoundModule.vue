@@ -16,6 +16,7 @@
       <div class="not-found-module__btn">
         <MainButton
             :label="'На головну'"
+            @click="goToHome"
         />
       </div>
     </div>
@@ -35,6 +36,13 @@ export default {
     ImageNotFoundMobile,
     MainButton,
   },
+
+  methods: {
+
+    goToHome() {
+      window.location = window.location.origin;
+    }
+  }
 }
 </script>
 
@@ -57,6 +65,10 @@ export default {
   &__image {
     margin-bottom: 96px;
     overflow: hidden;
+
+    @include for-1550 {
+      margin-bottom: 0;
+    }
 
     @include for-992 {
       margin-bottom: 54px;
@@ -93,6 +105,10 @@ export default {
     font-size: 20px;
     margin-bottom: 60px;
     text-align: center;
+
+    @include for-1550 {
+      margin-bottom: 15px;
+    }
 
     @include for-992 {
       font-size: 16px;

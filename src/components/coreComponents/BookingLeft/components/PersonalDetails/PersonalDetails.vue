@@ -140,11 +140,16 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../../../scss/colors";
+@import "../../../../../scss/mixins/mixins";
 
 .personal-details {
   border: 1px solid $border-grey;
   border-radius: 8px;
   margin-top: 16px;
+
+  @include for-992 {
+    margin-top: 0;
+  }
 
   &__inner {
     padding: 16px;

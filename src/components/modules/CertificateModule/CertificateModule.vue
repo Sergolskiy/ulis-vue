@@ -9,6 +9,12 @@
       </div>
 
       <div class="booking__content">
+        <div class="payment-block__title">
+          <div class="payment-block__title-num">
+            1
+          </div>
+          Подарунковий сертифікат
+        </div>
         <div class="personal-info">
           <div class="personal-info__inner">
             <div class="personal-info__title">
@@ -22,10 +28,110 @@
             />
 
             <div class="certificate-fields">
-              <PersonalInfoFields
-                  :Personal="Booking"
-                  :withGender="false"
+<!--              <PersonalInfoFields-->
+<!--                  :Personal="Booking"-->
+<!--                  :withGender="false"-->
+<!--              />-->
+              <InfoBlock
+                  class="mt-3 mb-3"
+                  text='Заповни, будь ласка, обов’язкові поля (обов’язкові поля помічені символом <span class="red">*</span>).'
+                  :type="'error'"
               />
+
+              <div class="custom-row">
+                <div class="custom-col">
+                  <DefaultInput
+                      :label="'Ім’я та прізвище'"
+                      :labelType="'required'"
+                      :placeholder="'Ім’я та Прізвище'"
+                      :error="Booking.validation.name"
+                      :errorTxt="Booking.validationTranslate.name"
+                      v-model="Booking.data.name"
+                  />
+                </div>
+              </div>
+
+
+              <div class="custom-row">
+                <div class="custom-col custom-col--50 custom-col--xs-100">
+                  <div class="personal-info__field">
+                    <DefaultInput
+                        :label="'Твій номер телефону'"
+                        :labelType="'required'"
+                        :placeholder="'+380'"
+                        :error="Booking.validation.phone"
+                        :errorTxt="Booking.validationTranslate.phone"
+                        v-model="Booking.data.phone"
+                    />
+                  </div>
+                </div>
+                <div class="custom-col custom-col--50 custom-col--xs-100">
+                  <div class="personal-info__field">
+                    <DefaultInput
+                        :label="'Твій email'"
+                        :labelType="'required'"
+                        :placeholder="'example@gmail.com'"
+                        :error="Booking.validation.email"
+                        :errorTxt="Booking.validationTranslate.email"
+                        v-model="Booking.data.email"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="custom-row">
+                <div class="custom-col">
+                  <DefaultInput
+                      :label="'Кодове слово сертифікату'"
+                      :labelType="'required'"
+                      :placeholder="'Кодове слово'"
+                      :error="Booking.validation.name"
+                      :errorTxt="Booking.validationTranslate.name"
+                      v-model="Booking.data.name"
+                  />
+                </div>
+              </div>
+
+              <div class="custom-row">
+                <div class="custom-col">
+                  <DefaultInput
+                      :label="'Ім’я та Прізвище отримувача сертифікату '"
+                      :labelType="'required'"
+                      :placeholder="'Ім’я та Прізвище'"
+                      :error="Booking.validation.name"
+                      :errorTxt="Booking.validationTranslate.name"
+                      v-model="Booking.data.name"
+                  />
+                </div>
+              </div>
+
+              <div class="custom-row">
+                <div class="custom-col custom-col--50 custom-col--xs-100">
+                  <div class="personal-info__field">
+                    <DefaultInput
+                        :label="'Номер телефону отримувача сертифікату'"
+                        :labelType="'required'"
+                        :placeholder="'+380'"
+                        :error="Booking.validation.phone"
+                        :errorTxt="Booking.validationTranslate.phone"
+                        v-model="Booking.data.phone"
+                    />
+                  </div>
+                </div>
+                <div class="custom-col custom-col--50 custom-col--xs-100">
+                  <div class="personal-info__field">
+                    <DefaultInput
+                        :label="'Email отримувача сертифікату'"
+                        :labelType="'required'"
+                        :placeholder="'example@gmail.com'"
+                        :error="Booking.validation.email"
+                        :errorTxt="Booking.validationTranslate.email"
+                        v-model="Booking.data.email"
+                    />
+                  </div>
+                </div>
+              </div>
+
             </div>
 
 

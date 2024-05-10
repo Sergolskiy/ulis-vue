@@ -185,7 +185,7 @@ export default {
       optionsSlider: {
         rewind: false,
         autoWidth: true,
-        gap: 24,
+        gap: 23,
         perPage: 3,
         breakpoints: {
           850: {

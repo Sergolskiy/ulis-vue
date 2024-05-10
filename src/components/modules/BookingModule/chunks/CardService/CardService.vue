@@ -228,6 +228,8 @@
               <MainButton
                   style="min-width: 106px;"
                   :label="'Далі'"
+                  :ico="'arrow'"
+                  :icoPosition="'right'"
                   @click="openCookingCart = true"
               />
             </div>
@@ -241,7 +243,7 @@
             </div>
             <div v-else class="card-service__bottom-btn">
               <MainButton
-                  v-if="item.type === 'tree'"
+                  v-if="item.type === 'tree' || item.type === 'bicycle'"
                   :label="'Додати'"
               />
               <MainButton

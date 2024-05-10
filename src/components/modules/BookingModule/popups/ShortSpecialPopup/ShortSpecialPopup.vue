@@ -39,7 +39,7 @@
           <MainButton
               :label="shortSpecialPopupText.no"
               :secondary="true"
-              @click="$emit('closeShortSpecialPopup')"
+              @click="$emit('no')"
           />
         </div>
         <div v-if="shortSpecialPopupText.yes"  class="custom-popup__btns-item short-special-popup__confirm-btn nowrap">

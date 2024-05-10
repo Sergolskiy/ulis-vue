@@ -100,14 +100,15 @@
       v-if="successPayBookingPopup"
       :shortSpecialPopupText="successPayBookingPopupText"
       @closeShortSpecialPopup="successPayBookingPopup = false"
-      @confirm="successPayBookingPopup = false"
+      @confirm="successPayBookingPopup = false; goToHome()"
   />
 
   <ShortSpecialPopup
       v-if="openSignInPopup"
       :shortSpecialPopupText="signInPopupText"
       @closeShortSpecialPopup="openSignInPopup = false"
-      @confirm="openSignInPopup = false; goToNextStep()"
+      @confirm="openSignInPopup = false; goToLogin()"
+      @no="openSignInPopup = false; goToNextStep()"
   />
 
   <DeleteItemPopup
@@ -222,6 +223,10 @@ export default {
   },
 
   methods: {
+    goToHome() {
+      window.location = window.location.origin;
+    },
+
     closeRulesPopup() {
       this.openRulesPopup = false;
     },
@@ -229,6 +234,14 @@ export default {
     closeShortSpecialPopup() {
       this.openShortSpecialPopup = false;
       this.goToNextStep()
+    },
+
+    goToLogin() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      urlParams.set('page', 'login');
+
+      window.location.search = urlParams;
     },
 
     goToBackStep() {
@@ -246,7 +259,7 @@ export default {
       //   return
       // }
 
-      if(this.Booking.data.activeStep === 3) {
+      if(this.Booking.data.activeStep === 3 && !this.Booking.data.isAuth) {
         this.openSignInPopup = true;
         return
       }

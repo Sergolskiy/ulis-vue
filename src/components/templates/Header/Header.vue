@@ -67,7 +67,7 @@
           </div>
           <div class="mobile-header__items">
             <div class="mobile-header__item">
-              <a href="#">
+              <a href="/?page=404">
                 Будинки
               </a>
             </div>

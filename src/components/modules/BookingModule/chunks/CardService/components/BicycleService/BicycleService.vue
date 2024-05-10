@@ -159,7 +159,6 @@
                 :placeholder="'Обери час'"
                 :required="'required'"
                 :options="['10:00', '11:00']"
-                :disabled="true"
             />
           </div>
         </div>

@@ -84,7 +84,7 @@
           />
         </div>
 
-        <div class="please-login mb-3" v-if="!Booking.data.isAuth">
+        <div class="please-login" v-if="!Booking.data.isAuth">
           <div class="please-login__inner">
             <div class="please-login__info">
               <InfoBlock
@@ -101,7 +101,7 @@
         </div>
 
 
-        <div class="payment-block__promo" v-if="Booking.data.isAuth">
+        <div class="payment-block__promo">
           <FormLabel
               class="mt-4 mb-1"
               :label="'Вкажи кодове слово для сертифікату'"
